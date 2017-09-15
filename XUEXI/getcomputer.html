@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 400px;
+				padding: 20px;
+				border: 40px solid #a0b3d6;
+				background-color: #eee;
+				overflow: hidden;
+			}
+			
+			.loading {
+				height: 100%;
+				background: url(loading.gif) no-repeat center;
+			}
+			
+			.in {
+				width: 100px;
+				margin: 0 auto;
+				border: 50px solid #beceeb;
+				background-color: #f0f3f9;
+			}
+			
+			[type=button] {
+				width: 100px;
+				/*height: 32px;*/
+				font-size: 100%;
+			   background: red;
+			}
+			.creat{
+				width: 100px;
+			   height: 100px;
+			    border: 1px #000 solid;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box" class="box">
+			<div class="in" id="box1"></div>
+			
+		</div>
+<p>
+    <input type="button" id="button" value="点击我">
+</p>
+		<script>
+			
+//			var box=document.getElementById("box")
+//		console.log(getStyle(box,"width"))	
+//			function getStyle(dom,property){
+//				if(dom.currentStyle){
+//						return dom.currentStyle[property]
+//					
+//				}else{
+//				        return window.getComputedStyle(dom)[property]
+//				}
+//				
+//				
+//			}
+             function creat(n){
+             	for(var i=0;i<n;i++){
+             		var div=document.createElement("div");
+             		    div.className="creat";
+             		    box.appendChild(div)
+             	}
+             }
+			var funTransitionHeight = function(element, time) { // time, 数值，可缺省
+				if(typeof window.getComputedStyle == "undefined") return;
+
+				var height = window.getComputedStyle(element).height;
+
+				element.style.transition = "none"; // 本行2015-05-20新增，mac Safari下，貌似auto也会触发transition, 故要none下~
+
+				element.style.height = "auto";
+				var targetHeight = window.getComputedStyle(element).height;
+				element.style.height = height;
+				element.offsetWidth = element.offsetWidth;
+				if(time) element.style.transition = "height " + time + "ms";
+				element.style.height = targetHeight;
+			};
+		var box1=document.getElementById("box")
+		var btn=document.getElementById("button")
+		btn.onclick=function(){
+			creat(10);
+			funTransitionHeight(box,3000)
+		}
+		
+		</script>
+	</body>
+</html>

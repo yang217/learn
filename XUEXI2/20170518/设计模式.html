@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			var someClass = {
+
+	_singleton: null,
+				
+    getSingleton: function() {
+         console.log(this)
+		if (!this._singleton) {
+                this._singleton = {
+                    // some code here
+                }
+            }
+				
+            return this._singleton;
+		}
+};
+
+//var instance = someClass.getSingleton();
+var instance = someClass.getSingleton;
+    instance()
+
+			
+		</script>
+	</body>
+</html>

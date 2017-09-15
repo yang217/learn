@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    var a=["a","b","c"];
+    var b=a;
+    b[0]="d";
+    console.log(a);//d,b,c
+    console.log(b);//d,b,c
+
+//浅拷贝，是同一个指针
+//深拷贝的方法
+//方法1
+var c=["a","b","c"];
+var d=c.slice();
+    d[0]="d";
+    console.log(c);
+    console.log(d)
+//方法2
+   var f=["a","b","c"]
+   var e=[];
+       e=f.concat();
+       e[0]="d";
+   console.log(f);
+   console.log(e)
+//浅拷贝
+function shallowClone(source) {
+    if (!source && typeof source !== 'object') {
+        throw new Error('error arguments');
+    }
+    var targetObj = source.constructor === Array ? [] : {};
+    for (var keys in source) {
+        if (source.hasOwnProperty(keys)) {
+            targetObj[keys] = source[keys];
+        }
+    }
+    return targetObj;
+}
+//利用递归深拷贝 
+function deepClone(source){
+   if(!source && typeof source !== 'object'){
+     throw new Error('error arguments', 'shallowClone');
+   }
+   var targetObj = source.constructor === Array ? [] : {};
+   for(var keys in source){
+      if(source.hasOwnProperty(keys)){
+         if(source[keys] && typeof source[keys] === 'object'){
+           targetObj[keys] = source[keys].constructor === Array ? [] : {};
+           targetObj[keys] = deepClone(source[keys]);
+         }else{
+           targetObj[keys] = source[keys];
+         }
+      } 
+   }
+   return targetObj;
+}
+
+// 利用JSON序列化实现一个深拷贝
+function deepClone(source){
+  return JSON.parse(JSON.stringify(source));
+}
+var o1 = {
+  arr: [1, 2, 3],
+  obj: {
+    key: 'value'
+  },
+  func: function(){
+    return 1;
+  }
+};
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script src="../js/jquery-1.11.3.js"></script>
+		<script>
+					$.ajax({
+						
+
+dataType: 'json',
+			type:"post",
+//		cache:"false",
+			url:"http://hisport.flipscript.com.cn/haisport/index.php/Order/myOrder?",
+			
+//			jsonp:"callback",
+//			jsonpCallback:"cs",
+			success:function(data){
+				console.log(data);
+			
+			},
+			error:function(msg){
+				console.log(msg);
+			}
+		})
+		</script>
+	</body>
+
+</html>

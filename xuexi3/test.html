@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js/jquery.min.js"></script>
+		<div class="dataStatistics">
+    <P>1<input type="text" name=""><input type="text" name=""><input type="text" name=""></P>
+    <P>2<input type="text" name=""><input type="text" name=""><input type="text" name=""></P>
+</div>
+<div id='sum'>0</div>
+<script>
+function sum(){
+  var sum=0;
+  $('.dataStatistics p').each(function(){
+    var i=0;
+    $(this).find('input').each(function(){      
+      if($(this).val()==''){
+        return '';
+      }else{
+        i++;
+      }
+   
+      if(i==$(this).parent().find('input').length){
+        sum++;
+      }  
+  })
+  })
+  return sum;
+}
+$('.dataStatistics input').blur(function(){
+  $('#sum').text(sum());
+});
+</script>
+	</body>
+</html>

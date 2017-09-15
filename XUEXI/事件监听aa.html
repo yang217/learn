@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="box1">11</div>
+<script type="text/javascript">
+
+var addvent=function(ele,type,fn){
+    if(window.addEventListener){
+   	addvent=function(ele,type,fn){
+    		ele.addEventListener(type,fn)
+    	}
+    }else if(window.addvent){
+      addvent=function(ele,type,fn){ addvent.attachEvent("on"+type,fn)}
+    }
+     addvent(ele,type,fn)//执行本身，也就是执行条件里面的内容
+  
+}
+var box=document.getElementById("box1");
+addvent(box,"click",function(){
+	alert(1)
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+       #box{
+       	width: 300px;
+       	height: 300px;
+       	border: 10px red solid;
+      
+       }
+
+	</style>
+</head>
+<body>
+<div id="box" style="background: blue"></div>
+<script type="text/javascript">
+   function removeAttr(obj,attr){
+   	var sty=obj.style;
+    if(sty.removeProperty){
+    	sty.removeProperty(attr)
+    }else{
+    	sty.removeAttribute(attr)
+    }
+
+   }
+   var box=document.getElementById("box");
+       removeAttr(box,"background")
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+ function   add(str){
+ 	var strarr=str.split('');
+ 	var newarr=[];
+ 	for(var i=0;i<strarr.length;i++){
+ 		if(typeof strarr[i]!=='number'&&!typeof strarr[i+1]=='number'){
+ 			console.log(1)
+ 			newarr.push(strarr[i])
+ 		}
+ 	}
+
+  return newarr
+
+ }
+console.log(add('12aa23'))
+</script>
+</body>
+</html>

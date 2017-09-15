@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// for (var i = newArr.length - 1; i >= 0; i--) {
+//         // 随机范围[0,1)
+
+//         var randomIndex = Math.floor(Math.random() * (i + 1));//54张牌
+//         var itemAtIndex = newArr[randomIndex];
+//         newArr[randomIndex] = newArr[i];
+//         newArr[i] = itemAtIndex;
+//     }
+var  arr=[2,3,9,0,8,6,5];
+for(var i=arr.length-1;i>=0;i--){
+	var randomindex=Math.floor(Math.random()*(i+1));//获得随机的索引
+	// console.log("randomindex",randomindex)
+	var itemAtIndex=arr[randomindex];//获取随机的数
+	// console.log("itemAtIndex",itemAtIndex);
+	arr[randomindex]=arr[i];//arr[randomindex]保存了原数组
+	console.log(arr[randomindex]);
+	arr[i]=itemAtIndex;//原数组随机
+	// console.log(arr[i])
+}
+// console.log(arr)
+
+ function repeatStringNumTimes(string,times){
+
+        if(times<=0){
+            return "";
+        }
+        if(times===1){
+            return string;
+        }
+        else{
+
+            return string+repeatStringNumTimes(string,--times);//如果times--则会永远是3,会溢出
+        }
+    }
+ alert(repeatStringNumTimes("abc",3));
+
+
+
+</script>
+
+</body>
+</html>

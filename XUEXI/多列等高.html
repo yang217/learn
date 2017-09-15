@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+ body,p{
+        margin:0;
+        padding:0;
+    }
+    #wrap{
+        overflow:hidden;
+        width:580px;
+        margin:0 auto;
+    }
+    /*overflow会按最高的切*/
+    #left,#center,#right{
+        margin-bottom:-22222200px;
+        padding-bottom:22222300px;
+    }
+    #left {
+        float:left;
+        width:140px;
+        background:#777;
+    }
+    #center {
+        float:left;
+        width:300px;
+        background:#888;
+    }
+    #right {
+        float:right;
+        width:140px;
+        background:#999;
+    }
+    p {color:#FFF;text-align:center}
+	</style>
+</head>
+<body>
+<div id="wrap">
+        <div id="left">
+            <p style="height:50px">style="height:50px"</p>
+        </div>
+        <div id="center">
+            <p style="height:100px">style="height:100px"</p>
+        </div>
+        <div id="right">
+            <p style="height:300px">style="height:200px"</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>  
+    <head>  
+        <meta charset="utf-8" />  
+        <title></title>  
+    </head>  
+    <body>  
+    <script type="text/javascript" src='../js/jquery.min.js'></script>
+        <form>  
+              
+            <input type="range" value="25" max="100" mmin="0" step="5"/>  
+              
+            <input type="submit" value="提交">  
+            <input type="text" name="" id="aa">
+        </form>  
+    </body>   
+      
+      
+    <script>  
+    function moveEnd(obj){ 
+     
+obj.focus(); 
+var len = obj.value.length; 
+if (document.selection) { 
+var sel = obj.createTextRange(); 
+sel.moveStart('character',len); 
+sel.collapse(); 
+sel.select(); 
+} else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') { 
+obj.selectionStart = obj.selectionEnd = len; 
+} 
+} 
+    var dd=document.getElementById('aa')      
+ moveEnd(dd)         
+    </script>  
+</html>  

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			
+			
+		</div>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			var $box=$(".box");
+			$box.get()[2].innerHTML="111"
+			var v=$box.eq(1).html("1")
+			
+			for(var i=0;i<$box.length;i++){
+				
+			   var index="div"+(i+1);
+				$box.eq(i).attr("id",index)
+				
+			}
+			
+			window.onbeforeunload = function() {   
+            var n = window.event.screenX - window.screenLeft;   
+            var b = n > document.documentElement.scrollWidth-20;   
+            if(b && window.event.clientY < 0 || window.event.altKey){   
+                alert("这是一个关闭操作而非刷新");   
+               
+            }else{
+                alert("这是一个刷新操作而非关闭");   
+            }
+        }  
+        
+		</script>
+	</body>
+</html>

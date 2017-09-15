@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="display: none;" id="box">111</div>
+		<script>
+		try {
+    something
+} catch (e) {
+    window.location.href =
+        "http://stackoverflow.com/search?q=[js]+" +
+        e.message;
+}
+			var box=document.getElementById('box');
+			var box1=box.innerHTML;
+			console.log(box1)
+			var arr=[[1,2,3],['a','b','c']];
+			var aaa='';
+			var bbb='';
+			for(var i=0;i<arr.length;i++){
+				var index=arr[i].index;
+				if(arr[i].index==arr[i].index){
+					for(var k=0;k<arr[i].length;k++){
+						aaa=aaa+arr[i][k]+'&&'
+					}
+				}
+				
+				for(var j=0;j<arr[i].length;j++){
+				  bbb=bbb+arr[i][j]+'||'
+					
+				}
+			}
+			console.log(aaa)
+			console.log(bbb)
+			
+		</script>
+	</body>
+</html>

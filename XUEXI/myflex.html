@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	div{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	/*代表以某某开头的属性*/
+  [name|=css]{
+  	background: blue;
+  }
+  /*用户同上*/
+  [name^=css]{
+  	background: green;
+  }
+  /*选择所有含有css的文件*/
+  [name*=css]{
+  	background: pink;
+  }
+  /*选择以某某结尾的元素*/
+  [name$=css]{
+  	background: orange;
+  }
+  /*选择单词中包含某中，css-a这种不算*/
+  [name~=css]{
+  	background: red;
+  }
+  p{
+  	width: 100px;
+  }
+  /*选择p的首行*/
+  p:first-line{
+  /*	background: #000*/
+  }
+  /*选择首字母*/
+   p:first-letter {
+   	/*font-size: 100px;*/
+   }
+   p:before{
+   	content: "我在p前面"
+   }
+   p:after{
+   	content: "我在p后面"
+   }
+  /* body:not(h){
+   	background: green;
+   }*/
+   /*指定空的p元素的背景色：
+:empty 选择器匹配没有子元素（包括文本节点）的每个元素。*/
+
+        :target {
+            border: 2px solid #D4D4D4;
+            background-color: #e5eecc;
+            background: red
+        }
+        /*odd是奇数，even是偶数*/
+        p:nth-of-type(odd){
+        	background: blue;
+        }
+    /*only-child 匹配属于父元素中唯一子元素的这个元素*/
+   </style>
+    </head>
+
+   
+     
+    
+	
+<body>
+<div>
+<span>1232</span>
+<span>2222</span>
+</div>
+<p name="css">hi</p>
+<p name="css-a">hi</p>
+<p name="css-b">hi</p>
+<p name="css-c">hi</p>
+<p name="d-css">hi</p>
+<p>
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+   <h1>这是标题</h1>
+        <p><a href="#box1">跳转至内容 1</a></p>
+        <p><a href="#news2">跳转至内容 2</a></p>
+        <p>请点击上面的链接，:target 选择器会突出显示当前活动的 HTML 锚。</p>
+        <p id="box1"><b>内容 1...</b></p>
+        <p id="news2"><b>内容 2...</b></p>
+        <p><b>注释：</b> Internet Explorer 8 以及更早的版本不支持 :target 选择器。</p>
+</p>
+
+</body>
+</html>

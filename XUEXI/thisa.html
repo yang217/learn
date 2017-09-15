@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+function a(){
+	console.log(this)
+}
+a();//指向全局的
+var b={
+	name:"jack",
+	c:function(){
+		console.log(this.name)//指向调用的对象
+	}
+}
+a.call(b)
+
+</script>
+</body>
+</html>

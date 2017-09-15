@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+  .block{display:inline-block; width:250px; height:160px; background:url(img/work_list_07.jpg);}
+	</style>
+
+
+
+
+
+
+</head>
+<body>
+<button id="button1">点击本按钮，图片下面的框框1秒钟变出来</button>
+<!-- <img src="http://ww1.sinaimg.cn/bmiddle/6aa99f00tw1dkxpxgi4mcj.jpg" height="969" /> -->
+<span id="block" class="block"></span>
+<script type="text/javascript">
+//  document.getElementById("button1").onclick = function() {
+//     document.getElementById("block").scrollIntoView();
+// }
+var arr={"a":{"b":"c"}}
+var deepCopy= function(source) {
+
+   
+    var result={};
+
+    for (var key in source) {
+   
+
+        result[key] = typeof source[key]==="object"?deepCopy(source[key]):source[key];
+
+     }
+
+   return result;
+}
+console.log(deepCopy(arr))
+</script>
+</body>
+</html>

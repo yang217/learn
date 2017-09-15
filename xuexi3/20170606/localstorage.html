@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			localStorage.age = 88; // 用localStorage属性的方式来添加条目
+localStorage.setItem("animal","cat"); // 推荐使用setItem的方式存储一个名为animal，值为cat的数据
+var animal = localStorage.getItem("animal"); //读取本地存储中名为animal的数据，并赋值给变量animal
+console.log(animal);  
+localStorage.removeItem("animal"); //删除单条数据
+localStorage.clear(); //清除所有数据
+
+//#sessionStorage 的存取方式
+sessionStorage.work = "police";
+sessionStorage.setItem("person", "Li Lei");
+var person = sessionStorage.getItem("person");
+console.log(person);
+		</script>
+	</body>
+</html>

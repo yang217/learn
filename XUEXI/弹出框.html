@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可拖拽特效</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.header{width:100%;height:30px;background:#036663;line-height:30px;color:#fff;text-indent:30px;}
+		#demo{width:400px;height:300px;border:solid 5px #eee;box-shadow:0 0 5px #666;position:absolute;top:40%;left:40%;}
+		#innerht{height:25px;background:#036663;border-bottom:solid 1px #369;color:#fff;text-indent:10px;cursor:move;}
+		#close{float:right;cursor:pointer;}
+	</style>
+</head>
+<body>
+<div class="header">注册信息</div>
+<div id="demo">
+	<div id="innerht">注册信息（可拖拽）<span id="close">【关闭】</span></div>
+	<div class="write"></div>
+</div>
+</body>
+<script type="text/javascript">
+	(function(window){
+		function $(id){
+			return document.getElementById(id);
+		};
+		// 获取对象
+		var innerht = $("innerht"),demo = $("demo"),close = $("close");
+		// 给innerht绑定鼠标事件
+		innerht.onmousedown = function(event){
+			// 解决event兼容问题
+			var event = event || window.event; 
+			// 获取鼠标在页面上坐标
+			var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+			var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+			// 获取鼠标在innerht内部的坐标
+			var innerX = pageX - demo.offsetLeft;
+			var innerY = pageY - demo.offsetTop;
+			// 给document绑定鼠标移动事件，防止鼠标快速滑动时滑出innerht
+			document.onmousemove = function(event){
+				var event = event || window.event;
+				// 获取鼠标移动时的坐标
+				var moveX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+				var moveY = event.pageY || event.clientY + document.documentElement.scrollTop;
+				// 鼠标移动时demo的位置坐标
+				var demoX = moveX - innerX ;
+				var demoY = moveY - innerY ;
+				// 鼠标移动时demo的位置坐标
+				demo.style.left = demoX + "px";
+				demo.style.top = demoY + "px";
+				//清除选中文字
+            	window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+				
+			}
+		};
+		// 鼠标抬起清除拖拽效果
+		document.onmouseup = function(){
+			document.onmousemove = null ;
+		};
+    	// 点击关闭按钮关闭跟随框
+    	close.onclick = function(){
+    		this.parentNode.parentNode.style.display = "none";
+    	};
+	})(window)
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var b=[1, 5, 10, 15].findIndex(function(v,i,arr){
+	console.log("v"+v);
+	console.log("i"+i);
+	console.log("arr"+arr)
+	return v>9;
+}
+)
+console.log(b)//返回第一个满足条件的位置
+// for (let index of ['a', 'b'].keys()) { console.log(index); }
+// // 0
+// // 1
+ 
+// for (let elem of ['a', 'b'].values()) { console.log(elem) ;}
+// // 'a'
+// // 'b'
+ 
+// for (let [index, elem] of ['a', 'b'].entries()) { console.log(index, elem);}
+// // 0 &quot;a&quot;
+// // 1 &quot;b&quot;
+ 
+// var arr = [&quot;a&quot;, &quot;b&quot;];
+// var iterator = arr.entries(); // undefined
+ 
+// console.log(iterator); // Array Iterator {}
+ 
+// console.log(iterator.next().value);  // [0, &quot;a&quot;]
+// console.log(iterator.next().value);  // [1, &quot;b&quot;]
+ var brr=[1,[2,4,[3,6]]];
+ var c=Array.prototype.concat.apply([],brr);
+ console.log(c)
+</script>
+</body>
+</html>

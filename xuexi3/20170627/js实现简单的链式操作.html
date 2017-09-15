@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="box">
+            1
+        </div>
+    <script>
+        ;(function(){
+           window.G=function(selector){
+
+return new _G(selector)
+
+           }
+           function _G(selector){
+               this.elements=document.querySelector(selector);
+               return this;
+           }
+           _G.prototype={
+               constructor:_G,
+               method:function(name,fn){
+                   if(this.elements){
+                       this.elements.addEventListener(name,fn,false)
+                   };
+                   return this;
+               },
+               add:function(){
+                   this.elements.style.color="red";
+                   return this;
+               }
+           }
+
+
+        })()
+        G('.box').method('click',function(){alert(1)}).add()
+    </script>
+    </body>
+</html>

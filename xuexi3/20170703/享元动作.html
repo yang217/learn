@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="checkbox" />
+<script type="text/javascript">
+  var FlyWeight={
+  	moveX:function(x){
+  	 return	this.x=x;
+  	},
+  	moveY:function(y){
+  		this.y=y;
+  	}
+  }
+  var player=function(x,y,c){
+  	this.x=x;
+  	this.y=y;
+  	this.color=c;
+  }
+  player.prototype=FlyWeight;
+  var aaa=new player('100',200,'red');
+  console.log(aaa.moveX('11'))
+</script>
+</body>
+</html>

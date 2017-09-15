@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.3.js"></script>
+	</head>
+
+	<body>
+		<select>
+			<option>1</option>
+			<option>2</option>
+		</select>
+		<div id="video_ajax"></div>
+		<script>
+			var isready = false;
+
+			function onYoukuPlayerReady() { isready = true; }
+			/**call js api(pause video)**/
+			function pauseVideo() { //暂停视频 
+				if
+				(!isready) return false;
+				player.pauseVideo();
+			}
+
+			function playVideo() {
+				//播放视频 
+				player.playVideo();
+			}
+
+			function onPlayerStart() {
+				//开始播放事件监测
+				_smq.push(['custom', 'vedio', 'playstart']);
+			}
+
+			function onPlayerComplete() {
+				//播放完成事件播放 
+				_smq.push(['custom', 'vedio', 'playend']);
+			}
+			player = new YKU.Player('video_ajax', {
+				client_id: '6f3a9bf3520ed3e0',
+				//youku APP ID 
+				vid: 'XNTIwNzI0NzAw',
+				//youku vedio id 
+				width: '560',
+				height: '355',
+				show_related: 'false',
+				//播放完成是否显示相关视频 true.是 false.否 
+				events: {
+					'onPlayerStart': onPlayerStart
+					//准备开始播放 
+				}
+			});
+		</script>
+	</body>
+
+</html>

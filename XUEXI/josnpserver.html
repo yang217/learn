@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button" id="btn">点击加载</button>
+		<script>
+			function jsonpserver(url){
+				var script=document.createElement("script");
+				    script.src=url;
+				    document.getElementsByTagName("head")[0].appendChild(script)
+				
+			}
+			function JSON_CALLBACK(data){
+				console.log(data)
+			}
+			
+			btn.onclick=function(){
+				jsonpserver("josn.php");
+			}
+		</script>
+	</body>
+</html>

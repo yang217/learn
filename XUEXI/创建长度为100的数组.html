@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+var a=Object.keys(Array.from({length:100}));//es6方法
+console.log(a)
+var b=Object.keys(Array.apply(null,{length:100}));
+console.log(b);
+Object.keys(Array.from({ length: 100 })).map(function(item) {
+	return +item;
+});
+//这里用了一个小技巧，字符串前面加一个 “+” 就可以转成数字。如果你不喜欢这样，可以使用parseInt，也是一样的效果。
+var arr=["2","8","9"];
+ var b=arr.map(function(item){
+ 	return +item
+ })
+console.log(b)
+var t = window.performance.now();
+console.log(t)
+</script>
+</body>
+</html>

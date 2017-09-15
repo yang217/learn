@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/**{
+				margin: 0;
+				padding: 0;
+			}*/
+			body{
+				font-size: 0;
+			}
+			p{
+				border: 1px solid #ccc;
+				width: 550px;
+				padding: 20px;
+				font:16px/2 "arial, helvetica, sans-serif";
+			}
+			input{
+				margin-right: 5px;
+			}
+			span{
+				background: darkred;
+				color: white;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text"/>
+		<input type="text"/>
+		<input type="button" value="替换" />
+		<p>	how far i'll go<br />I've been staring at the edge of the water<br />Long as I can remember never really knowing why<br />I wish I could be the perfect daughter<br />But I come back to the water no matter how hard I try<br />Every turn I take every trail I track<br />Every path I make every road leads back<br />To the place I know where I can not go though I long to be<br />See the line where the sky meets the sea it calls me<br />And no one knows how far it goes<br />If the wind on my sail on the sea stays behind me<br />One day I'll know if I go there's just no telling how far I'll go</p>
+		<script>
+			var aInput=document.getElementsByTagName('input');
+			var oP=document.getElementsByTagName('p')[0];
+			aInput[2].onclick=function(){
+				var str=aInput[0].value;
+				var str2=aInput[1].value;
+				if(!str) return;
+				// oP.innerHTML=oP.innerHTML.split(str)//把str变成,
+				oP.innerHTML=oP.innerHTML.split(str).join("<span>"+str2+"</span>");
+				
+			}
+		</script>
+	</body>
+</html>

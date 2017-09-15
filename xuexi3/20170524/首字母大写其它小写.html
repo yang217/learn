@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+     <script>
+         function titlecase(str){
+             var strsplit=str.toLowerCase().split(" ");
+             console.log(strsplit);
+           for(var i=0;i<strsplit.length;i++){
+              
+                strsplit[i]=strsplit[i][0].toUpperCase()+strsplit[i].slice(1)
+           }
+           return strsplit.join(" ")
+         }
+         console.log(titlecase("abc def"))
+
+  // 方法2
+    function titlecase(str){
+        return str.toLowerCase().replace(/(\s|^)[a-z]/g, function (match) {
+        return match.toUpperCase();
+    })
+    }
+    console.log(titlecase("lala yang"))
+     </script>
+    </body>
+</html>

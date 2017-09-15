@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+<style type="text/css">
+    .placeholder_ie{
+        display: inline-block;
+        width:100%;
+        height:26px;
+        position: absolute;
+        left:-42px;
+        top:0;
+        line-height: 26px;
+        font-size: 14px;
+        padding:0 10px;
+        color:#989898;
+    }
+</style>
+</head>
+<body>
+<!-- ie中placeholder属性不支持，js的解决方法： -->
+<div >
+<input type="" name="" placeholder="yang" id="box">
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+//placeholder属性在ie下兼容
+// var box=document.getElementById("box");
+placeholder("#box","123")
+function placeholder ( pEle , con ) {
+    var pEle = $(pEle)
+    if( pEle.find("input,textarea").val() == "" ){
+        pEle.append("<i class='placeholder_ie'>"+con+"</i>");
+    }
+    pEle.click(function () {
+        $(this).find(".placeholder_ie").css("display","none");
+        $(this).find("input,textarea").focus();
+    })
+    pEle.find("input,textarea").blur(function () {
+        if( pEle.find("input,textarea").val() == "" ){
+            pEle.find(".placeholder_ie").css("display","inline-block");
+        }
+    })
+}
+            // ie浏览器
+            if( navigator.appName == "Microsoft Internet Explorer" ){
+                placeholder( $(".header_box .serach_content").eq(0) , "search..." );
+                placeholder( $(".news_product .search_website>p").eq(0) , "深圳" );
+            }
+        </script>
+
+
+</body>
+</html>

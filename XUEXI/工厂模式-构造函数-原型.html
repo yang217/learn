@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		//工厂模式，需要一个return
+			function creatPerson(name){
+				var o=new Object();
+				o.sayname=function(){
+					console.log(name)
+				}
+				return o;
+			}
+			creatPerson("jack").sayname()
+			if(1){
+				console.log(1)
+			}
+		</script>
+	</body>
+</html>

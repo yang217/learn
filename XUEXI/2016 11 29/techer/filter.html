@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("app",[]);
+
+        app.controller("bodyCtrl",function($scope) {
+                $scope.money = 10000;
+                $scope.time = Date.now();
+                $scope.obj = [{id:21,name:"杨光"},{id:12,name:'张瑶'}];
+        })
+
+        //error:1.ng:areq=>如果在错误提示中 有ctrl  ng-controller方法没有初始化
+    </script>
+</head>
+<body ng-controller="bodyCtrl">
+    <!-- 金钱过滤 -->
+    金钱:{{money | currency }}
+<p>  金钱:{{money | currency:'￥':'1' }}</p>
+<p>时间:{{time | date }}</p>
+
+    <p>时间:{{time | date:'yy-MM-dd' }}</p>
+    <p>时间:{{time | date:'dd/MM/yyyy' }}</p>
+    <p>时间:{{time | date:'yyyy-MM-dd hh:mm' }}</p>
+    <p>时间:{{time | date:'hh:mm' }}</p>
+
+    <ul>
+        <!-- orderby 正序排 参数加一个 - 的时候为倒序 -->
+        <li ng-repeat="o in obj | orderBy: '-id'">{{o.name}}</li>
+    </ul>
+
+
+</body>
+
+</html>

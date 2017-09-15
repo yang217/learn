@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*示例样式,以项目页面为准*/
+			.input_box1{
+				position: relative;
+				top:0;
+				left:0;
+			}
+			.input_box2{
+				position: relative;
+				left:200px;
+				top:100px;
+			}
+			.input_box3{
+				position: relative;
+				left:500px;
+				top:300px;
+				outline: none;
+			}
+			/*控件样式*/
+			.city_container{
+				min-width:300px;
+				height:210px;
+				position:absolute;
+				z-index: 9999;
+				background: white;
+				border:1px solid #e1e1e1;
+				font-size: 14px;
+				color:#333;
+				display: none;
+			}
+			.city_container .province_con{
+				min-width:70px;
+				height:100%;
+				border-right:1px solid #e1e1e1;
+				background: #e8e8e8;
+				display: inline-block;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+			.city_container .province_con span{
+				display: block;
+				height:30px;
+				line-height: 30px;
+				text-align: left;
+				cursor: pointer;
+				cursor:hand;
+				padding-left:10px;
+				padding-right:10px;
+			}
+			.city_container .province_con .span_active{
+				background: #f33;
+				color:white;
+			}
+			.city_container .city_con{
+				position:absolute;
+				left:70px;
+				top:0;
+				right:0;
+				bottom:0;
+				height:100%;
+				float:left;
+				overflow: hidden;
+				overflow-y: auto;
+			}
+			.city_container .city_con span{
+				float:left;
+				display: block;
+				height:30px;
+				line-height: 30px;
+				padding:0 10px;
+				text-align: center;
+				cursor: pointer;
+				cursor:hand;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="input_box1">
+			<input type="text" placeholder="请选择城市1" style="width:120px;display: block;"/>
+		</div>
+		<div class="input_box2">
+			<input type="text" style="width:400px;display: block;" placeholder="请选择城市2"/>
+		</div>
+		<div class="input_box3">
+			<input type="text" style="width:600px;display: block;" placeholder="请选择城市3"/>
+		</div>
+		
+		<!--此jquery为项目复制出来的-->
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function () {
+			    var citySelect = function(options){
+			    	var defaults = {
+						// 默认
+					};
+					var opts = $.extend(defaults, options);
+					var cityFn = {
+						// 初始化
+						init : function(){ 
+							var _this = this;
+							this.renderProvince(); 
+							// 默认打开显示省
+							if( opts.cityMarkid ){
+								var provinceMarkid = opts.cityMarkid.slice(0,7);
+							}
+							var provinceIndex = 0;
+							for(var o in opts.cityDatas){
+								if( opts.cityDatas[o].markid == provinceMarkid ){
+									$(opts.container).find('.province_con>span').eq(provinceIndex).addClass('span_active').siblings().removeClass('span_active');
+									this.renderCity(opts.cityDatas[o]);
+									this.provinceIndex = provinceIndex;
+								}else if( !opts.cityMarkid ){
+									$(opts.container).find('.province_con>span').eq(0).addClass('span_active').siblings().removeClass('span_active');
+									this.renderCity(opts.cityDatas[o]);
+									break;
+								}
+								provinceIndex ++;
+							};
+							// 容器点击后
+							$(opts.container).find('input').on('click',function () {
+								_this.showPopup();
+							});
+							// 离开容器
+							$(opts.container).on('mouseleave',function () {
+								_this.hidePopup();
+							});
+							// 省份点击后
+							$(opts.container).find('.province_con>span').on('click',function () {
+								var province = $(this).text();
+								$(this).addClass('span_active').siblings().removeClass('span_active');
+								for(var i in opts.cityDatas){
+									if( province == i ){
+										_this.renderCity(opts.cityDatas[i]);
+									}
+								}
+							});
+						},
+						// html渲染省份
+						renderProvince : function(){
+							var html = '',
+								provinceStr = '';
+							// 循环省份
+							for(var i in opts.cityDatas){
+								provinceStr += '<span data-id="'+opts.cityDatas[i].id+'" data-markid="'+opts.cityDatas[i].markid+'">'+i+'</span>';
+							}
+							html  = '<div class="city_container">'
+								  +	'<div class="province_con">'
+								  + provinceStr
+								  +	'</div>'
+								  +	'<div class="city_con">'
+								  +	'</div>'
+								  +	'</div>';
+							$(opts.container).append(html);
+						},
+						// 渲染城市
+						renderCity : function(cityObj){
+							var _this = this;
+							$(opts.container).find('.city_con').html('');
+							var cityStr = '';
+							for(var i=0; i<cityObj.citys.length; i++){
+								cityStr += '<span data-id="'+cityObj.citys[i].id+'" data-markid="'+cityObj.citys[i].markid+'">'+cityObj.citys[i].text+'</span>';
+							}
+							$(opts.container).find('.city_con').append(cityStr);
+							// 城市点击后
+							$(opts.container).find('.city_con>span').on('click',function () {
+								var backObj = {},
+									provinceVal = {},
+									cityArr = [],
+									cityObj = {},
+									province = '';
+								cityObj['text'] = $(this).text();
+								cityObj['id'] = $(this).data('id');
+								cityObj['markid'] = $(this).data('markid');
+								cityArr.push(cityObj);
+								provinceVal['citys'] = cityArr;
+								provinceVal['id'] = $(opts.container).find('.province_con>.span_active').data('id');
+								provinceVal['markid'] = $(opts.container).find('.province_con>.span_active').data('markid');
+								province = $(opts.container).find('.province_con>.span_active').text();
+								backObj[province] = provinceVal;
+								// _this.hidePopup();
+								opts.callbackFn(backObj, $(this));
+							});
+						},
+						// 显示
+						showPopup : function(){
+							$(opts.container).find('.city_container').show();
+							// 城市容器自适应
+							var provinceContainerWidth = $(opts.container).find('.province_con').width();
+							$(opts.container).find('.city_con').css('left',provinceContainerWidth);
+							// 下拉框自适应
+							var inpWidth = $(opts.container).find('input').get(0).clientWidth;
+							$(opts.container).find('.city_container').width(inpWidth);
+							// 处理滑动到默认省份
+							var temp = 0;
+							if( opts.cityMarkid && this.provinceIndex>=7 ){
+								temp = this.provinceIndex-6;
+								$(opts.container).find('.province_con').scrollTop( temp*30 )
+							}
+						},
+						// 关闭
+						hidePopup : function(){
+							$(opts.container).find('.city_container').hide();
+						},
+					}
+					cityFn.init();
+					return cityFn;
+				}
+			    // 模拟数据
+				var cityData = {
+				    "广东": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCC0A",
+				        "markid": "0000001",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC01",
+				                "text": "广州",
+				                "markid": "0000001001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC02",
+				                "text": "深圳",
+				                "markid": "0000001002"
+				            }
+				        ]
+				    },
+				    "湖湖北湖北北4": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000002",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC03",
+				                "text": "武汉",
+				                "markid": "0000002001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC04",
+				                "text": "鄂州",
+				                "markid": "0000002002"
+				            }
+				        ]
+				    },
+				    "福建福建福建福建4": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCC0A",
+				        "markid": "0000003",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC05",
+				                "text": "福州",
+				                "markid": "0000003001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC06",
+				                "text": "厦门",
+				                "markid": "0000003002"
+				            }
+				        ]
+				    },
+				    "浙江4": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000004",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC07",
+				                "text": "杭州",
+				                "markid": "0000004001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC08",
+				                "text": "宁波",
+				                "markid": "0000004002"
+				            }
+				        ]
+				    },
+				    "湖湖北湖北北3": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000005",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC03",
+				                "text": "武汉",
+				                "markid": "0000005001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC04",
+				                "text": "鄂州",
+				                "markid": "0000005002"
+				            }
+				        ]
+				    },
+				    "福建福建福建福建3": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCC0A",
+				        "markid": "0000006",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC05",
+				                "text": "福州",
+				                "markid": "0000006001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC06",
+				                "text": "厦门",
+				                "markid": "0000006002"
+				            }
+				        ]
+				    },
+				    "浙江3": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000007",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC07",
+				                "text": "杭州",
+				                "markid": "0000007001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC08",
+				                "text": "宁波",
+				                "markid": "0000007002"
+				            }
+				        ]
+				    },
+				    "湖湖北湖北北2": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000008",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC03",
+				                "text": "武汉",
+				                "markid": "0000008001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC04",
+				                "text": "鄂州",
+				                "markid": "0000008002"
+				            }
+				        ]
+				    },
+				    "福建福建福建福建2": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCC0A",
+				        "markid": "0000009",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC05",
+				                "text": "福州",
+				                "markid": "0000009001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC06",
+				                "text": "厦门",
+				                "markid": "0000009002"
+				            }
+				        ]
+				    },
+				    "浙江2": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000010",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC07",
+				                "text": "杭州",
+				                "markid": "0000010001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC08",
+				                "text": "宁波",
+				                "markid": "0000010002"
+				            }
+				        ]
+				    },
+				    "湖湖北湖北北1": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000011",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC03",
+				                "text": "武汉",
+				                "markid": "0000011001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC04",
+				                "text": "鄂州",
+				                "markid": "0000011002"
+				            }
+				        ]
+				    },
+				    "福建福建福建福建1": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCC0A",
+				        "markid": "0000012",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC05",
+				                "text": "福州",
+				                "markid": "0000012001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC06",
+				                "text": "厦门",
+				                "markid": "0000012002"
+				            }
+				        ]
+				    },
+				    "浙江1": {
+				        "id": "ABCCCCCCCCCCCCCCCCCCCMMA",
+				        "markid": "0000013",
+				        "citys": [
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC07",
+				                "text": "杭州",
+				                "markid": "0000013001"
+				            },
+				            {
+				                "id": "ABCCCCCCCCCCCCCCCCCCCC08",
+				                "text": "宁波",
+				                "markid": "0000013002"
+				            }
+				        ]
+				    }
+				}
+			    // 城市选择1
+				citySelect({
+					container: '.input_box1',
+					cityDatas: cityData,
+					cityMarkid: '0000006001',
+					callbackFn: function (backVal, $obj) {
+						// 城市点击返回值backVal,城市点击后的jquery对象
+						console.log(backVal, $obj)
+						$('.input_box1>input').val( $obj.text() );
+					},
+				});
+				// 城市选择2
+				citySelect({
+					container: '.input_box2',
+					cityDatas: cityData,
+					callbackFn: function (backVal, $obj) {
+						// 城市点击返回值backVal,城市点击后的jquery对象
+						console.log(backVal, $obj)
+						$('.input_box2>input').val( $obj.text() );
+					},
+				});
+				// 城市选择3
+				citySelect({
+					container: '.input_box3',
+					cityDatas: cityData,
+					cityMarkid: '0000012001',
+					callbackFn: function (backVal, $obj) {
+						// 城市点击返回值backVal,城市点击后的jquery对象
+						console.log(backVal, $obj)
+						$('.input_box3>input').val( $obj.text() );
+					},
+				});
+			})
+		</script>
+	</body>
+</html>

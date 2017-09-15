@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="">
+    *{
+    margin: 0;
+    padding: 0;
+    }
+    div{
+    	height: 800px;
+    	display: flex;
+    	justify-content: space-around;
+    	flex-wrap: wrap;
+    	align-items:center;
+    }
+    div span{
+    	background: pink;
+    	width: 200px;
+    	height: 200px;
+
+    }
+   div span:nth-of-type(1){
+     
+     height:200px;
+
+    	flex-basis:2;
+    /* align-self: flex-end;*/
+
+   }
+   div span:nth-of-type(2){
+    flex-basis:2;
+     height:200px;
+
+   }
+   div span:nth-of-type(3){
+     width: 300px;
+     height:200px;
+
+   }
+   div span:nth-of-type(4){
+     width: 100px;
+     height:200px;
+
+   }
+   div span:nth-of-type(5){
+     width: 200px;
+     height:200px;
+
+   }
+	</style>
+</head>
+<body>
+<div>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+	<span></span>
+</div>
+<style type="">
+#container{
+	width: 800px;
+	display: flex;
+	height: 100px;
+	justify-content: space-between;
+}
+#left{
+	width: 200px;
+	flex-grow: 5;
+	background: red;
+}
+#main{
+	width: 200px;
+	/*flex:3;*/
+	flex-grow: 2;
+	background: green;
+}
+#right{
+	width: 200px;
+	/*flex:9;*/
+	flex-grow: 1;
+	flex-basis: 100px;
+	background: blue;
+}
+/*flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。*/
+/*如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。*/
+/*flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+负值对该属性无效。*/
+/*flex-basis flex-basis 属性用于设置或检索弹性盒伸缩基准值
+
+属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。*/
+
+</style>
+<div id="container">	
+  <div id="left"></div>
+  <div id="main">	</div>
+  <div id="right">	</div>
+
+</div>
+</body>
+</html>

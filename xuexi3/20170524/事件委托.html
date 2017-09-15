@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../js/jquery-1.11.3.js">
+            
+        </script>
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+          .list p{
+              border:1px red solid;
+          }
+        </style>
+    </head>
+    <body>
+    <button type="button" class="btn">点击</button>
+    <div class="list">
+        
+    </div>
+    <script>
+     $('.btn').click(function(){
+
+         $("<p>111</p>").appendTo($('.list'))
+     })
+     $('.list').on("click","p",function(){
+         alert(1)
+     })
+    //利用事件委托可以对动态生成的元素添加事件
+    </script>
+    </body>
+</html>

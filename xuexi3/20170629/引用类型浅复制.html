@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <script>
+        function prototypeExtend(){
+            var F=function(){},
+                args=arguments,
+               
+                i=0,
+                len=args.length;
+                 console.log(args)
+                for(;i<len;i++){
+                    for(var j in args[i]){
+                      console.log(args[i])//每个对象
+                      console.log(j,'j')//属性
+                      console.log(args[i][j])//属性值
+                        F.prototype[j]=args[i][j]
+                    }
+                }
+                return new F();
+        }
+     var newoo= prototypeExtend({
+            pop:function(){
+                console.log('powwp')
+            }
+        });
+        newoo.pop()
+        
+    </script>
+    </body>
+</html>

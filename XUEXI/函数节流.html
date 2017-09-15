@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="mailList_></div>
+<p class="foo">	</p>
+<p id="foo"></p>
+<h1>foo</h1>
+<a href="www"></a>
+<p><a href=""></a></p>
+<p><a href=""></a></p>
+<p></p>
+<a href=""></a>
+<p></p>
+<a href=""></a>
+<div class="foo">
+	<h1></h1>
+</div>
+<div class="bar">
+	<h2></h2>
+</div>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<ul>
+	<li class="item1"></li>
+	<li class="item2"></li>
+	<li class="item3"></li>
+</ul>
+<style>
+  div{
+  	width: 100%;
+  	height: 20em;
+  	padding: 30%;
+  }
+  @font-face {
+  	font-family:;
+  	src:url();
+  }
+  p{
+  	overflow: hidden;
+  	overflow: hidden;
+  	overflow: hidden;
+  	overflow: hidden;
+  	background-image: -webkit-linear-gradient(left, #fff 50%, #000);
+  	background-image: -o-linear-gradient(left, #fff 50%, #000);
+  	background-image: linear-gradient(to right, #fff 50%, #000);
+  }
+</style>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+function throttle(fn, interval = 300) {
+    let canRun = true;
+    return function () {
+        if (!canRun) return;//canRun是false的时候，阻止下面的执行
+        canRun = false;
+        setTimeout(() => {
+            fn.apply(this, arguments);
+            canRun = true;
+        }, interval);
+    };
+}
+function fn(a,b,c){
+  
+}
+throttle(fn)()
+
+function test(){
+	let canRun = true;
+    return function () {
+        if (!canRun) return;//canRun是false的时候，阻止下面的执行
+        canRun = false;
+        setTimeout(() => {
+             console.log(1)
+            canRun = true;
+
+        }, 1000);
+    };
+}
+test()
+</script>
+</body>
+</html>

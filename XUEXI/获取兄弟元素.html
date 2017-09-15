@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="box"></div>
+123
+<div></div>
+<script type="text/javascript">
+  function nextNode(dom){
+  	if(dom.nextElementSibling){
+  		return dom.nextElementSibling;
+  	}else{
+  		var next=dom.nextSibling;
+  		if(next&&!next.nodeType==1){
+  			next=next.nextSibling;
+  		}
+  		return next;
+  	}
+  }
+  var box=document.getElementById("box");
+  console.log(nextNode(box))    
+</script>
+</body>
+</html>

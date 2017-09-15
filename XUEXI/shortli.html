@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			ul>li{
+				width:200px;
+				float: left;
+				list-style: none;
+				background: pink;
+				margin: 3px;
+			}
+			li:nth-of-type(1){
+				height: 300px;
+			}
+			li:nth-of-type(2){
+				height: 800px;
+			}
+			li:nth-of-type(3){
+				height: 600px;
+			}
+			li:nth-of-type(4){
+				height: 200px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+		
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+			
+			
+		</ul>
+		<script>
+			function shortli(){
+				var lis=document.getElementById("list").getElementsByTagName("li");
+				var index = 0;
+				var h = lis[0].offsetHeight;
+					// 用一个循环遍历所有的li，看看是否有其他li比我们认为的最短的li还短
+					for(var i = 1; i < lis.length; i++){
+						console.log(lis[i].offsetHeight)
+						
+						if(lis[i].offsetHeight<h){
+							
+							// 一旦发现更短的li，更新最短li的下标和最短高度
+							index = i;
+							h = lis[index].offsetHeight;
+						}
+					}
+					
+				return lis[index]	// 返回最短的那个Li
+			}
+		console.log(shortli())	
+			function a () {
+				console.log(1)
+			}
+			setInterval(a,1000)
+		</script>
+	</body>
+</html>

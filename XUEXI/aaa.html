@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/lz"></script>
+</head>
+<body>
+<script type="text/javascript">
+function Person(name, age) {
+   this.name = name;
+   this.age = age;
+ }
+ //当做构造函数调用
+ var person1 = new Person('Mike',10);
+ 
+ //当做普通函数调用，这里相当于给window对象添加了name和age属性,这个不是重点，只要注意调用方式
+ Person('Bob',12);
+ 
+ console.log(person1)//Person {name: "Mike", age: 10}
+ console.log(name)//Bob
+ console.log(age)//
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+ var person1 = new Person('Mike',10);
+ var person2 = new Person('Alice',20);
+ console.log(person1.constructor)//function Person(){省略内容...}
+ console.log(person2.constructor)//function Person(){省略内容...}
+  function Person(name, age) {
+        this.name = name;
+        this.age = age;
+     }
+     console.log(Person.prototype)//object{cons
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="JS canvasæ°´å°å›¾ç‰‡åˆæˆ Â» å¼ é‘«æ—­-é‘«ç©ºé—´-é‘«ç”Ÿæ´»" />
+<meta name="description" content="webå‰ç«¯å­¦ä¹ å®ä¾‹é¡µé¢ä¹‹JS canvasæ°´å°å›¾ç‰‡åˆæˆ" />
+<meta name="keywords" content="HTML5, canvas, æ°´å°, å›¾ç‰‡, å›¾ç‰‡åˆæˆ" />
+<meta name="author" content="å¼ é‘«æ—­, zhangxinxu" />
+<title>JS canvasæ°´å°å›¾ç‰‡åˆæˆ Â» å¼ é‘«æ—­-é‘«ç©ºé—´-é‘«ç”Ÿæ´»</title>
+<link rel="stylesheet" href="../css/demo.css" tppabs="http://www.zhangxinxu.com/study/css/demo.css" type="text/css" />
+<link rel="stylesheet" href="../css/hl.css" tppabs="http://www.zhangxinxu.com/study/css/hl.css" type="text/css" />
+<link rel="stylesheet" href="../../../qidian.gtimg.com/lulu/theme/modern/css/common/ui/Button.css" tppabs="http://qidian.gtimg.com/lulu/theme/modern/css/common/ui/Button.css">
+<style>
+.clip {
+	position: absolute;
+	clip: rect(0 0 0 0);
+}
+</style>
+</head>
+
+<body>
+<div id="header">
+	<a href="javascript:if(confirm('http://www.zhangxinxu.com/  \n\n¸ÃÎÄ¼şÎ´±» Teleport Pro ÏÂÔØ£¬ÒòÎª ËüÎ»ÓÚÆğÊ¼µØÖ·ÒÔÉèÖÃµÄ±ß½çÒÔÍâµÄÓò»òÂ·¾¶ÖĞ¡£  \n\nÄãÏëÒª´Ó·şÎñÆ÷´ò¿ªËüÂğ?'))window.location='http://www.zhangxinxu.com/'" tppabs="http://www.zhangxinxu.com/" class="logo" title="å›åˆ°é‘«ç©ºé—´-é‘«ç”Ÿæ´»é¦–é¡µ">
+    	<img alt="å¼ é‘«æ—­-é‘«ç©ºé—´-é‘«ç”Ÿæ´»" src="../../php/image/zxx_home_logo.png" tppabs="http://www.zhangxinxu.com/php/image/zxx_home_logo.png" border="0" />
+    </a>
+</div>
+<div id="main">
+	<h1>JS canvasæ°´å°å›¾ç‰‡åˆæˆå®ä¾‹é¡µé¢</h1>
+    <a href="javascript:if(confirm('http://www.zhangxinxu.com/wordpress/?p=6165  \n\n¸ÃÎÄ¼şÎ´±» Teleport Pro ÏÂÔØ£¬ÒòÎª ËüÎ»ÓÚÆğÊ¼µØÖ·ÒÔÉèÖÃµÄ±ß½çÒÔÍâµÄÓò»òÂ·¾¶ÖĞ¡£  \n\nÄãÏëÒª´Ó·şÎñÆ÷´ò¿ªËüÂğ?'))window.location='http://www.zhangxinxu.com/wordpress/?p=6165'" tppabs="http://www.zhangxinxu.com/wordpress/?p=6165" id="back">å›åˆ°ç›¸å…³æ–‡ç«  &raquo;</a>
+    <div id="body">
+    	<div id="effect" class="part">
+        	<h3>æ•ˆæœï¼š</h3>
+            <div class="show">
+            	<div class="demo">
+                	<input type="file" id="uploadFile" class="clip" accept="image/png, image/jpeg, image/gif, image/jpg">
+					<label class="ui-button ui-button-primary" for="uploadFile">é€‰æ‹©å›¾ç‰‡</label>
+                    <img id="imgCover" src="watermark.png" tppabs="http://www.zhangxinxu.com/study/201705/watermark.png" width="180" height="180" class="clip">
+                    <p id="imgUploadX"></p>
+                </div>
+            </div>
+        </div>  
+    	<div id="code" class="part">
+        	<h3>ä»£ç ï¼š</h3>
+            <div class="show">
+                <h5>CSSä»£ç ï¼š</h5>
+                <pre name="code" class="css">.clip {
+    position: absolute;
+    clip: rect(0 0 0 0);
+}</pre>
+                <h5>HTMLä»£ç ï¼š</h5>
+                <pre name="code" class="html">
+&lt;input type="file" id="uploadFile" class="clip" accept="image/*"&gt;
+&lt;label class="ui-button ui-button-primary" for="uploadFile"&gt;é€‰æ‹©å›¾ç‰‡&lt;/label&gt;
+&lt;img id="imgCover" src="./watermark.png" class="clip"&gt;
+&lt;p id="imgUploadX"&gt;&lt;/p&gt;
+                </pre>
+                <h5>JSä»£ç ï¼š</h5>
+                <pre name="code" class="js">
+var eleUploadFile = document.getElementById('uploadFile');
+var eleImgCover = document.getElementById('imgCover');
+var eleImgUploadX = document.getElementById('imgUploadX');
+
+if (history.pushState) {
+    eleUploadFile.addEventListener('change', function (event) {
+        var reader = new FileReader();
+        var file = event.target.files[0] || event.dataTransfer.files[0];
+        reader.onload = function(e) {
+          var base64 = e.target.result;
+          if (base64.length &gt; 1024 * 50) {
+              alert('å›¾ç‰‡å°ºå¯¸è¯·å°äº50K');
+              return;
+          } else {
+              // ä½¿ç”¨canvasåˆæˆå›¾ç‰‡ï¼Œå¹¶base64åŒ–
+              imgTogether(base64, function (url) {
+                  // å°ºå¯¸
+                  var size = 180 / (window.devicePixelRatio || 1);
+                  // é¢„è§ˆ
+                  eleImgUploadX.innerHTML = '&lt;img src="'+ url +'" width="'+ size +'" height="'+ size +'"&gt;';
+              });
+          }
+        };
+        reader.readAsDataURL(file);
+    });
+    
+    // canvaså›¾ç‰‡åˆæˆ
+    var imgTogether = function (url, callback) {
+        var canvas = document.createElement('canvas');
+        var size = 180;
+        canvas.width = size;
+        canvas.height = size;
+
+        var context = canvas.getContext('2d');
+
+        // è¿™æ˜¯ä¸Šä¼ å›¾åƒ
+        var imgUpload = new Image();
+        imgUpload.onload = function () {
+            // ç»˜åˆ¶
+            context.drawImage(imgUpload, 0, 0, size, size, 0,0, size, size);
+            // å†æ¬¡ç»˜åˆ¶
+            context.drawImage(eleImgCover, 0, 0, size, size, 0,0, size, size);
+            // å›è°ƒ
+            callback(canvas.toDataURL('image/png'));
+        };
+        imgUpload.src = url;
+    };
+} else if (eleImgUploadX) {
+    eleImgUploadX.className = 'remind';
+    eleImgUploadX.innerHTML = 'æœ¬æ¼”ç¤ºIE10+ä¸‹æ‰æœ‰æ•ˆæœ';
+}
+                </pre>
+            </div>
+        </div>     
+    </div>
+</div>
+
+<script>
+var eleUploadFile = document.getElementById('uploadFile');
+var eleImgCover = document.getElementById('imgCover');
+var eleImgUploadX = document.getElementById('imgUploadX');
+
+if (history.pushState) {
+	eleUploadFile.addEventListener('change', function (event) {
+		var reader = new FileReader();
+		var file = event.target.files[0] || event.dataTransfer.files[0];
+	    reader.onload = function(e) {
+	      var base64 = e.target.result;
+	      if (base64.length > 1024 * 50) {
+	      	alert('å›¾ç‰‡å°ºå¯¸è¯·å°äº50K');
+	      	return;
+	      } else {
+	      	// ä½¿ç”¨canvasåˆæˆå›¾ç‰‡ï¼Œå¹¶base64åŒ–
+	      	imgTogether(base64, function (url) {
+				// å°ºå¯¸
+				var size = 180 / (window.devicePixelRatio || 1);
+	      		// é¢„è§ˆå’Œå˜åŒ–
+		      	eleImgUploadX.innerHTML = '<img src="'+ url +'" width="'+ size +'" height="'+ size +'">';
+	      	});
+	      }
+	    };
+	    reader.readAsDataURL(file);
+	});
+	
+	// canvaså›¾ç‰‡åˆæˆ
+	var imgTogether = function (url, callback) {
+		var canvas = document.createElement('canvas');
+		var size = 180;
+		canvas.width = size;
+		canvas.height = size;
+
+		var context = canvas.getContext('2d');
+
+		// è¿™æ˜¯ä¸Šä¼ å›¾åƒ
+		var imgUpload = new Image();
+		imgUpload.onload = function () {
+			// ç»˜åˆ¶
+			context.drawImage(imgUpload, 0, 0, size, size, 0,0, size, size);
+			// å†æ¬¡ç»˜åˆ¶
+			context.drawImage(eleImgCover, 0, 0, size, size, 0,0, size, size);
+			// å›è°ƒ
+			callback(canvas.toDataURL('image/png'));
+		};
+		imgUpload.src = url;
+	};
+} else if (eleImgUploadX) {
+	eleImgUploadX.className = 'remind';
+	eleImgUploadX.innerHTML = 'æœ¬æ¼”ç¤ºIE10+ä¸‹æ‰æœ‰æ•ˆæœ';
+}
+</script>
+
+
+<!-- ä»¥ä¸‹è„šæœ¬æ— å…³ç´§è¦ -->
+<script type="text/javascript" src="../js/hl_all.js" tppabs="http://www.zhangxinxu.com/study/js/hl_all.js"></script>
+<script type="text/javascript">
+	DlHighlight.HELPERS.highlightByName("code", "pre");
+</script>
+<div id="footer">
+  	Designed &amp; Powerd by <a href="javascript:if(confirm('http://www.zhangxinxu.com/  \n\n¸ÃÎÄ¼şÎ´±» Teleport Pro ÏÂÔØ£¬ÒòÎª ËüÎ»ÓÚÆğÊ¼µØÖ·ÒÔÉèÖÃµÄ±ß½çÒÔÍâµÄÓò»òÂ·¾¶ÖĞ¡£  \n\nÄãÏëÒª´Ó·şÎñÆ÷´ò¿ªËüÂğ?'))window.location='http://www.zhangxinxu.com/'" tppabs="http://www.zhangxinxu.com/">zhangxinxu</a><br />
+    CopyrightÂ© å¼ é‘«æ—­-é‘«ç©ºé—´-é‘«ç”Ÿæ´»<br>
+    <a href="javascript:if(confirm('http://www.miibeian.gov.cn/  \n\n¸ÃÎÄ¼şÎ´±» Teleport Pro ÏÂÔØ£¬ÒòÎª ËüÎ»ÓÚÆğÊ¼µØÖ·ÒÔÉèÖÃµÄ±ß½çÒÔÍâµÄÓò»òÂ·¾¶ÖĞ¡£  \n\nÄãÏëÒª´Ó·şÎñÆ÷´ò¿ªËüÂğ?'))window.location='http://www.miibeian.gov.cn/'" tppabs="http://www.miibeian.gov.cn/" target="_blank">é„‚ICPå¤‡09015569å·</a>     
+</div>
+<div id="ad">
+	<script async src="../../../pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" tppabs="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x90, å¤§å‹æ¨ªå¹…å¹¿å‘Š -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0090627341039040"
+     data-ad-slot="4686885989"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-11205167-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script');
+		 ga.type = 'text/javascript';
+		 ga.async = true;
+		ga.src = '../../../www.google-analytics.com/ga.js'/*tpa=http://www.google-analytics.com/ga.js*/;
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</div>
+</body>
+</html>

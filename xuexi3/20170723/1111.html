@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	  *{
+	  	margin: 0;
+	  	padding: 0;
+	  }
+          .main{
+          	width: 1100px;
+          	margin: 0 auto;
+          }
+          ul{
+          	list-style: none;
+          }
+          ul li{
+            width:200px;
+            height: 50px;
+            border:1px red solid;
+
+          }
+          .meau{
+          	margin-top:100px; 
+          }
+	</style>
+</head>
+<body>
+
+<div class="main">
+<ul>
+  <li class="show">
+  <span>aaa</span>
+  <ul class="meau">
+  	<li>bbb</li>
+  	<li>ccc</li>
+  	<li>ddd</li>
+  </ul>
+
+  </li>
+</ul>
+</div>
+<a value="200" style="display: inline-block; width: 100px;height: 100px;background: red;"></a>
+<img src="http://placehold.it/400x150/ff3333/ffffff">  
+<img src="http://placehold.it/700x200/ffde00/000000?text=This+is+a+picture">  
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+?
+//
+//	$('.show span').html($(this).html())
+//$('a[value="200"]').width('200')
+//$('div').next('a').style.width="200px"
+$('a.c').each(function(){
+	if($(this).attr('value')=='346'){
+		$(this).width(126)
+	}
+})
+</script>
+</body>
+</html>

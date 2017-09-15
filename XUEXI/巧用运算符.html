@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+//			var a = 1;
+//      var b = 2;
+//      if (a < b && a == 1) {
+//          //console.log("&&");
+//      }
+//      //上面改写
+//      a < b && a == 1 && console.log("&&");
+//      if (a > b || a == 1) {
+//          //console.log("||");
+//      }
+//      //
+//      a > b || a == 1 && console.log("||");
+//      //&&前面为真运行后面 否则不运行
+//      var c = (a == 1) && 3
+//      var d = (a == 2) && 3
+//      console.log(c); //3     取了后面的3
+//      console.log(d); //false 取了前面的false
+//      //||前面为假运行后面 否则不运行
+//      var c = (a == 1) || 3
+//      var d = (a == 2) || 3
+//      console.log(c); //true
+//      console.log(d); //3
+//      //巧用
+//      var e = 0;
+//      var f;
+//      switch (f) {
+//          case 5:
+//              e = 1;
+//              break;
+//          case 10:
+//              e = 2;
+//              break;
+//          case 12:
+//              e = 3;
+//              break;
+//          case 15:
+//              e = 4;
+//              break;
+//          default:
+//              e = 0;
+//              break;
+//      }
+//      var e = (f == 5 && 1) || (f == 10 && 2) || (f == 12 && 3) || (f == 15 && 4) || 0;
+//      console.log(e); //0
+//总结理解为
+//&&遇上假就停止，并返回这个假，相反遇到真就继续执行直到拿最后一个
+//||遇上真就停止，并返回这个真，相反遇到假就继续执行直到拿最后一个
+//这样会不会好理解多
+//注意：非0的整数都为true，undefined、null和空字符串”" 为false。
+var f1=123;
+var f2=456;
+var f3=333;
+f1<f2&&console.log("jack")
+var e=f1==f2||f3>f1||console.log("yang");
+console.log(e)
+ 
+			
+		</script>
+	</body>
+</html>

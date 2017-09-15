@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+				
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" data-name='yang' data-age='18'></div>
+		<script>
+			var box=document.getElementById('box');
+			var list=box.dataset;
+			console.log(list)
+			box.scrollIntoView(true)
+			var a=[123,'aa'];
+			var b=a.valueOf();
+			console.log(b)
+			var xhr=new XMLHttpRequest();
+			    xhr.open('GET','../data.json');
+			    xhr.onreadystatechange=function(){
+			    if(xhr.readyState==4){
+			    	if(xhr.status==200){
+			    		console.log(xhr.responseText)
+			    	}
+			    }}
+			    xhr.send()
+			    
+		</script>
+	</body>
+</html>

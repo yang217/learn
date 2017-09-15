@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+      *{
+      	margin: 0;
+      	padding: 0;
+      }
+      div{
+      	width: 200px;
+      	height: 200px;
+      	background: #ccc;
+      	margin:100px auto;
+      	 border-radius: 1px;
+       box-shadow: 0 0 0 30px #cd0000;
+      }
+      div:hover{
+      	outline: 3px red solid;
+      
+      }
+      /* offset-x | offset-y | blur-radius | spread-radius | color */
+      .box{
+      	box-shadow: 10px 10px 10px 20px green;
+
+      }
+	</style>
+</head>
+<body>
+<a href="javascript:console.log(new Date().toLocaleTimeString())">
+What time is it?
+</a>
+<div>
+
+
+</div>
+<div class="box">
+
+
+</div>
+<script type="text/javascript">
+(function() {
+  var scripts = document.getElementsByTagName('script')[0];
+  function load(url) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = url;
+    scripts.parentNode.insertBefore(script, scripts);
+  }
+  load('//apis.google.com/js/plusone.js');
+  load('//platform.twitter.com/widgets.js');
+  load('//s.thirdpartywidget.com/widget.js');
+}());
+// function loadScript(src, done) {
+//   var js = document.createElement('script');
+//   js.src = src;
+//   js.onload = function() {
+//     done();
+//   };
+//   js.onerror = function() {
+//     done(new Error('Failed to load script ' + src));
+//   };
+//   document.head.appendChild(js);
+// }
+
+</body>
+</html>

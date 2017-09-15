@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>TA</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/common.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="inner f-cb">
+				<a class="logo"><img src="images/logo.png"></a>
+				<div class="btnlist">
+					<a href="view.html">浏览旅行社列表</a>
+					<a href="datachart.html">数据图表</a>
+					<a href="viewperformance.html">绩效一览</a>
+					<a href="hassent.html">邮件列表</a>
+				</div>
+				<div class="userinfo">
+					<p><span class="username">用户名:Alex.Wu</span><span class="reallyname">姓名:吴某某</span></p>
+					<p><span>邮箱地址:Alex.Wu@163.com</span></p>
+				</div>
+				<a class="signout">登出</a>
+			</div>
+		</div>
+		<div class="maincontent select">
+			<div class="row1 f-w f-cb adjust">
+				<p class="title">维度选择<span class="travelname">(多选)</span></p>
+				<p class="pull-left mt-5 m-r15">请选择年份 : </p>
+				<select>
+					<option>2017年</option>
+				</select>
+
+				<p class="pull-left mt-5 m-r15 m-l30">请选择月份 : </p>
+				<select class="m-r30">
+					<option>1月</option>
+				</select>
+
+				、
+				<!--<select>
+        		<option>年份</option>
+        		<option value="">全部</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">月份</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">区域</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">旅行社</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">产品类型</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">对比条件</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+        	<select>
+        		<option value="">图表类型</option>
+        		<option>2017</option>
+        		<option>2016</option>
+        	</select>
+      
+  
+        <button type="button">确定</button>-->
+			</div>
+			<div class="row8 f-w">
+				<div class="areaselect">
+					<p>区域选择</p>
+					<p>
+						<label><input type="checkbox" name="all" id="" value="" checked="true"/>全部 </label>
+						<label> <input type="checkbox" name="center" id="" value="" />华中</label>
+					</p>
+					<p>
+						<label><input type="checkbox" name="east" id="" value="" />华东</label>
+						<label> <input type="checkbox" name="westeast" id="" value="" />西南</label>
+					</p>
+					<p>
+						<label><input type="checkbox" name="sourth" id="" value="" />华南 </label>
+						<label> <input type="checkbox" name="eastnorth" id="" value="" />东北</label>
+					</p>
+					<p>
+						<label><input type="checkbox" name="north" id="" value="" />华北 </label>
+						<label> <input type="checkbox" name="gat" id="" value="" />港澳台</label>
+					</p>
+				</div>
+				<div class="travelselect m-t-20 f-cb">
+					<p>旅行社选择<label class="mt-5"><input type="checkbox" name="" id="" value="" class="m-l15"/>全部 </label> </p>
+					<div class="item east">
+						<p>华东</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item sourth">
+						<p>华南</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item eastnorth">
+						<p>华北</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item center">
+						<p>华中</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item westeast">
+						<p>西南</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item eastnorth">
+						<p>东北</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+					<div class="item gat">
+						<p>港澳台</p>
+						<label><input type="checkbox" name="" id="" value="" />旅行社A</label>
+						<label> <input type="checkbox" name="" id="" value="" />旅行社B</label>
+					</div>
+				</div>
+				<div class="m-t-20 f-cb">
+					<p class="pull-left mt-5 m-r15">请选择产品类型: </p>
+					<select>
+						<option>2017年</option>
+					</select>
+
+					<p class="pull-left mt-5 m-r15 m-l30">请选择对比条件 : </p>
+					<select class="m-r30">
+						<option>1月</option>
+					</select>
+					<p class="pull-left mt-5 m-r15 m-l30">请选择图表类型 :</p>
+					<select class="m-r30">
+						<option>1月</option>
+					</select>
+				</div>
+				<a class="btn btn-default m-t-20">确定</a>
+			</div>
+
+			<div class="row2 row6 f-w">
+				<div class="chart">图表区</div>
+				<div class="pagination">
+
+					<a class="btn btn-default exportbtn">导出</a>
+				</div>
+
+			</div>
+
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$('.header .btnlist a').eq(1).addClass('active');
+            function operatecheckbox(ele,fn1,fn2){
+            	if($(ele).prop("checked")) {
+                   
+					$(ele).prop("checked", true);
+					return fn1();
+				} else {
+					
+					//设置checked属性
+					$(ele).prop("checked", false);
+					return fn2();
+				}
+            }
+        
+			$('input[name="all"]').on('click', function(e) {
+				operatecheckbox('input[name="all"]',function(){$('.travelselect .item').show()},function(){$('.travelselect .item').hide()});
+				operatecheckbox('input[name="center"]',function(){$('.travelselect .item.center').show()},function(){$('.travelselect .item.center').hide()});
+//				if($(this).prop("checked")) {
+//                 
+//					$(this).prop("checked", true);
+//					$('.travelselect .item').show();
+//				} else {
+//					
+//					//设置checked属性
+//					$(this).prop("checked", false);
+//						$('.travelselect .item').hide();
+//				}
+
+			})
+		 $('input[name="center"]').on('click',function(){
+		 	
+		 })
+		</script>
+
+	</body>
+
+</html>

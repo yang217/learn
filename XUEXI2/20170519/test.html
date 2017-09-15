@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span style="font-size: 30px;">杨</span>
+		1.对于设计稿的尺寸转换为vw单位，我们使用Sass函数编译
+
+//iPhone 6尺寸作为设计稿基准
+$vm_base: 375; 
+@function vw($px) {
+    @return ($px / 375) * 100vw;
+}
+2.无论是文本还是布局高宽、间距等都使用 vw 作为 CSS 单位
+
+
+.mod_nav {
+    background-color: #fff;
+    &_list {
+        display: flex;
+        padding: vm(15) vm(10) vm(10); // 内间距
+        &_item {
+            flex: 1;
+            text-align: center;
+            font-size: vm(10); // 字体大小
+            &_logo {
+                display: block;
+                margin: 0 auto;
+                width: vm(40); // 宽度
+                height: vm(40); // 高度
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 100%;
+                }
+            }
+            &_name {
+                margin-top: vm(2);
+            }
+        }
+    }
+}
+3.1物理像素线（也就是普通屏幕下 1px ，高清屏幕下 0.5px 的情况）采用 transform 属性 scale 实现。
+
+
+.mod_grid {
+    position: relative;
+    &::after {
+        // 实现1物理像素的下边框线
+        content: '';
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        background-color: #ddd;
+        height: 1px;
+        left: 0;
+        right: 0;
+        top: 0;
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            -webkit-transform: scaleY(0.5);
+            -webkit-transform-origin: 50% 0%;
+        }
+    }
+    ...
+}
+4.对于需要保持高宽比的图，应改用 padding-top 实现
+
+.mod_banner {
+    position: relative;
+    padding-top: percentage(100/700); // 使用padding-top
+    height: 0;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        left: 0;
+        top: 0; 
+    }
+}
+由此，我们能够实现一个常见布局的页面效果如下：
+https://jdc.jd.com/demo/ting/vw_layout.html
+	</body>
+</html>

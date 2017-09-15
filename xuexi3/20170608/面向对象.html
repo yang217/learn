@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+  // function Person(){
+
+  // };
+  // Person.prototype={
+  // 	constructor:Person,
+  // 	name:'jack',
+  // 	sayname:function(){
+  // 		console.log(this.name)
+  // 	}
+  // }
+  // var p1=new Person();
+  //     p1.sayname()
+  function Person(){
+
+  };
+  var p1=new Person();//这样写因为重新定义了原型对象，切断了他们的联系
+  Person.prototype={
+  	constructor:Person,
+  	name:'jack',
+  	sayname:function(){
+  		console.log(this.name)
+  	}
+  }
+  
+      p1.sayname()
+</script>
+</body>
+</html>

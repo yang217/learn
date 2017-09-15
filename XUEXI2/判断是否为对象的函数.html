@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+function isObject(value){
+	return value===Object(value)
+}
+//数组。对象。函数是返回true
+var a=function(){};
+console.log(isObject(a))
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script>
+            var Loopimages=function(imgArr,container){
+                this.imagesArray=imgArr;
+                this.container=container;
+            }
+            Loopimages.prototype={
+                creatImage:function(){
+                    console.log('loop')
+                },
+                changeImage:function(){
+                    console.log('change')
+                }
+            }
+            var Slideloopimg=function(imaArr,container){
+                Loopimages.call(this,imgArr,container);
+            }
+            Slideloopimg.prototype=new Loopimages();
+            Slideloopimg.prototype.changeImage=function(){
+                console.log('aa')
+            }
+            var Fadeloopimg=function(imgArr,container,arrow){
+                Loopimages.call(this,imaArr,container);
+                this.arrow=arrow;
+            }
+            Fadeloopimg.prototype=new Loopimages();
+            Fadeloopimg.prototype.changeImage=function(){
+                console.log('fade')
+            }
+            var fadeImg=new Loopimages('1','aa')
+            console.log(fadeImg.container)
+        
+      console.log( decodeURI())     
+        </script>
+    
+    </body>
+</html>

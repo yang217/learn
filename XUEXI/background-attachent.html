@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				height: 800px;
+				background: fixed 0 center ;
+			}
+			div:nth-of-type(1){
+				background-image: url(img/work_list_05.jpg);
+			}
+			div:nth-of-type(2){
+				background-image: url(img/work_list_07.jpg);
+			}
+			div:nth-of-type(3){
+				background-image: url(img/work_list_12.jpg);
+			}
+			div:nth-of-type(4){
+				background-image: url(img/work_list_13.jpg);
+			}
+			/* background-attachment:fixed把背景图固定住，不随着页面滚动，默认值是scroll*/
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>	
+		<div class="box"></div>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			var dfd = $.ajax({url:'test.php'});
+dfd.done(function(){alert('ok')})
+   .fail(function(){alert('error')})
+   .done(function(){alert('ok again')})//可以有多个回调
+   .fail(function(){alert('error again')})//可以有多个回调
+   $.get("data.json").done(function(e){
+   	console.log(e)
+   }).fail(function(){
+   	console.log("失败")
+   })
+   //源于jq1.5版本后的deffer对象
+   $.when(
+   $.get('a.php'),
+   $.get('b.php'),
+   $.post('c.php')       
+).done(function(){alert('ok')})//三个ajax请求都成功时才调用
+ .fail(function(){alert('error')});//只要有一个ajax请求失败就会调用
+ //也可以手动创建deferred对象
+ var dfd = $.Deferred(); //创建一个deferred对象
+dfd.done(function(){alert('ok')});//给它注册一个代表成功的回调函数
+setTimeout(function(){
+    dfd.resolve();//5秒后手动把我们建立的那个deferred对象的状态改为成功，状态改变后，用done()注册的回调函数会立即执行
+},5000);
+		</script>
+	</body>
+</html>

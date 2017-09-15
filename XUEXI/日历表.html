@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历表</title>
+	<style type="text/css">	
+		* {
+			margin:0px;
+			padding:0px;
+		}
+		html, body, span, em, h5, h6, p, b {
+			font-weight:normal;
+			font-family:"楷体";
+			font-style:normal;
+			line-height:normal;
+			text-align:center;
+			font-size:14px;
+		}
+		.box {
+			width:650px;
+			height:500px;
+			margin:35px 80px;
+			border:1px solid #eee;
+		}
+		.datebox {
+			width:500px;
+			height:500px;
+			float:left;
+		}
+		/* 日历头*/
+		.datetop {
+			width:500px;
+			height:53px;
+			overflow:hidden;
+			background:#fefefe;
+			position:relative;
+		}
+		.datetop div {
+			display:block;
+			height:53px;
+			float:left;
+			text-align:center;
+			margin:0px 5px 0px 10px;
+			padding:10px 0px;
+		}
+
+		.datetop input, .datetop select {
+			height:30px;
+			line-height:30px;
+			vertical-align:bottom;
+			float:left;
+			font-size:15px;
+			border:1px solid #ddd;
+			font-family:"楷体";
+			text-align:center;
+			box-shadow:0px 0px 10px 1px rgba(227,227,270,0.6) inset;
+		}
+		.datetop select {
+			appearance:none;
+			-moz-appearance:none;
+			-webkit-appearance:none;
+			border-radius:3px;
+			outline:none;
+			text-align:center; 
+			padding:0px 20px 0px 8px;
+		}
+		.datetop select:hover {
+			box-shadow:0px 0px 3px 0px rgba(0,0,0, 0.3);
+		}
+
+		.datetop .qiehuan {
+			width:30px;
+			height:30px;
+			cursor:pointer;
+			margin:0px 1px;
+			background:#eefaf9;	
+		}
+		.datetop .qiehuan:hover {
+			box-shadow:0px 0px 2px 1px rgba(0,0,0, 0.1);
+		}
+		.datetop .jintian {
+			background:#f1faf9;
+			border:1px solid #eefaf9;
+			border-radius:2px;
+			padding:0px 15px;
+			margin:0px 0px 0px 15px;
+			color:#333;
+			cursor:pointer;
+			box-shadow:0px 0px 1px 1px rgba(0,0,0, 0.1);
+		}
+		.datetop .jintian:hover {
+			background:#eaf9f5;
+			box-shadow:0px 0px 3px 2px rgba(0,0,0, 0.3);
+		}
+		.datetop .julitian span {
+			display:block;
+			height:33px;
+			line-height:33px;
+			font-size:15px;
+			color:#333;
+			position:absolute;
+			top:10px;
+			right:25px;
+		}
+		/* 日历星期表 */
+		.days {
+			width:470px;
+			height:35px;
+			padding:0px 15px;
+			border-top:1px solid #dedede;
+			background:#f9f9f9;
+		}
+		.days span {
+			display:block;
+			height:35px;
+			float:left;
+			width:67px;
+			font-size:18px;
+			line-height:35px;
+			font-family:"宋体";
+			font-weight:bold;
+		}
+		/* 日历表 */
+		.daybox {
+			width:470px;
+			height:380px;
+			padding:15px 15px;
+			overflow:hidden;
+			position:relative;
+		}
+		.daybox div {
+			width:55px;
+			height:50px;
+			float:left;
+			border:1px solid #efefef;
+			margin:12px 5px;
+			background:#fcf5dc;
+			cursor:pointer;
+		}
+		.daybox2 > div {
+			margin:3px 5px 10px 5px;
+		}
+		.daybox > div:hover {
+			border:1px solid blue;
+		}
+		.daybox div h5, .daybox div h6 {
+			display:block;
+			height:25px;
+			line-height:25px;
+			font-size:18px;
+			font-weight:bold;
+		}
+		.daybox div h5 {
+			color:#bbb;
+		}
+		.daybox div span, .daybox div em {
+			display:block;
+			height:20px;
+			font-family:"宋体";
+			line-height:20px;
+			font-size:13px;
+			color:#aaa;
+			overflow:hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
+		.daybox div em {
+			color:red;
+		}
+		.daybox .zhoumo, .days .zhoumo { /* 周末 */
+			color:#fa59af;
+		}
+		.daybox .dangtian { /* 当天 */
+			background:#8cbaff;
+			color:#fff;
+		}
+		.daybox .dangtian > span { /* 当天 */
+			color:#fff;
+		}
+		.daybox .xtday { /* 选住的日子 */
+			border:1px solid blue;
+		}
+		/* 右边显示的日期 */
+		.xianshi {
+			width:150px;
+			height:500px;
+			background:blue;
+			float:left;
+		}
+
+		.xianshi .xsriqi span, .xianshi .xsriqi b {
+			height:28px;
+			line-height:28px;
+			color:#fff;
+			font-family:"宋体";
+		}
+		.xianshi .xsriqi {
+			width:150px;
+			height:255px;
+			padding:15px 0px 0px 0px;
+			margin:0px auto;
+			box-shadow:0px -125px 255px 0px rgba(170,230,255,0.3) inset; 
+		}
+		.xianshi .xsriqi .glriqi {
+			display:block;
+			width:150px;
+			height:28px;
+			line-height:28px;
+			margin:0px auto;
+			background:#ff0000;
+		}
+		.xianshi .xsriqi .glriqi span {
+			font-size:20px;
+			font-family:"楷体";
+		}
+		.xianshi .xsriqi .xsri span {
+			display:block;
+			width:80px;
+			height:80px;
+			border-radius:3px;
+			background:#8cbaff;
+			margin:10px auto;
+			line-height:80px;
+			font-weight:bold;
+			font-size:50px;
+			font-family:"楷体";
+		}
+
+		/*.xsjieri p span {
+			display:block;
+			width:120px;
+			overflow:hidden;
+			white-space:nowrap;
+			color:#ff0000;
+		}*/
+	</style>
+<!-- <script type="text/javascript" src="js/rili.js"></script> -->
+</head>
+<body>
+	<div class="box" id="box">
+		<div class="datebox" >
+			<div class="datetop">
+				<div class="topnian" id="topnian">
+					<!-- 选择年份 -->
+					<select name="nian" class="select_nian" id="select_nian">
+						<!-- <option value="2017"><span>2017</span>年</option>; -->
+					</select>
+				</div>
+				<div class="topyue" id="topyue">
+					<!-- 上一月按钮 -->
+					<input type="button" class="shangyue qiehuan" name="shangyue" id="shangyue" value="&lt;">
+					<!-- 选择月份 -->
+					<select name="yue" class="select_yue" id="select_yue">
+						<!-- <option value="1"><span>1</span>月</option> -->
+					</select>
+					<!-- 下一月按钮 -->
+					<input type="button" class="xiayue qiehuan" name="xiayue" id="xiayue" value="&gt;">
+				</div>
+				<div>
+					<!-- 回到今天按钮 -->
+					<input type="button" name="jintian" class="jintian" id="jintian" value="回到今天" onclick="hdjintian()">
+				</div>
+				<div class="julitian" id="julitian">
+					<span>今天</span>
+				</div>
+			</div>
+			<div class="days"><!-- 星期 -->
+				<span>一</span>
+				<span>二</span>
+				<span>三</span>
+				<span>四</span>
+				<span>五</span>
+				<span class="zhoumo">六</span>
+				<span class="zhoumo">日</span>
+			</div>
+			<div class="daybox" id="daybox">
+				<!-- 日历表 js生成 -->
+				<div onclick="tianclick(this)">
+					<h6>1</h6>
+					<span><em>劳动节</em></span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>2</h6>
+					<span>初七</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>3</h6>
+					<span>初八</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>4</h6>
+					<span><em>青年节</em></span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>5</h6>
+					<span>立夏</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>6</h6>
+					<span>十一</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>7</h6>
+					<span>十二</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>8</h6>
+					<span>十三</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>9</h6>
+					<span>十四</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>10</h6>
+					<span>十五</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>11</h6>
+					<span>十六</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>12</h6>
+					<span>十七</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>13</h6>
+					<span>十八</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>14</h6>
+					<span>十九</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>15</h6>
+					<span>二十</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>16</h6>
+					<span>廿一</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>17</h6>
+					<span>廿二</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>18</h6>
+					<span>廿三</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>19</h6>
+					<span>廿四</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>20</h6>
+					<span>廿五</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>21</h6>
+					<span>小满</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>22</h6>
+					<span>廿七</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>23</h6>
+					<span>廿八</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>24</h6>
+					<span>廿九</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>25</h6>
+					<span>三十</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>26</h6>
+					<span>五月</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>27</h6>
+					<span>初二</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>28</h6>
+					<span>初三</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>29</h6>
+					<span>初四</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>30</h6>
+					<span><em>端午节</em></span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h6>31</h6>
+					<span>初六</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h5>1</h5>
+					<span>儿童节</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h5>2</h5>
+					<span>初八</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h5>3</h5>
+					<span>初九</span>
+				</div>
+				<div onclick="tianclick(this)">
+					<h5>4</h5>
+					<span>初十</span>
+				</div>
+			</div>
+		</div>
+		<div class="xianshi">
+			<div class="xsriqi">
+				<div class="xsgongli">
+					<div class="glriqi" id="glriqi"><!-- 公历年月 -->
+						<p>
+							<span>2017年</span>
+							<span>5月</span>
+						</p>
+					</div>
+					<div class="xsri" id="xsri"> <!-- 选中的日子 -->
+						<p><span>1</span></p>
+					</div>
+					<div class="xsxingqi" id="xsxingqi"><!-- 选中显示的星期 -->
+						<p><span>星期一</span></p>
+					</div>
+				</div>
+				<div class="xsnongli">
+					<div class="nlriqi" id="nlriqi">
+						<p>
+							<span>四月</span>
+							<span>初六</span>
+						</p>
+					</div>
+					<div class="xsshengxiao" id="xsshengxiao"><!-- 生肖年 -->
+						<p>
+							<span>丁酉年</span>
+							<b>【</b><span>鸡年</span><b>】</b>
+						</p>
+					</div>
+					<div class="xsganzhi" id="xsganzhi"><!-- 干支月日 -->
+						<p>
+							<span>甲子月</span>
+							<span>甲子日</span>
+						</p>
+					</div>
+					<!-- <div class="xsjieri">
+						<p><span>节日</span></p>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+
+/**函数
+ * glRunNian(nian)				//判断是不是闰年 是true 参数公历年
+ * nlRunYue(nian)				//返回闰月月份 没有0 参数农历年
+ * nlRunYueTians(nian)			//返回这年闰月的天数 没有0 参数农历年
+ * glYueTians(nian,yue)			//返回这个月份的天数 参数公历年月
+ * nlYueTians(nian,yue)			//返回这个月份的天数 null出错 参数农历年月
+ * nlYuesTians(nian)			//返回12个月份的天数数组[0]1月份 参数农历年
+ * glNianTians(nian)			//返回一年的天数  参数公历年
+ * nlNianTians(nian)			//返回一年的天数  参数农历年
+ * glTonl(nian,yue,ri)			//日期转换 公历转农历 返回数组[0]年[1]月[2]日[3]当前月是不是闰月1是0不是
+ * nlTogl(nian,yue,ri,ry)		//1.农历转公历返回数组公历arr[0]年arr[1]月arr[2]日
+ *								///2.参数农历年月日 ry是不是闰月>=1是<=0不是可以为空 不是闰月
+ * glNiansTians(nian,yue,ri)	//公历 距离公历1900.1.31的天数 参数是公历年月日
+ * nlNiansTians(nian,yue,ri,ry)	//农历 距离农历1900.1.1的天数 参数是农历年月日 ry=1为闰月
+ * nlHanZi(nian,yue,ri,ry)		//返回农历汉字形式 数组[0]年[1]月[2]日 参数农历年月日 ry=1是闰月
+ * nlTianHanZi(ri)				//把农历日转成汉字形式 参数农历日
+ * nlYueHanZi(yue,ry) 			//把农历月份转成汉字形式 参数农历月 ry=1是闰月 =0不是
+ * nlShengXiao(nian) 			//返回这年的生肖 参数是农历年份 //鼠 牛 虎 兔 龙 蛇 马 羊 猴 鸡 狗 猪 
+ * riliJieQi(nian,yue)			//获得节气的日期 返回数组[0]月份[1]上节气[2]下节气 参数是公历年月
+ * riliJieQiMing(yue)			//获得这月的节气名 返回数组[0]月份[1]上节气名,[2]下节气名 参数是公历月份
+ * riliGanZhi(nian,yue,ri)		//干支纪年法 返回数组[0]干支年[1]干支月[2]干支天 参数是公历年月日
+ * glYueJieRi(nian,yue) 		//获得公历每月的节日 [0]月份后面是节日日子 参数公历月份
+ * riliXingQi(nian,yue,ri)		//返回当前日期是星期几 参数公历年月日
+ *
+ * 
+ * 
+ */
+/**变量
+ * lunardates 数组 农历 数据
+ * 
+ */
+
+/***************** 变量 ********************/
+//农历 1900 -- 2049 的数据
+var lunardates = new Array( 
+	[0,"4bd",8],[0,"4ae",0],[0,"a57",0],[0,"54d",5],[0,"d26",0],[0,"d95",0],[1,"655",4],[0,"56a",0],[0,"9ad",0],[0,"55d",2],
+	[0,"4ae",0],[0,"a5b",6],[0,"a4d",0],[0,"d25",0],[1,"d25",5],[0,"b54",0],[0,"d6a",0],[0,"ada",2],[0,"95b",0],[1,"497",7],
+	[0,"497",0],[0,"a4b",0],[0,"b4b",5],[0,"6a5",0],[0,"6d4",0],[1,"ab5",4],[0,"2b6",0],[0,"957",0],[0,"52f",2],[0,"497",0],
+	[0,"656",6],[0,"d4a",0],[0,"ea5",0],[0,"6e9",5],[0,"5ad",0],[0,"2b6",0],[1,"86e",3],[0,"92e",0],[1,"c8d",7],[0,"c95",0],
+	[0,"d4a",0],[1,"d8a",6],[0,"b55",0],[0,"56a",0],[1,"a5b",4],[0,"25d",0],[0,"92d",0],[0,"d2b",2],[0,"a95",0],[0,"b55",7],
+	[0,"6ca",0],[0,"b55",0],[1,"535",5],[0,"4da",0],[0,"a5d",0],[1,"457",3],[0,"52d",0],[0,"a9a",8],[0,"e95",0],[0,"6aa",0],
+	[0,"aea",6],[0,"ab5",0],[0,"4b6",0],[0,"aae",4],[0,"a57",0],[0,"526",0],[0,"f26",3],[0,"d95",0],[0,"5b5",7],[0,"56a",0],
+	[0,"96d",0],[0,"4dd",5],[0,"4ad",0],[0,"a4d",0],[0,"d4d",4],[0,"d25",0],[0,"d55",8],[0,"b54",0],[0,"b5a",0],[1,"95a",6],
+	[0,"95b",0],[0,"49b",0],[0,"a97",4],[0,"a4b",0],[0,"b27",10],[0,"6a5",0],[0,"6d4",0],[0,"af4",6],[0,"ab6",0],[0,"957",0],
+	[0,"4af",5],[0,"497",0],[0,"64b",0],[0,"74a",3],[0,"ea5",0],[0,"6b5",8],[0,"55c",0],[0,"ab6",0],[0,"96d",5],[0,"92e",0],
+	[0,"c96",0],[0,"d95",4],[0,"d4a",0],[0,"da5",0],[0,"755",2],[0,"56a",0],[0,"abb",7],[0,"25d",0],[0,"92d",0],[0,"cab",5],
+	[0,"a95",0],[0,"b4a",0],[0,"baa",4],[0,"ad5",0],[0,"55d",9],[0,"4ba",0],[0,"a5b",0],[1,"517",6],[0,"52b",0],[0,"a93",0],
+	[0,"795",4],[0,"6aa",0],[0,"ad5",0],[0,"5b5",2],[0,"4b6",0],[0,"a6e",6],[0,"a4e",0],[0,"d26",0],[0,"ea6",5],[0,"d53",0],
+	[0,"5aa",0],[0,"76a",3],[0,"96d",0],[0,"4bd",7],[0,"4ad",0],[0,"a4d",0],[1,"d0b",6],[0,"d25",0],[0,"d52",0],[0,"dd4",5],
+	[0,"b5a",0],[0,"56d",0],[0,"55b",2],[0,"49b",0],[0,"a57",7],[0,"a4b",0],[0,"aa5",0],[1,"b25",5],[0,"6d2",0],[0,"ada",0]
+);
+
+//年汉字形式
+var nianhanzis = new Array(
+	"〇","一","二","三","四","五","六","七","八","九"
+);
+//农历月汉字形式
+var yuehanzis = new Array(
+	"月","正","二","三","四","五","六","七","八","九","十","冬","腊"
+);
+//农历天汉字形式
+var tianhanzis = new Array(
+	"初","一","二","三","四","五","六","七","八","九","十","廿"
+);
+//生肖
+var shengxiaos = new Array(
+	"鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"
+);
+//地支
+var dizhis = new Array(
+	"子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"
+);
+//天干
+var tiangans = new Array(
+	"甲","乙","丙","丁","戊","己","庚","辛","壬","癸"
+);
+
+//24节气计算用到的C值 20世纪
+var jieqic20 = new Array(
+	0,
+	6.11,20.84,
+	4.15,19.01,
+	5.63,20.646,
+	0,20.888,
+	6.318,21.86,
+	6.5,22.20,
+	7.928,23.65,
+	8.35,23.95,
+	8.44,23.822,
+	9.098,24.218,
+	8.218,23.08,
+	7.9,22.60
+);
+//24节气计算用到的C值 21世纪
+var jieqic21 = new Array(
+	0,
+	5.4055,20.12,
+	3.87,18.73,
+	5.63,20.646,
+	0,20.1,
+	5.52,21.04,
+	5.678,21.37,
+	7.108,22.83,
+	7.5,23.13,
+	7.464,23.042,
+	8.318,23.438,
+	7.438,22.36,
+	7.18,21.94
+);
+//24节气名
+var jieqimings = new Array(
+	"",
+	"小寒", "大寒", 
+	"立春", "雨水", 
+	"惊蛰", "春分", 
+	"清明", "谷雨", 
+	"立夏", "小满", 
+	"芒种", "夏至", 
+	"小暑", "大暑", 
+	"立秋", "处暑", 
+	"白露", "秋分", 
+	"寒露", "霜降", 
+	"立冬", "小雪", 
+	"大雪", "冬至"
+);
+//公历节日
+var gljieris = new Array(
+	new Array(1, 1, "元旦"),
+	new Array(2, 14, "情人节"),
+	new Array(3, 8, "妇女节"),
+	new Array(3, 12, "植树节"),
+	new Array(4, 1, "愚人节"),
+	new Array(4, 16, "复活节"),
+	new Array(5, 1, "劳动节"),
+	new Array(5, 4, "青年节"),
+	new Array(6, 1, "儿童节"),
+	new Array(7, 1, "建党节"),
+	new Array(8, 1, "建军节"),
+	new Array(9, 10, "教师节"),
+	new Array(10, 1, "国庆节"),
+	new Array(11, 11, "光棍节"),
+	new Array(12, 24, "平安夜"),
+	new Array(12, 25, "圣诞节")
+);
+//农历节日
+var nljieris = new Array(
+	new Array(1, 1, "春节"),
+	new Array(2, 2, "龙头节"),
+	new Array(1, 15, "元宵节"), 
+	new Array(5, 5, "端午节"), 
+	new Array(7, 7, "七夕节"),
+	new Array(7, 15, "中元节"), 
+	new Array(8, 15, "中秋节"), 
+	new Array(9, 9, "重阳节"),
+	new Array(10, 1, "寒衣节"),
+	new Array(12, 8, "腊八节"),
+	new Array(12, 23, "小年")
+	//new Array(12, 30, 1, "除夕") //每年的最后一天
+);
+//按公历某月第几个周过的节日
+var glzhoujieris = new Array(
+	new Array(5, 2, 7, "母亲节"),//公历 5月 第2个周 周日
+	new Array(6, 3, 7, "父亲节"),//公历 6月 第3个周 周日
+	new Array(11, 4, 4, "感恩节")//公历 11月 第4个周 周四
+);
+//星期
+var xingqiarr = new Array("日","一","二","三","四","五","六");
+
+
+/********************************** 方法 *****************************************/
+
+//当前日期的星期
+function riliXingQi(nian,yue,ri) { //参数公历年月日
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+
+	var d = new Date();
+	d.setFullYear(nian);
+	d.setMonth(yue-1);
+	d.setDate(ri);
+
+	var xingqi = "星期"+xingqiarr[d.getDay()];
+
+	return xingqi;
+
+}
+
+//返回农历这天有没有节日 有返回节日名 没有返回 null
+function nlPanDuanJieRi(nian,yue,ri,ry) { //闰月没有节日 参数农历月 日 是不是闰月
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+	var str = ry+"";
+	var patt=/\D{1,}/g;
+	if(str.match(patt)!=null) {ry = 0;}
+	ry = Number(ry);
+	
+	var nljrm = null;
+	if(ry>=1) {return nljrm;}
+	for(var i=0;i<nljieris.length;i++) {
+		if(nljieris[i][0]==yue&&nljieris[i][1]==ri){
+			nljrm = nljieris[i][2];
+			break;
+		}
+	}
+	//如果农历是今年的最后一年为除夕
+	if(yue==12&&ri==nlYueTians(nian,yue)) {
+		nljrm = "除夕";
+	}
+	return nljrm;
+}
+
+//公历每月的节日 返回数组[0]月份 其它为日
+function glYueJieRi(nian,yue) { //参数为公历年 月
+	if(!geshiNian(nian)) {nian = 0;} nian = Number(nian);
+	yue = Number(yue);
+	
+	var arr = new Array(10);
+	arr[0] = yue;
+	
+	for(var i=0;i<gljieris.length;i++) {
+		if(gljieris[i][0]==yue) {
+			arr.push(new Array(gljieris[i][1],gljieris[i][2]));
+		}
+	}
+	if(nian!=0){
+		var lsarr = glZhouJieRi(nian,yue);//按某月周几过的节日
+		if(lsarr.length>0) {arr.push(lsarr);}
+	}
+	return arr;
+}
+
+//返回某年某月按周的节日日期 数组[0]日期 [1]节日名 没有数组长度为0 
+function glZhouJieRi(nian,yue) { //参数 公历年 月
+	nian = Number(nian);
+	yue = Number(yue);
+	var arr = new Array(2);
+	for(var i=0;i<glzhoujieris.length;i++) {
+		if(glzhoujieris[i][0]==yue) {
+			var lsarr = glzhoujieris[i];
+
+			var d = new Date();
+			d.setFullYear(nian);
+			d.setMonth(yue-1);
+			d.setDate(1);
+			var zouji = (d.getDay()==0) ? 7 : d.getDay();
+			
+			if(zouji>Number(lsarr[2])) {
+				arr[0] = (Number(lsarr[2])-zouji)+Number(lsarr[1])*7+1;
+			}else {
+				arr[0] = Number(lsarr[2])-zouji+(Number(lsarr[1])-1)*7+1;
+			}
+
+			arr[1] = lsarr[3];
+
+			break;
+		}
+	}
+
+	return arr;
+
+}
+
+
+//干支纪年法 返回数组[0]干支年[1]干支月[2]干支天
+function riliGanZhi(nian,yue,ri) {	//参数公历年月日
+	if(!geshiNian(nian)) {return -1;} nian = Number(nian);
+	if(!geshiYue(yue)) {return -1;} yue = Number(yue);
+	if(!geshiRi(ri)) {return -1;} ri = Number(ri);
+	
+	if(nian<1900 || nian>=2050) {return -1;}
+	
+	var arr = new Array(3);
+	
+	var lichunri = riliLiChun(nian);
+	
+	//1.干支纪年
+	var n = nian;
+	if((yue==2&&ri<lichunri) || yue<2) {n--;}
+	
+	var ntgnum = (n+6)%10;
+	var ntg = tiangans[ntgnum];//年天干
+	var ndznum = (n+8)%12;
+	var ndz = dizhis[ndznum];//年地支
+	arr[0] = ntg+ndz+"年";//干支年
+	
+	//2.用当前干支纪年 用公式得到干支纪月
+	var yjq = riliJieQi(nian,yue);
+	var y = yue;
+	if(ri<yjq[1]) {y--;}
+	var ydznum = y%12;
+	var ydz = dizhis[ydznum];//月地支
+	
+	var ytgnum0 = 0;
+	switch((nian+6)%5) {
+		case 0: ytgnum0 = 2; break;
+		case 1: ytgnum0 = 4; break;
+		case 2: ytgnum0 = 6; break;
+		case 3: ytgnum0 = 8; break;
+		case 4: ytgnum0 = 0; break;
+	}
+	var ytgnum = (ytgnum0+y+8)%10;
+	var ytg = tiangans[ytgnum]; //月天干
+	
+	arr[1] = ytg+ydz+"月"; //干支纪月
+	
+	//3.干支纪日
+	//干支纪日以23点为两日的分界点 这里按照0点作为分界点
+	var tians = glNiansTians(nian,yue,ri) //距离公历1900.1.31多少天
+	
+	var rtg = tiangans[tians%10];
+	var rdz = dizhis[(tians+4)%12];
+	
+	arr[2] = rtg+rdz+"日"; //干支纪日
+	
+	return arr;
+	
+}
+
+//立春日期 每年的公历2月份
+function riliLiChun(nian) { //参数公历年份
+	nian = Number(nian);
+
+	var arr = riliJieQi(nian,2);
+	
+	return arr[1];
+	
+}
+
+//当前月的两个节气名[0]月份[1]上节气[2]下节气 
+function riliJieQiMing(yue) { //参数公历月份
+	yue = Number(yue);
+	
+	var arr = new Array(3);
+	arr[0] = yue;
+	arr[1] = jieqimings[(yue*2-1)];//上节气
+	arr[2] = jieqimings[(yue*2)];//下节气 
+	
+	return arr;
+}
+
+//返回数组[0]=月份[1]=上节气日期[2]=下节气日期
+function riliJieQi(nian,yue) { //参数公历年月
+	if(!geshiNian(nian)) {return -1;} nian = Number(nian);
+	if(!geshiYue(yue)) {return -1;} yue = Number(yue);
+	
+	if(nian<1900 || nian>=2050) {return -1;}
+	//立春
+	var yval = 0;
+	var dval = 0.2422;
+	var cval1 = 0, cval2 = 0;	
+	if(nian>1900 && nian<2000) {
+		yval = nian - 1900;
+		cval1 = jieqic20[(yue*2-1)];
+		cval2 = jieqic20[(yue*2)];
+	}else if(nian>=2000 && nian<3000) {
+		yval = nian - 2000;
+		cval1 = jieqic21[(yue*2-1)];
+		cval2 = jieqic21[(yue*2)];
+	}
+	var lval = 0;
+	if(yue<3) {
+		lval = Math.floor( (yval-1)/4 );
+	}else {
+		lval = Math.floor( yval/4 );
+	}
+	var arr = new Array(3);
+	arr[0] = yue;
+	
+	if(yue == 4) {//清明节单独计算
+		var cval = 0;
+		if((yval-1)<0) {cval = jieqic20[24]}
+		else {cval = jieqic21[24]}
+		//求得上年冬至的日子
+		var dongzhi = Math.floor(((yval-1)*dval+cval))-Math.floor( yval/4 );
+		var qingming = 104-(31-dongzhi)-(31+28+31);
+		if(glRunNian(nian)) {
+			qingming = qingming-1;
+		}
+		arr[1] = qingming;
+	}else {
+		arr[1] = Math.floor( (yval*dval+cval1) )-lval;
+	}
+	arr[2] = Math.floor( (yval*dval+cval2) )-lval;
+	
+	return arr;
+}
+//农历生肖年 
+function nlShengXiao(nian) {//参数农历年份
+	nian = Number(nian);
+	return shengxiaos[((nian-1900)%12)];
+}
+
+//农历汉字形式 返回数组[0]年[1]月[2]日
+function nlHanZi(nian,yue,ri,ry) {//参数 农历年月日 ry>0是闰月 <0不是
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+	var str = ry+"";
+	var patt=/\D{1,}/g;
+	if(str.match(patt)!=null) {ry = 0;}
+	ry = Number(ry);
+	
+	var yuetians = 0;
+	if(ry>0) {
+		yuetians = nlRunYue_tians(nian);
+	}else {
+		yuetians = nlYueTians(nian,yue);
+	}
+	if(ri>yuetians) {return null;}
+	
+	var arr = new Array(3);
+	
+	//年
+	arr[0] = "";//shengxiaos[((nian-1900)%12)]+"年";
+	var n = nian+"";
+	var narr = n.split("");
+	for(var i=0;i<narr.length;i++) {
+		arr[0]+=nianhanzis[Number(narr[i])];
+	}
+	arr[0]+="年";
+	//月
+	arr[1] = nlYueHanZi(yue,ry);
+	//天
+	arr[2] = nlTianHanZi(ri);
+	return arr;
+}
+
+//年份汉字形式
+function nl_nianhanzis(nian) {//参数年
+	var hznian = "";//shengxiaos[((nian-1900)%12)]+"年";
+	var n = nian+"";
+	var narr = n.split("");
+	for(var i=0;i<narr.length;i++) {
+		hznian+=nianhanzis[Number(narr[i])];
+	}
+	
+	return hznian;
+}
+
+//农历月汉字形式
+function nlYueHanZi(yue,ry) { //参数农历月份 ry>0是闰月
+	yue = Number(yue);
+	var str = ry+"";
+	var patt=/\D{1,}/g;
+	if(str.match(patt)!=null) {ry = 0;}//按不是闰月处理
+	ry = Number(ry);
+	
+	var hzyue = "";	
+	if(ry>0) {
+		hzyue="闰";
+	}
+	hzyue+=yuehanzis[yue]+"月";
+	
+	return hzyue;
+}
+
+//农历日汉字形式
+function nlTianHanZi(ri) { //参数农历日
+	ri = Number(ri);
+	var hzri = "";
+	if(ri<=10) {
+		hzri = "初"+tianhanzis[ri];
+	}else if(ri<20) {
+		hzri = "十"+tianhanzis[ri%10];
+	}else if(ri==20) {
+			hzri = "二十";
+	}else if(ri<30) {
+		hzri = "廿"+tianhanzis[ri%10];
+	}else if(ri==30) {
+		hzri = "三十";
+	}
+	
+	return hzri;
+}
+
+//农历转公历(1900---2050)之间
+//返回数组 公历[0]年[1]月[2]日
+function nlTogl(nian,yue,ri,ry) {//参数农历年 月 日 ry>0是闰月 <0不是
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+	var str = ry+"";
+	var patt=/\D{1,}/g;
+	if(str.match(patt)!=null) {ry = 0;}//按不是闰月处理
+	ry = Number(ry);
+
+	//1. 距离农历1900.1.1有多少天
+	var nl_ns = nlNiansTians(nian,yue,ri,ry);
+	//2. 距离公历1900.1.31有多少天
+	var gl_ns = glNiansTians(nian,1,1);//提示: 农历1900.1.1 == 公历1900.1.31
+	//3. 转换
+	var arr = new Array(3);//转成的公历日期[0]年[1]月[2]日
+	var lsyuetians = 0; //记住转换成月份的天数
+	if(nl_ns>=gl_ns) {
+		arr[0] = nian;
+		arr[1] = 0;
+		for(var i=1;i<=12;i++) {
+			gl_ns += glYueTians(arr[0],i);
+			if(gl_ns>nl_ns) {
+				arr[1] = i;
+				lsyuetians = glYueTians(arr[0],i);
+				break;
+			}
+		}
+		if(arr[1]==0) {
+			arr[0] = nian+1;
+			for(var ix=1;ix<=12;ix++) {
+				gl_ns += glYueTians(arr[0],ix);
+				if(gl_ns>nl_ns) {
+					arr[1] = ix;
+					lsyuetians = glYueTians(arr[0],ix);
+					break;
+				}
+			}
+		}
+		
+	}
+	arr[2] = lsyuetians-(gl_ns-nl_ns)+1;
+
+	return arr;
+
+}
+
+//日期转换 公历转农历  
+//返回数组农历[0]年[1]月[2]日[3]=1是闰月 =0不是
+function glTonl(nian,yue,ri) { //参数公历年月日
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+
+	var arr = new Array(5);//保存数字类型的农历年月日
+	var gl_ns = glNiansTians(nian,yue,ri);
+	var nl_ns = nlNiansTians(nian,1,1,0);
+
+	//对应的年份
+	if(gl_ns>=nl_ns) {
+		arr[0] = nian;
+	}else {
+		arr[0] = nian-1;
+		nl_ns=nl_ns-nlNianTians(arr[0]);
+	}
+	
+	var yuearr = nlYuesTians(arr[0]);
+	var runyue = nlRunYue(arr[0]);
+	var yuetians = 0;
+	//对应的月份
+	arr[3] = 0;//当前月是不是闰月 1是 0不是
+	for(var nly=0;nly<12;nly++) {
+		nl_ns+=yuearr[nly];
+		if(nl_ns>gl_ns) {
+			arr[1] = (nly+1);
+			yuetians = yuearr[nly];
+			break;
+		}
+		if(runyue == (nly+1)) {
+			nl_ns+=nlRunYue_tians(arr[0]);
+			if(nl_ns>gl_ns) {//当前月是闰月
+				arr[1] = (nly+1);
+				arr[3] = 1;
+				yuetians = nlRunYue_tians(arr[0]);
+				break;
+			}
+		}
+	}
+	
+	if(yuetians==0) {return null;} //如果 lunardates数组里数据出错
+	//对应的天份
+	arr[2] = yuetians-(nl_ns-gl_ns)+1;
+	
+	return arr;
+}
+
+//距离公历1900.1.31天数	
+function glNiansTians(nian,yue,ri) { //参数公历年月日
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+	
+	var gl_ns = 0;
+	for(var n=1900;n<nian;n++) {
+		gl_ns+=glNianTians(n);//距离公历1900.1.1 有多少天
+	}
+	gl_ns=gl_ns-31;//公历1900.1.31 对应 农历1900.1.1
+
+	for(var yly=1;yly<yue;yly++) { //公历 加上过去月份的天数
+		gl_ns+=glYueTians(nian,yly);
+	}
+
+	gl_ns+=ri; //加上当月过了多少天
+
+	return gl_ns;
+}
+//距离农历1900.1.1天数 
+function nlNiansTians(nian,yue,ri,ry) {//参数农历 年 月 日 ry>0是闰月 <0不是
+	nian = Number(nian);
+	yue = Number(yue);
+	ri = Number(ri);
+	var str = ry+"";
+	var patt=/\D{1,}/g;
+	if(str.match(patt)!=null) {ry = 0;}//按不是闰月处理
+	ry = Number(ry);
+
+	var nl_ns = 0;
+	for(var n=1900;n<nian;n++) {//距离农历1900.1.1 有多少天
+		nl_ns+=nlNianTians(n);//加上过去的每年的一年的天数
+	}
+	
+	var yuearr = nlYuesTians(nian);//获得这年每月的天数 数组
+	var cishu = yue-1;
+	for(var nly=0;nly<cishu;nly++) {//这年过去月份的天数
+		nl_ns+=yuearr[nly];
+	}
+	if(ry>0 && yue==nlRunYue(nian)) {
+		nl_ns+=yuearr[yue];
+	}
+	if(yue>nlRunYue(nian)) {
+		nl_ns+=Number(nlRunYue_tians(nian));
+	}
+	
+	nl_ns+=ri; //加上当月过了多少天
+
+	nl_ns = nl_ns - 1;
+
+	return nl_ns;
+}
+
+//公历一年的总天数 
+function glNianTians(nian) { // 参数公历年份
+	nian = Number(nian);
+	if(glRunNian(nian)) {
+		return 366;
+	}else {
+		return 365;
+	}
+}
+
+//农历一年的总天数 -1年份不对
+function nlNianTians(nian) { // 参数农历年份
+	nian = Number(nian);
+	
+	var nians = 0;
+	var arr = nlYuesTians(nian);
+	for(var i=0;i<arr.length;i++) {
+		nians = nians+Number(arr[i]);
+	}
+	nians +=  Number(nlRunYue_tians(nian));
+
+	return nians;	
+}
+
+//公历的月份的天数
+function glYueTians(nian,yue) { //参数公历年月
+	nian = Number(nian);
+	yue = Number(yue);
+
+	if(yue == 2) {
+		if(glRunNian(nian)) {return 29;}
+		else {return 28;}
+	}
+	
+	var rilis = 0;
+	switch (yue) {
+		case 4:rilis = 30;break;
+		case 6:rilis = 30;break;
+		case 9:rilis = 30;break;
+		case 11:rilis = 30;break;
+		default:rilis = 31;
+	}
+
+	return rilis;
+}
+//公历这年是不是闰年 是true 
+function glRunNian(nian) { //参数公历年份
+	if((nian%4)==0 && (nian%100)>0) {
+		return true;
+	}
+	if((nian%100)==0 && (nian%400)==0) {
+		return true;
+	}
+	
+	return false;
+	
+}
+
+//农历闰月月份 0没有闰月 
+function nlRunYue(nian) { // 参数农历年份
+	return lunardates[Number(nian)-1900][2];	
+}
+//农历闰月的天数 0没有
+function nlRunYue_tians(nian) { //参数农历年份
+	name = Number(nian);
+
+	var oneDate = oneLunarDate(nian);
+	if(oneDate[2]==0) {
+		return 0;
+	}else {
+		return 29+Number(oneDate[0]);
+	}
+}
+
+//农历 返回数组[闰月为大小月,"...",闰月月份] -1年份错误
+function oneLunarDate(nian) { //参数农历年份
+	var n = Number(nian);
+	return lunardates[n-1900];
+}
+
+//农历月份的天数
+function nlYueTians(nian,yue) {//参数农历年 月
+	nian = Number(nian);
+	yue = Number(yue);
+	var arr = nlYuesTians(nian); //获得这年每月的天数数组
+	return arr[yue-1];
+}
+
+//农历 返回数组 12个月份的天数
+function nlYuesTians(nian) { // 参数农历年份
+	var	n = Number(nian);
+
+	var str = lunardates[n-1900][1];
+
+	var twoSystemNum = sixtenToTen(str);
+	var twoSystemArrs = tenToTwo(twoSystemNum); //获得二进制的数组
+	var alg = twoSystemArrs.length; //数组长度
+	if(alg<12) {
+		for(var i=0;i<(12-alg);i++) {
+			twoSystemArrs.unshift(0);
+		}
+	}
+
+	var arr = new Array(12);
+	for(var i=0;i<=12;i++) {
+		if(Number(twoSystemArrs[i])==0) {
+			arr[i] = 29;
+		}
+		if(Number(twoSystemArrs[i])==1) {
+			arr[i] = 30;
+		}
+	}
+
+	return arr;
+}
+
+function geshiNian(nian) { //年格式是否正确 错误 false
+	var str = nian+"";
+	if(str.length!=4) {return false;}
+	var patt2=/\D{1,}/g;
+	if(str.match(patt2)!=null) {return false;}
+
+	return true;
+}
+
+function geshiYue(yue) {//月份格式是否正确 错误 false
+	var str = yue+"";
+	if(str.length>2) {return false;}
+	var patt2=/\D{1,}/g;
+	if(str.match(patt2)!=null) {return false;}
+	
+	var y = Number(yue);
+	if(y<=0 || y>12) { return false; }
+
+	return true;
+}
+
+function geshiRi(ri) {//日的格式是否正确 错误 false
+	var str = ri+"";
+	if(str.length>2) {return false;}
+	var patt2=/\D{1,}/g;
+	if(str.match(patt2)!=null) {return false;}
+
+	var r = Number(ri);
+	if(r<=0 || r>31) { return false; }
+	
+	return true;
+}
+
+function arrToStr(arr){ //数组变成字符串 0错误
+	var str = "";
+	if(arr==null) {return 0;}
+	if(arr instanceof Array) {
+		str = arr.join("");
+	}
+	
+	return str;
+}
+
+//10进制转2进制 正数 返回一个数组
+function tenToTwo(tenNum,arr) {
+	tenNum = Number(tenNum);
+	if(arr==null) {
+		arr = new Array();
+	}
+	if(tenNum==0 || tenNum==1) {
+		arr.unshift(tenNum); // arr.unshift(num) //添加到数组的开头
+		return arr;
+	}
+	if(tenNum>1) {
+		arr.unshift(tenNum%2);
+		arr=tenToTwo(Math.floor(tenNum/2),arr); //递归
+	}
+
+	return arr; 
+}
+//16进制转10进制 正数 返回一个10进制数
+function sixtenToTen(sixteenNum) { 	
+	var str = sixteenNum+"";
+	var strArr = str.split(""); //str.split("") //把字符串变成字符数组
+	var num = 0;
+	for(var i=0;i<strArr.length;i++) {
+		switch(strArr[i]) {
+			case '0':num=num*16;break;
+			case '1':num=(num+1)*16;break;
+			case '2':num=(num+2)*16;break;
+			case '3':num=(num+3)*16;break;
+			case '4':num=(num+4)*16;break;
+			case '5':num=(num+5)*16;break;
+			case '6':num=(num+6)*16;break;
+			case '7':num=(num+7)*16;break;
+			case '8':num=(num+8)*16;break;
+			case '9':num=(num+9)*16;break;
+			case 'a':num=(num+10)*16;break;
+			case 'b':num=(num+11)*16;break;
+			case 'c':num=(num+12)*16;break;
+			case 'd':num=(num+13)*16;break;
+			case 'e':num=(num+14)*16;break;
+			case 'f':num=(num+15)*16;break;
+			default:return 0;
+		}
+	}
+
+	return num/16;
+}
+
+
+
+
+	</script>
+	<!-- <script type="text/javascript" src="js/script.js" charset="UTF-8"></script> -->
+	<!-- <script type="text/javascript" src="js/donghua.js" charset="utf-8"></script> -->
+</body>
+</html>
+

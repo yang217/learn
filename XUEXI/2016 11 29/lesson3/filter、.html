@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        //自定义拦截过滤方法
+        app.filter("nameConcat",function(){
+            return function(obj,arr1,arr2) {
+                //执行下列代码进行数据操作
+                //console.info("拦截",arguments,obj)
+                //arguments[0] 是外部将要过滤的对象
+                //结果
+                var sex = '';
+                if(obj[arr2]==0) {
+                    sex='女';
+                } else {
+                    sex = '男';
+                }
+                return  obj[arr1]+':'+sex;
+            }
+        })
+
+       //1.在controller 引入一个$filter的方法对象
+        app.controller("indexCtrl",function($scope,$filter) {
+            $scope.user = {name:'dawei',sex:'1'}
+            $scope.time = Date.now();
+
+            //进行数据过滤
+            $scope.time = $filter('date')( $scope.time, 'yyyy-MM-dd');
+            $scope.show = function() {
+                alert($scope.time)
+            }
+        })
+    </script>
+</head>
+<body ng-controller="indexCtrl">
+
+<p>{{user|nameConcat:'name':'sex'}}</p>
+
+<!-- 页面的拦截器不会对数据的原有结构进行改变 -->
+    <p>时间:{{time | date:'yyyy-MM-dd'}}</p>
+<button ng-click="show()">查看</button>
+</body>
+</html>

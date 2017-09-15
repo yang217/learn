@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		   *{
+		   	margin: 0 ;
+		   	padding: 0;
+		   }
+			div{
+				width: 300px;
+				height: 40px;
+				border: 1px #00282E solid;
+				margin: 100px auto;
+				position: relative;
+			}
+			#add{
+				color: red;
+				font-size: 0;
+				position: absolute;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div>
+		<input type="button" value="签到" id="btn"/>
+		<span id="wz">您今日还没签到</span>
+		<span id="add">+1</span>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$("#btn").click(function(){
+				
+				if($("#btn").val()==="签到"){
+					$("#wz").html("您今日已签到")
+				}
+				var timer=setInterval(function(){
+					
+					var n=parseFloat($("#add").css("fontSize")) ;
+					if(n<=16){
+						$("#add").animate({"fontSize":"+=8px","left":"+=2"})
+						console.log(n)
+					}else{
+						$("#add").animate({"fontSize":"+=8","left":"+=2","bottom":"-=5"})
+					}
+					
+					if(n>=26){
+						clearInterval(timer)
+					}
+					
+				},1000)
+				
+			})
+			
+		</script>
+	</body>
+</html>

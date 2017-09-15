@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// var root = {
+// 	id: 'root',
+// 	children: [
+// 		{
+// 			id: "1",
+// 			children: [
+// 				{ id: "1-1", children: [] }, 
+// 				{ id: "1-2", children: [] }
+// 			]
+// 		}, 
+// 		{
+// 			id: "2",
+// 			children: [
+// 				{ id: "2-1", children: [] }, 
+// 				{ id: "2-2", children: [] }
+// 			]
+// 		}
+// 	]
+// };
+// function transform(data,array){
+// 	var node={};
+// 	    node.id=data.id;
+// 	    // node.pid=parent;
+// 	    array.push(node);
+// 	    data.children.forEach(function(element){
+// 	    	transform(element,array)
+// 	    });
+// 	    return array;
+// }
+// console.log(transform(root,[]))
+
+
+function transform(data, object) {
+	// 始终保证object有children属性
+	//相当于如果没有前面的那个，就执行后面的那个
+	!object.children && (object.children = []);
+	
+	// 遍历数组
+	data.forEach(function(element) {
+		// console.log(element)
+		if (element.pid == object.id) {
+			// 根节点处理
+			if (!element.pid) {//就是null的时候
+				object.id = element.id;
+				console.log(object.id)
+			} else {
+				var node = {};
+				node.id = element.id;
+				object.children.push(node);
+				// 针对此节点递归
+				transform(data, node);//如果还存在。依旧放在这个对象里
+			}
+		}
+	});
+	return object;
+}
+var data = [
+	{ id: "root", pid: null },
+	{ id: "1", pid: "root" },
+	{ id: "1-1", pid: "1" },
+	{ id: "1-2", pid: "1" },
+	{ id: "2", pid: "root" },
+	{ id: "2-1", pid: "2" },
+	{ id: "2-2", pid: "2" }
+];
+transform(data, {}) 
+// console.log( transform(data, {}) )
+</script>
+</body>
+</html>

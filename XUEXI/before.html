@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style>
+div{
+  margin: 50px auto;
+  position: relative;
+  width: 0;
+  border-color: lightgreen transparent;
+  border-width: 40px 55px 0;
+  border-style: solid;
+}
+div::before{
+  position: absolute;
+  left: -55px;
+  top: -40px;
+  width: 0;
+  content: "";
+  border-color: lightgreen transparent;
+  border-width: 40px 55px 0;
+  border-style: solid;
+  transform: rotate(69deg);
+}
+div:after{
+  position: absolute;
+  left: -55px;
+  top: -40px;
+  width: 0;
+  content: "";
+  border-color: lightgreen transparent;
+  border-width: 40px 55px 0;
+  border-style: solid;
+  transform: rotate(-72deg);
+}
+p{  margin: 0;
+	padding: 0;
+	border-width: 50px;
+	border-color:red;
+	border-style:solid;
+}
+</style>
+<div></div>
+<p><p>
+</body>
+</html>

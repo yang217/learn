@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+          select::-ms-expand { display: none; }          
+         .info-select{
+            width: 12%;
+            margin-left: 64%;
+            border: none;
+            outline: none;
+            /*将默认的select选择框样式清除*/
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            -ms-appearance:none;
+           /*在选择框的最右侧中间显示小箭头图片*/
+           background: url(../img/arrow.png) no-repeat scroll right center transparent;           
+         }
+
+	</style>
+</head>
+<body>
+<select class="info-select">
+      <option selected="selected">1</option>
+        <option>2</option>
+  </select>
+
+ 
+</body>
+</html>

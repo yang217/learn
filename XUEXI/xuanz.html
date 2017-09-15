@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="全选" id="btn"/>
+		<input type="button" value="取消" id="btn2"/>
+		<input type="checkbox" class="item"/>
+		<input type="checkbox" class="item"/>
+		<input type="checkbox" class="item"/>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			var btn=document.getElementById("btn");
+			var cs=document.getElementsByClassName("item");
+			
+			    cs[0].setAttribute("type","file")
+			    var a=cs[0].getAttribute("type");
+			    console.log(a)
+			    btn.onclick=function(){
+			    	for(var i=0;i<cs.length;i++){
+			    		cs[i].checked=true;
+			    	}
+			    	
+			    }
+			    btn2.onclick=function(){
+			    	for(var i=0;i<cs.length;i++){
+			    		cs[i].checked=false;
+			    	}
+			    }
+			if($("#btn").attr("type")=='button'){
+				alert("true")
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+var str="ac bsaadeddwwa";
+var count=0;
+var pos=str.indexOf("a");
+while(pos!==-1){
+	count++;
+	pos=str.indexOf("a",pos+1)//从上次找到的位置后面一个位置找
+}
+console.log(count)
+
+var oldArr = [{first_name:"Colin",last_name:"Toh"},{first_name:"Addy",last_name:"Osmani"},{first_name:"Yehuda",last_name:"Katz"}];
+
+function getNewArr(){
+  return oldArr.map(function(item,index){
+   
+    item.full_name = [item.first_name,item.last_name].join(" ");
+      console.log(item.full_name)
+    return item;
+  });
+
+}
+// 就是给item加个属性。这个属性是first_name和last_name进行转换成字符串拼接的
+console.log(getNewArr());
+var ary = [12,23,24,42,1];
+var res = ary.forEach(function (item,index,input) {
+	console.log(input)
+  input[index] = item*10;
+})
+console.log(res);//-->undefined;
+console.log(ary);//-->会对原来的数组产生改变；
+
+var arr = ["apple","orange"];
+
+function noPassValue(){
+  return arr.reduce(function(prev,next){
+    console.log("prev:",prev);
+    console.log("next:",next);
+    return prev + " " +next;
+  });
+}
+noPassValue()
+passValue()
+
+// 让我先解释一下我自己对reduce的理解。reduce(callback, initialValue)会传入两个变量。回调函数(callback)和初始值(initialValue)。假设函数它有个传入参数，prev和next,index和array。prev和next你是必须要了解的。一般来讲prev是从数组中第一个元素开始的，next是第二个元素。但是当你传入初始值(initialValue)后，第一个prev将是initivalValue，next将是数组中的第一个元素。 
+function passValue(){
+  return arr.reduce(function(prev,next){
+    console.log("prev:",prev);
+    console.log("next:",next);
+    prev[next] = 1;
+    return prev;
+  },{});
+}
+
+</script>
+</body>
+</html>

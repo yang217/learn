@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		 *{
+		 	margin: 0;
+		 	padding: 0;
+		 }	
+		 html{
+		 	height: 2000px;
+		 }
+		 .box{
+		 	width: 100px;
+		 	height: 100px;
+		 	background: green;
+		 	position: absolute;
+		 	bottom: 0;
+		 	font-size: 18.77px;
+		 }
+		 .box.box{
+		 	background: red;
+		 }
+		/* 绝对定位时bottom属性的参照点是浏览器的第一屏(就是没有移动滚动条的时候)的可视区域的下边缘*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+		   var box=document.getElementsByTagName("div")[0];
+			window.onscroll=function(){
+				setTimeout(function(){
+					var st=document.body.scrollTop||document.documentElement.scrollTop||0;
+					box.style.bottom=0-st+"px"
+				},1000)
+			}
+
+		</script>
+	</body>
+</html>

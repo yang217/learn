@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script>
+            var count=(function(){
+          var img=new Image();
+          return function(param){
+              var str='http://www.count.com/a.gif?';
+              for(var i in param){
+                  console.log(i)
+                  str+=i+'='+param[i];
+              }
+              img.src=str;
+          }
+})()
+count({name:8,age:19})//拼接
+        </script>
+
+    </body>
+</html>

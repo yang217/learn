@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var A = {
+  name: '张三',
+  describe: function () {
+  	console.log(this)
+    return '姓名：'+ this.name;
+  }
+};
+
+var name = '李四';
+var f = A.describe;
+f() 
+var Obj=function(p){
+	this.p=p;
+}
+//实例对象就是o
+Obj.prototype.m=function(){
+	console.log(this===o)
+	return this.p
+}
+var o=new Obj("11");
+o.m()
+
+var o = {
+  f1: function () {
+    console.log(this);
+
+    var f2 = function () {
+      console.log(this);
+    }();
+  }
+}
+
+o.f1();
+var dd={
+	count:1,
+	inc:function(){
+   this.count++
+	}
+}
+console.log(dd.count)
+console.log(dd.inc())
+var a=1;
+console.log(Object.getPrototypeOf(Object.prototype)) 
+// a==1&&alert(1)
+a||alert(1)
+ function Css(){
+
+};
+console.log(Css.prototype.constructor===Css)
+function People(){
+
+}
+var peo=new People();
+console.log(peo.constructor.name)
+console.log(Object.getPrototypeOf(peo)===People.prototype);
+var ddd={x:5};
+var eee=Object.setPrototypeOf({},ddd);
+console.log(eee.x)
+</script>
+</body>
+</html>

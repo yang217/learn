@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/angular.min.js"></script>
+		<script>
+		var app=angular.module("myapp",[]);
+			app.controller("leftCtrl",function($scope){
+				$scope.money=1000;
+				$scope.name="jack";
+			})
+		</script>
+	</head>
+	<body>
+		<div ng-controller="leftCtrl">
+			
+		 金钱:{{money | currency }}
+			
+			{{name}}
+		</div>
+		
+	</body>
+</html>

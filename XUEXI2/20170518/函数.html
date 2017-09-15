@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+ // function demo(){
+ //        console.log(1)
+ //    }
+ //    var demo = function(){
+ //        console.log(2)
+ //    }
+ //    demo()x
+//  首先我们先看看标识符var 和 function关键字在预解释时的区别之处
+// 在预解释过程中，标识符先声明再定义，而function关键字是声明定义一起完成
+ var demo = function(){
+ 	console.log(2)
+ }
+ //这种是先声明，执行的时候定义
+ function demo(){
+ 	console.log(1)
+ }
+ // 这种声明的时候就定义了，所以执行函数的时候，前者会覆盖后者
+
+ demo()
+
+</script>
+</body>
+</html>

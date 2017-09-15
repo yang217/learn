@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9</title>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<style type="text/css">
+		.active{
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" onclick="aa(111)">111111111111111111</a>
+	<a href="#" onclick="aa(2222)">222222222222222222</a>
+	<a href="#" onclick="aa(3333)">333333333333333333333</a>
+	<a class="active" href="#" onclick="aa(44444)">4444444444444444444444</a>
+	<!-- <a href="#">111111111111111</a> -->
+	<!-- <script type="text/javascript">
+		$("body").on("click",function(){
+			var $active=$(".active");
+			var index=$active.index();
+			var totalLength=$("div").length;
+			if (index==totalLength-1) {
+				$($("div")[0]).addClass("active").siblings("div").removeClass("active");
+			}else{
+				$active.next().addClass("active").siblings("div").removeClass("active");
+			}
+		})
+	</script> -->
+	<script type="text/javascript">
+		document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e && e.keyCode==9){ 
+                // console.log(9999);
+                var $active=$(".active");
+				var index=$active.index();
+				var totalLength=$("a").length;
+				if (index==totalLength-1) {
+					$($("a")[0]).addClass("active").siblings("a").removeClass("active");
+				}else{
+					$active.next().addClass("active").siblings("a").removeClass("active");
+				}
+                return false;
+              }
+              
+             if(e && e.keyCode==13){ // enter 键
+                 var $active=$(".active");
+                 // var aa=$active.value;
+
+                 // $active.click(function(event) {
+                 // 	/* Act on the event */
+                 // });
+                 $active.trigger("click");
+                 // console.log(aa);
+                // console.log(9999);
+
+            	}
+        }; 
+	</script>
+	<!-- <script type="text/javascript">
+		var $active=$(".active");
+        var aa=$active.value;
+        console.log(aa);
+
+	</script> -->
+	<script type="text/javascript">
+		function aa(ss){
+			alert(ss);
+		}
+	</script>
+	<!-- <script type="text/javascript">
+		var arr=[1,2,3];
+		var index = Math.floor((Math.random()*arr.length)); 
+		console.log(arr[index]);
+	</script> -->
+</body>
+</html>

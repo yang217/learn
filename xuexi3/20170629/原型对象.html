@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+      <script>
+          function Poo(name){
+              this.name=name;
+          }
+          Poo.prototype.pop=function(){
+              console.log('pop3')
+          }
+          function C(name){
+              Poo.call(this,name)//绑定this
+            // this.name=name
+              console.log(this)
+              console.log(this.name)
+          }
+          C.prototype=new Poo();//可以继承Poo的方法
+      
+          var d=new Poo()
+          var a=new C('YANG');
+        //    d.pop();
+           a.pop()
+      </script>
+    </body>
+</html>

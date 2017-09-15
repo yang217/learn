@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul>
+<li></li>
+</ul>
+<script type="text/javascript">
+ var ul = document.querySelectorAll('ul')[0],//静态节点
+     lis = ul.querySelectorAll("li");
+     console.log(lis.length)
+for(var i = 0; i < lis.length ; i++){
+    ul.appendChild(document.createElement("li"));
+}
+
+// Demo 2  getElement返回的是li的动态的结点列表，每次都会循环查询lis,造成死循环
+// var ul = document.getElementsByTagName('ul')[0], 
+//     lis = ul.getElementsByTagName("li"); 
+//     console.log(lis.length)
+// for(var i = 0; i < lis.length ; i++){
+//     ul.appendChild(document.createElement("li")); 
+// }
+</script>
+
+</body>
+</html>

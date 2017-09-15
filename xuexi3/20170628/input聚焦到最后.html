@@ -1,0 +1,48 @@
+<!-- <html>
+<title>js实现光标聚焦到文本框最后</title>
+<script type="text/javascript">
+function myFocus(sel, start, end) {
+  if (sel.setSelectionRange) {
+   sel.focus();
+   sel.setSelectionRange(start,end);
+  }
+  else if (sel.createTextRange) {
+    var range = sel.createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', end);
+    range.moveStart('character', start);
+    range.select();
+  }
+}
+function setFocus (sel) {
+  length=sel.value.length;
+  myFocus(sel, length, length);
+}
+</script>
+<body>
+js实现光标聚焦到文本框最后： <input type="text" id="ifocus" value="HEAD聚焦到后面去聚焦到后面去聚焦到后面去XXXXXXX聚焦到后面去聚焦AAA到后面去聚焦到后面去TAIL">
+<script type="text/javascript">setFocus(document.getElementById("ifocus"));</script>
+</body>
+</html>
+分 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script language="javascript">
+function setFocus(obj)
+{
+//var obj = event.srcElement;
+var txt =obj.createTextRange();
+txt.moveStart('character',obj.value.length);
+txt.collapse(true);
+txt.select();
+}
+</script>
+<input type="text" value="abcdefg123456789" onfocus="setFocus()">
+
+
+</body>
+</html>

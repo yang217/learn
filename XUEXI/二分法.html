@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>demo</title>
+
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+      // var binarySearch = function(array, start, stop, num) {
+      //   if(stop - start == 1) {
+      //     if(array[start] == num) {
+      //       return start;
+      //     }
+      //     if(array[stop] == num) {
+      //       return stop;
+      //     }
+      //     return -1;
+      //   }  
+      //   var center = Math.floor((start + stop)/2);
+      //   if(num != array[center]) {
+      //     return num > array[center] ? binarySearch(array, center, stop, num) 
+      //       : binarySearch(array, start, center, num);
+      //   }
+      //   return center;
+      // }
+      // var array = [0,1,2,4,5];
+      // document.writeln(binarySearch(array, 3, array.length, -1));
+      var stateObj = { foo: "bar" }; history.pushState(stateObj, "page 2", "bar.html");
+      var arr = [1,2,3,4,1,3,4,5,5,88,7,3,1];
+      function counterArray(arr){
+        var obj = {}
+        arr.forEach(function(v,k){//k是索引
+          
+          
+            if(obj[v]){//假如obj[v]存在，则个数加1
+                obj[v]++;
+            }else{
+                obj[v] = 1;
+            }
+        })
+        return obj;
+    }
+    counterArray(arr)
+    console.log(counterArray(arr))
+    </script>
+  </head>
+  <body>
+  <a href='mttbrowser://url=http://www.baidu.com'>打开</a>
+  <div class="a b c d" id="box"></div>
+  <script type="text/javascript">
+   var box=document.getElementById("box");
+   var list=box.classList;
+   console.log(list);
+    function test(){
+      var num=22;
+      var c=function(){
+        console.log(num)
+      }
+      console.log(num)
+      num++
+      return c
+    }
+    test()()
+  </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+		<style>
+			.toggle{
+				width: 100px;
+				height: 100px;
+				border: 1px red solid;
+			}
+			.toggle.red{
+				background: red;
+			}
+			.toggle.green{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="toggle green"></div>
+		<script>
+			var flag=1;
+			$('.toggle').click(function(){
+				if(flag==1){
+					$(this).addClass('red');
+					$(this).removeClass('green')
+					flag=0
+				}else{
+					$(this).addClass('green');
+					$(this).removeClass('red')
+					flag=1
+				}
+			})
+			
+		</script>
+	</body>
+</html>

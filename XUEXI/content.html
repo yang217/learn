@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+      .div{
+      	width: 200px;
+      	height: 30px;
+      	border:1px #000 solid;
+      	text-align: center;
+      }
+      .div:after{
+      	content: "hello"
+      }
+      .clear:after{
+      	display: block;
+      	content: "clear";
+      	height: 0;
+      	clear: both;
+      	overflow: hidden;
+      	visibility: hidden;
+      }
+      .clear{
+      	*zoom:1;
+      }
+      .box{
+      	width: 800px;
+      	height: 800px;
+      	border: 1px #000 solid;
+      	text-align: center;
+      	font-size:0;
+      	 *font-size:800px; 
+      }
+      .box img{
+      	vertical-align: middle;
+      }
+      .box:after{
+      	content: "center";
+      	vertical-align:middle;
+      	width: 0;
+      	display: inline-block;
+      	overflow: hidden;
+      	height: 100%; 
+      }
+      /*图片居中的方法*/
+      /*可以兼容ie67*/
+     .border:after{
+     	margin: 100px 0;
+     	content: ""
+     	width:100px;
+     	border: 1px #000 solid;
+     	transform: scale(1);
+     }
+
+	</style>
+</head>
+<body>
+ <div class="div"></div>
+ <div class="box">
+  <img src="img/work_list_05.jpg">
+ </div>
+ <div class="border">
+
+
+ </div>
+ <ul id="list">
+  <li>111</li>
+  <li>222</li>
+  <li>333</li>
+
+ </ul>
+ <script type="text/javascript">
+  var list=document.getElementById("list");
+  var ts=list.lastChild;
+  console.log(ts)
+  var cs=ts.cloneNode(true);
+  console.log(cs);
+  list.appendChild(cs)
+
+ </script>
+
+</body>
+</html>

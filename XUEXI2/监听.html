@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="index.html">111</a>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+
+if (window.history && window.history.pushState) {
+
+ $(window).on('popstate', function() {
+   var hashLocation = location.hash;
+   var hashSplit = hashLocation.split("#!/");
+   var hashName = hashSplit[1];
+
+   if (hashName !== '') {
+     var hash = window.location.hash;
+     if (hash === '') {
+       // alert('後退按鈕點擊');
+       window.location.href="jq仿百度输入框.html"
+     }
+   }
+ });
+
+ window.history.pushState('forward', null, './#forward');
+}
+
+});
+    // var detectBack = {
+
+    //     initialize: function() {
+    //         //监听hashchange事件
+    //         window.addEventListener('hashchange', function() {
+
+    //             //为当前导航页附加一个tag
+    //             this.history.replaceState('hasHash', '', '');
+
+    //         }, false);
+
+    //         window.addEventListener('popstate', function(e) {
+
+    //             if (e.state) {
+    //                 //侦测是用户触发的后退操作, dosomething
+    //                 //这里刷新当前url
+    //                 alert(111)
+    //                 this.location.reload();
+    //             }
+    //         }, false);
+    //     }
+    // }
+
+    // detectBack.initialize();
+</script>
+</body>
+</html>

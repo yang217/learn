@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+
+ <html lang="en">
+
+  <meta charset="utf-8">
+
+  <head><title>Draw a Circle</title>
+
+   <style type="text/css">
+
+    body {
+
+      background-color: #000000;
+
+      margin: 0px;
+
+      overflow: hidden;
+
+    }
+
+   </style>
+
+  </head>
+
+ <body>
+
+</body>
+
+<script>
+
+varcanvas = document.createElement( 'canvas' ),
+
+context = canvas.getContext( '2d' );
+
+var canvasWidth = window.innerWidth; 
+
+canvasHeight = window.innerHeight;
+
+
+
+ //初始化一个数组 保存例子
+
+var particles = [];
+
+var flag;
+
+  init();
+
+
+
+function init() { 
+
+  document.body.appendChild(canvas); 
+
+  canvas.width = canvasWidth;
+
+  canvas.height = canvasHeight;
+
+  flag=setInterval(loop, 30);
+
+  }
+
+
+
+function loop(){ //重点是这个方法了。
+
+  // 清除canvas中的内容 
+
+  context.fillStyle = "rgba(0,0,0,1)";
+
+  context.fillRect(0,0, canvasWidth, canvasHeight);
+
+
+
+   //随机产生一个粒子
+
+   //var particle = new Particle(Math.random()*canvasWidth, 30);
+
+   var particle = new Particle(canvasWidth*.5, canvasHeight*.5);
+
+
+
+    particle.xVel = Math.random()*4-2;//注意这里啦，给粒子一个水平位置变化量 随机的水平位置变化量
+
+   particles.push(particle); //加入数组
+
+
+
+console.info(particles);//测试数组的值 如何保存?
+
+   // 绘制数组中的每一个粒子
+
+   for (i=0; i<particles.length; i++) {
+
+     var particle = particles[i]; 
+
+     particle.render(context); 
+
+
+
+ //// 更新数组中的每一个粒子的 y 坐标
+
+     particle.update(); 
+
+  }
+
+
+
+  if (particles.length>200){//只保留20个粒子
+
+     particles.shift();
+
+    }
+
+
+
+ }
+
+
+
+   //粒子类
+
+  function Particle (xPos, yPos) { 
+
+    this.xPos = xPos;//中心X坐标
+
+    this.yPos = yPos; //中心Y坐标
+
+//加入纵向位置娈化量
+
+//this.yVel = 5;
+
+this.yVel = -5;//负值，所以粒子向上运动
+
+this.xVel = 0;
+
+this.counter = 0;//影响颜色
+
+//增加重力影响
+
+this.gravity = 0.1;
+
+
+
+this.render = function(c){
+
+  // set the color of the fill
+
+  //c.fillStyle = "rgba(255, 255, 255, .5)";
+
+   c.fillStyle = "hsl("+this.counter+", 100%, 50%)";//注意这里啦
+
+  // draw a circle of the required size
+
+  c.beginPath();
+
+  c.arc(this.xPos, this.yPos, 5, 0, Math.PI*2, true);
+
+  // and fill it
+
+  c.fill(); 
+
+   }
+
+   this.update = function(){ //更新自己的方法
+
+ //this.yPos += this.yVel;
+
+this.yVel += this.gravity;
+
+this.yPos += this.yVel;
+
+this.xPos += this.xVel;
+
+this.counter +=5;//加一点点  变颜色
+
+  }
+
+  }
+</script>
+
+</html>
+

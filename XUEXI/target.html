@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>/* example code for userContent.css or any web pages;
+   a red/yellow arrow indicates the target element */  
+
+#foo:target {
+ -webkit-box-shadow: 0.2em 0.2em 0.3em #888;
+    -moz-box-shadow: 0.2em 0.2em 0.3em #888;
+         box-shadow: 0.2em 0.2em 0.3em #888;
+}
+
+#foo:target:before {
+  font:           70% Arial,"Nimbus Sans L",sans-serif !important;
+  content:        "\25ba";  /* ► */
+  color:          red;
+  background:     gold;
+  border:         solid thin;
+  padding-left:   1px;
+  display:        inline-block;
+  margin-right:   0.13em;
+  vertical-align: 20%;
+}</style>
+</head>
+<body>
+<div><a href="#foo">点击</a></div>
+<div id="foo"></div>
+</body>
+</html>

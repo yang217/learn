@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="refresh" content="5; url='http://www.qq.com/'">
+	<!--代表5秒钟后跳转到腾讯网-->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			body {
+  counter-reset: icecream;
+}
+input:checked {
+  counter-increment: icecream;
+}
+.total::after {
+  content: counter(icecream);
+}
+span[id=total]{
+	color: red;
+	text-decoration: underline;
+	text-decoration-style: solid;
+    text-decoration-style: double;
+    text-decoration-style: dotted;
+    text-decoration-style: dashed;
+    text-decoration-style: wavy;
+    text-decoration-skip: ink;
+}
+
+#parent{
+	width: 300px;
+	height: 300px;
+	
+}			
+#son{
+	width: 100px;
+	position: absolute;
+	/*height: 100%;*/
+	height: inherit;
+	background: red;
+	
+}	
+/*当父元素没有定位，子元素地位了，此时子元素height:100%和height:inherit是有区别的*/		
+		</style>
+	</head>
+	<body>
+	<strong>下面中国十大冰淇淋你吃过几个？</strong>
+<ol>
+    <li><input type="checkbox" id="icecream1">1<label for="icecream1">哈根达斯</label></li>
+    <li><input type="checkbox" id="icecream2"><label for="icecream2">和路雪wall's</label></li>
+    <li><input type="checkbox" id="icecream3"><label for="icecream3">八喜冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream4"><label for="icecream4">DQ冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream5"><label for="icecream5">蒙牛冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream6"><label for="icecream6">雀巢冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream7"><label for="icecream7">伊利冰淇淋</label></li>    
+    <li><input type="checkbox" id="icecream8"><label for="icecream8">乐可可冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream9"><label for="icecream9">新城市冰淇淋</label></li>
+    <li><input type="checkbox" id="icecream10"><label for="icecream10">明治MEIJI</label></li>
+</ol>
+你总共选择了 <strong class="total"></strong> 款冰淇淋！
+<span id="total">abcdefghhhhhhhhhhh</span>
+<div id="parent">
+	<div id="son"></div>
+	
+	
+</div>
+<script>
+
+
+	
+	
+	
+	
+</script>
+	</body>
+</html>

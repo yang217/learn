@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+  let arr=[1,3,5,7,9];
+  let res=arr.filter(num=>num>7);
+  console.log(res)
+  const Zell = {
+  firstName: 'Zell',
+  lastName: 'Liew'
+}
+let {firstName,lastName}=Zell;
+console.log(firstName);
+console.log(lastName)
+let course = {
+  name: 'JS Fundamentals for Frontend Developers'
+}
+
+let { name} = course
+
+console.log(name) // undefined
+
+let score=[11,22,33,88,00,99,22];
+let [a,b, ...resta]=score;
+console.log(a);
+console.log(b);
+console.log(resta);
+let q=2;
+let bs=3;
+[q,bs]=[bs,q];
+console.log(q);
+console.log(bs)
+const anObject = {
+  // ES6 way
+  aShorthandMethod (arg1, arg2) {
+  	//alert(1)
+  },
+
+  // ES5 way
+  // aLonghandMethod: function (arg1, arg2) {},
+}
+// anObject.aShorthandMethod();
+// const newPropertyName = 'smile'
+
+// ES6 way.
+// const anObject = {
+//   aProperty: 'a value',
+//   // Dynamic property names!
+//   [newPropertyName]: ':D',
+//   ['bigger ' + newPropertyName]: 'XD',
+// }
+
+// Result
+// {
+//   aProperty: 'a value',
+//   'bigger smile': 'XD'
+//   smile: ':D',
+// }
+const firstNames = 'Zell'
+const lastNames = 'Liew'
+const teamNames = 'unaffiliated'
+
+const theString = ${firstNames} ${lastNames}, ${teamNames}
+
+console.log(theString)
+// Zell Liew, unaffiliated
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     span{
+     	color: #000;
+     	width: 100px;
+     	display: block;
+     }
+	</style>
+</head>
+<body>
+<span id="main">我们我们我们</span>
+<input type="color" name="" id="btn">
+<script type="text/javascript">
+btn.onchange=function(){
+	var main=document.getElementById("main");
+	var color=btn.value;
+	main.style.color=color;
+   console.log(getStyle(main,"width"));
+   main.setAttribute("data-1","123");
+    var b=main.getAttribute("data-1");
+    console.log(b)    
+
+}
+
+function getStyle(obj,attr){//这个求出的属性有单位
+	if(obj.currentStyle){
+		 return obj.currentStyle[attr];
+	}else{
+		return window.getComputedStyle(obj, false)[attr]
+	}
+}
+</script>
+</body>
+</html>

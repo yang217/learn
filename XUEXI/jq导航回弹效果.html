@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://www.21kevin.com/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://www.21kevin.com/js/move.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			.box{width:1100px ;height: 70px;margin: 100px auto;background: hotpink;padding: 0 0 0 200px;box-sizing: border-box;}
+			.nav {float: left;height: 70px;line-height: 55px;position: relative;cursor: pointer;}
+			.nav-now{background: url(images/nav_now_bg.png)center 50px no-repeat;}
+			.nav h1{font-size: 24px;}
+			.box .nav+.nav{margin-left: 50px;}
+			.box .nav span{width: 25px;height: 25px;position: absolute;background: url(images/nav_xiajiantou.png)center no-repeat;top: 15px;right: -35px;}
+			.nav ul{position: absolute;background: hotpink;width: 160px;top: 70px;left: -15px;display: none;}
+			.nav ul li{list-style: none;line-height: normal;padding: 10px 0 10px 20px;cursor: pointer;transition:padding-left 0.5s ease; }
+			.nav ul li:hover{background: yellowgreen url(images/nav_li_bg.png)142px center no-repeat;padding-left:35px ;}
+			.nav:hover{background: url(images/nav_now_bg.png)center 50px no-repeat;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="nav has-nav nav-now">
+				<h1>一级菜单</h1>
+				<span></span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</div>
+			<div class="nav has-nav">
+				<h1>一级菜单</h1>
+				<span></span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</div>
+			<div class="nav has-nav">
+				<h1>一级菜单</h1>
+				<span></span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</div>
+			<div class="nav">
+				<h1>一级菜单</h1>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function(){
+			$(".has-nav").hover(function(){
+				$(this).find('ul').slideDown(600,"elasticOut");
+			},function(){
+				$(this).find('ul').stop().slideUp(100);
+			});
+		$(".nav").click(function(){
+			$(this).addClass("nav-now").siblings().removeClass("nav-now")
+		})
+		})
+	</script>
+</html>

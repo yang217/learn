@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script >
+ // function Person(name, height) {
+ //     if (!(this instanceof Person)) {
+ //             return new Person(name, height);
+ //        }
+ //         this.name = name;
+ //       this.height = height;
+ //     }
+ //    var boy = Person('Keith');
+ //     console.log(boy.name) //'Keith'
+function Person(name){
+	if(!(this instanceof Person)){
+	   		return new 	Person(name);
+	}
+	this.name=name;
+}
+    var boy=Person("jack");
+    console.info(boy.name);
+    console.info("1")
+</script>
+</body>
+</html>

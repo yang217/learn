@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function mydata(data){
+				var data=data.result;
+				console.log(data);
+				var box=document.getElementById("box");
+				box.innerHTML="";
+				for(var i=0;i<data.length;i++){
+					var p=document.createElement("p");
+					var index=i+1
+					p.innerHTML="星期"+index+"----"+data[i].weather;
+					box.appendChild(p)
+					
+				}
+			
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<input type="text" id="ques"/>
+		<input type="button" id="btn"value="查询"/>
+		<div id="box"></div>
+		<script>
+		     var btn=document.getElementById("btn");
+		     btn.onclick=function(){
+		     
+		     var que=document.getElementById("ques").value;
+//			var url="http://api.jisuapi.com/iqa/query?appkey=d13c41feb590002f&question="+
+//			   que+"&format=json&jsoncallback=mydata";
+			var url="http://api.k780.com:88/?app=weather.future" + 
+					"&weaid=" + que + 
+					"&&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4" + 
+					"&format=json&jsoncallback=mydata"
+			var script=document.createElement("script");
+			    script.src=url;
+			    document.getElementsByTagName("head")[0].appendChild(script);	
+		     	
+		     }
+		     //http://api.jisuapi.com/iqa/query?appkey=d13c41feb590002f&question=
+			
+		</script>
+	</body>
+</html>

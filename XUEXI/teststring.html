@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		.con{
+			background: violet;
+		}
+			.box{
+				width: 1000px;
+				height: 40px;
+				background: red;
+				float: left;
+			}
+			.con:after{
+				display: table;
+				content: "";
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="con">
+			<div class="box"></div>
+		</div>
+		<script>
+//		一段字符分别统计英语字母,空格,数字,和特殊字符的个数用js方法
+//aa122345b!cdfosdfosdjj29034@38  difi  sld!2kj@939 df2@d9    sdi2@kfjs  03@40 d
+
+			var str1 = /^[A-Za-z]+$/;
+			var str2=/\s/;
+			var str3=/^[0-9]*$/;
+			var str4=/[~#^$@%&!*()<>:;'"{}【】  ]/gi;
+			var a=0;
+			var b=0;
+			var c=0;
+			var d=0;
+			console.log(typeof(a))
+			var str='aa122345b!cdfosdfosdjj29034@38  difi  sld!2kj@939 df2@d9    sdi2@kfjs  03@40 d'
+			var strArr=str.split('');
+			for(var i=0;i<strArr.length;i++){
+				if(str1.test(strArr[i])){
+					a++
+				}if(str2.test(strArr[i])){
+					if(str2.test(strArr[i])==str2.test(strArr[i-1])){
+						b=b
+					}else{
+					b++;	
+					}
+					
+				}if(str3.test(strArr[i])){
+					c++
+				}if(str4.test(strArr[i])){
+					d++;
+				}
+			}
+			console.log(a,b,c,d)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<input type="text" name="" id="inp">
+<input type="button" name="" id="btn">
+<div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$("#btn").click(function(event) {
+	/* Act on the event */
+    var inp=$("#inp").val();
+	$.get('http://suggest.taobao.com/sug?code=utf-8&q='+inp,function(e){
+		console.log(e)
+	})
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+// var arr1=[[1,2],3,4,9];
+// var b=arr1.concat([1,2,3]);
+// console.log(b)
+
+//使用reduce方法实现递归
+
+const flatten=arr=>arr.reduce((pre,cur)=>pre.concat(Array.isArray(cur)?flatten(cur):cur),[])
+//reduce 方法中给了初始值一个空数组，是为了能顺利执行concat方法
+let result=flatten(arr)
+</script>
+</body>
+</html>

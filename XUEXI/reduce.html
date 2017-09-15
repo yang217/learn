@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+ var arr=["a","c","a"];
+var ccc=arr.reduce(function(all,cur){
+  if(cur in all){
+  	all[cur]++;
+  }else{
+  	all[cur]=1;
+  }
+return all;
+
+},{})
+console.log(ccc)
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+var countedNames = names.reduce(function(allNames, name) { 
+  if (name in allNames) {
+    allNames[name]++;
+  }
+  else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
+console.log(countedNames)
+</script>
+</body>
+</html>

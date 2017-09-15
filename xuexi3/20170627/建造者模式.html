@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var Human=function(param){
+	this.skill=param&&param.skill||'保密';
+	this.hobby=param&&param.hobby||'保密';
+
+}
+Human.prototype={
+getskill:function(){
+	return this.skill;
+},
+gethobby:function(){
+	return this.hobby;
+}
+
+
+}
+var Named=function(name){
+	var that=this;
+	(function(name,that){
+		that.wholename=name;
+		if(name.indexOf('')>-1){
+			that.Firstname=name.slice(0, name.indexOf(' '));
+			that.lastName=name.slice(name.indexOf(' '))
+		}
+
+	})(name,that);
+}
+var Person=function(name,work){
+	var _person=new Human();
+	_person.name=new Named(name);
+	return _person;
+}
+var person=new Person('y a','11');
+console.log(person.name.Firstname);
+console.log(person.skill);
+
+
+</script>
+</body>
+</html>

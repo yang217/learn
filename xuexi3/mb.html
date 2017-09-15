@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		text-align:center;
+		font:bold 33px/33px "宋体";
+		color:#fff;
+	}
+	#time{
+		background-color:green;
+	}
+	#content{
+		background-color:red;
+	}
+  </style>
+ <script>
+ 	n=setInterval("for(n+=7,i=k,P='p.\\n';i-=1/k;P+=P[i%2?(i%2*j-j+n/k^j)&1:2])j=k/i;p.innerHTML=P",k=64)
+ 	alert((![]+[])[!+[]+!+[]+!+[]]+(+[]+({}))[!+[]+!+[]+!+[]])
+			/*
+			功能：获取任意两个时间差
+			参数：（要求传入两个时间的对象）
+				start 开始的时间对象
+				end   结束的时间对象
+		*/
+		function getDiff(start,end){
+			// 剩余多少分钟零多少秒零多少毫秒
+			var sMs = start.getTime(); //起始时间的总毫秒数
+			var eMs = end.getTime(); //结束时间的总毫秒数
+			var temp = eMs-sMs;  //两个时间的总毫秒差值
+			//1s = 1000ms    
+			var ms = temp%1000; //剩余的毫秒数
+			var totalSeconds = parseInt(temp/1000); //转换后的总秒数
+			var ss = totalSeconds%60; //剩余的秒
+			var totalMinutes = parseInt(totalSeconds/60) //剩余的总分钟
+			var mm = totalMinutes%60;  //剩余的分钟
+			var totalHours = parseInt(totalMinutes/60); //表示剩余的总小时
+			if(mm<10){
+				
+				mm='0'+mm;
+			}
+			if(totalHours<10){
+				
+				totalHours='0'+totalHours;
+			}
+			if(ss<10){
+				
+				ss='0'+ss;
+			}
+			
+			return  {ms:ms,ss:ss,mm:mm,totalHours:totalHours};
+             
+		}
+ </script>
+ </head>
+ <body>
+	<button id="st">开始</button>
+	<button id="jiShi">计时</button>
+	<button id="reset">重置</button>
+	<div id="time"></div>
+	<div id="content"></div>
+	<script>
+		/*
+			思路：
+				第一步：获取所要操作的标签（节点对象）
+				第二步：
+					开始(停止)按钮：
+						显示出秒表的状态切换
+						当点击开始按钮的时候，先记录下来开始按钮被点击的那一刻的时间。 sTime
+						开启一个定时器，每隔1毫秒之后再重新获取一下当前的时间。  eTime(现在的时间)
+						eTime-sTime  秒表当前的时间
+						把秒表当前时间放在标签id为time的div标签里
+
+						停止：
+							停止定时器
+					
+					计时按钮：
+						把点击计时那一刻的秒表的时间记录下来并进行排名。
+
+		*/
+		var st = document.getElementById("st");
+		var jiShi = document.getElementById("jiShi");
+		var reset = document.getElementById("reset");
+		var time = document.getElementById("time");
+		var content = document.getElementById("content");
+		var termId; //定时器的标识
+		var strHtml = "";//所有的计时记录
+		var desc = "";  //计时那一刻的秒表时间
+		var count = 0; //排名
+		/*开始和停止*/
+		st.onclick = function(){
+			if(st.innerHTML=="开始"){
+				st.innerHTML = "停止";
+				var sTime = new Date(); 
+				termId = setInterval(function(){
+					var eTime = new Date();
+					var date = getDiff(sTime,eTime);
+					 
+					desc = date.totalHours + ":" + date.mm + ":" + date.ss;
+					time.innerHTML = desc;
+
+				},1);
+			}else{ //停止
+				st.innerHTML = "开始";
+				clearInterval(termId);
+			}
+			
+		}
+
+		/*计时*/
+		jiShi.onclick = function(){
+			count++;
+			strHtml = strHtml + "第" + count + "名" + desc + "<br/>";
+			content.innerHTML = strHtml;
+		}
+
+		/*重置*/
+		reset.onclick = function(){
+			location.reload(true);
+		}
+
+
+		
+
+	</script>
+
+ </body>
+</html>

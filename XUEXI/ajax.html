@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js/jquery.min.js"></script>
+		
+		<script>
+//			var xhr=new XMLHttpRequest();
+//			xhr.onreadystatechange=function(){
+//				if(xhr.readyState==4){
+//					if(xhr.status==200){
+//						return success(xhr.responseText,xhr.status)//回调函数
+//						
+//					}
+//					
+//				}
+//			}
+//			xhr.open("GET","data.json");
+//			xhr.send();
+//			function success(data,st){
+//				console.log(data,st)
+//			}
+//			var fn=x=>x*x;
+//        console.log(fn(3))  
+$.ajax({
+	type:"get",
+	url:"dataa.json",
+//	dataType:"json",
+	async:true,
+	success:function(data){
+		console.log(data)
+	}
+});
+//$.get("dataa.json",function(data){
+//	console.log(data)
+//})
+		</script>
+	</body>
+</html>

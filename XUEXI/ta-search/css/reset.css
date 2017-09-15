@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/*--------------------reset--------------------*/
+html{-webkit-font-smoothing:subpixel-antialiased; -webkit-tap-highlight-color:transparent; }
+/*body{font:1em/1.4 Arial,Microsoft YaHei,STHeiti,STSong,sans-serif; color:#000;}*/
+body,form,input,ul,ol,dl,dd,p,h1,h2,h3,h4,h5,h6,textarea,pre,fieldset{margin:0;}
+ul,ol,input,fieldset,legend{padding:0;}
+ul{list-style-type:none; list-style-position:outside;}
+ul li{float:left;}
+h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight:normal;}
+input,button,textarea,select{font-family:inherit; font-size:inherit; line-height:inherit; color:inherit; box-sizing:border-box;}
+input,button,select,textarea,label{display:inline-block; vertical-align:middle;}
+input,button{outline:none;}
+textarea{overflow:auto; resize:none;}
+table{border-collapse:collapse; border-spacing:0;}
+a{color:#333; text-decoration:none;}
+a:hover{color:#333;}
+a img{border:none;}
+img,video{max-width:100%;}
+iframe{display:block;}
+input[type="text"]::-webkit-input-placeholder{color:#a9a9a9;}
+input[type="text"]:-moz-placeholder{color:#a9a9a9; opacity:1;}
+/*--------------------功能(.f-)--------------------*/
+.f-cb:before,.f-cb:after{content:''; display:table;}.f-cb:after{clear:both;}
+.f-tal{text-align:left;}.f-tac{text-align:center;}.f-tar{text-align:right;}
+.f-fl{float:left;}.f-fr{float:right;}
+.f-b{font-weight:bold;}.f-i{font-style:italic;}.f-s{text-decoration:line-through;}
+.f-db{display:block;}.f-dib{display:inline-block; vertical-align:middle;}
+.f-oh{overflow:hidden;}.f-ohi{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.f-box{box-sizing:border-box;}
+.f-wbk{word-wrap:break-word; word-break:break-all;}
+.clearfix{clear:both; overflow:hidden; height:0; line-height:0;}

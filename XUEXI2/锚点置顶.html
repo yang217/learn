@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     .SecondMenuBody{
+    display: table; 
+    margin: 0 auto; 
+}
+
+	</style>
+</head>
+<body>
+<a name="back-top"></a>
+
+<a href="javascript:void(0)" onclick="window.location.hash='back-top'; window.location = window.location;" class="fixed-btn back-to-top">
+<span class="glyphicon glyphicon-menu-up"></span>
+</a>
+<!-- 传统的水平居中样式 margin: 0 auto; 这个方法要求使用这个样式的dom元素,必须同时定义宽度width. 如果dom元素内容是不固定的,那么就无法定义宽度.所以这个地方就很难弄.
+
+经过多次摸索终于找到解决方案. 经过测试发现兼容性还行. -->
+
+
+
+
+<div id="父元素" >
+
+   <div class="SecondMenuBody">这里的内容永远相对父元素水平居中</div>
+
+</div>
+
+<!-- 原文：http://blog.csdn.net/phker/article/details/42425305 -->
+</body>
+</html>

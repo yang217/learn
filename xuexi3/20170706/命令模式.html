@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="title"></div>
+		<script>
+			var viewCommand=(function(){
+				var tpl={
+					product:[
+					 '<div>',
+					 '<img src="{#src#}"/>',
+					 '<p>{#text#}</p>',
+					 '</div>'
+					].join(''),
+					title:[
+					 '<div>',
+					 '<h2>{#title}</h2>',
+					 '<p>{#tips}</p>'
+					].join('')
+				};
+				var html='';
+				function formateString(str,obj){
+					return str.replace(/\{#(\w+)#}/g,function(match,key){
+						return obj[key];
+					})
+				}
+				var Action={
+					create:function(data,view){
+						if(data.length){
+							for(var i=0;i<data.length;i++){
+								html+=formateString(tpl[view],data[i])
+							}
+						}else{
+							html+=formateString(tpl[view],data);
+						}
+					},
+					display:function(container,data,view){
+						if(data){
+							this.create(data,view)
+						}
+				  document.getElementById(container).innerHTML=html;
+					}
+					
+						
+						
+		
+				
+				}
+				return function excute(msg){msg.parma=Object.prototype.toString.call(msg.parma)==="[object Array]"?msg.parma:[msg.parma];Action[msg.command].apply(Action,msg.parma);	}
+			})();
+			
+			var productData=[
+			  {
+			  	text:'11111'
+			  },
+			  {
+			  	text:'1112211'
+			  }
+			],
+			titleData={
+				title:'2snnkk',
+				tips:'2nl'
+			}
+			
+			viewCommand({
+				command:'display',
+				parma:['title',titleData,'title']			})
+		</script>
+	</body>
+</html>

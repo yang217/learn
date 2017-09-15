@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+var a=window.btoa(window.encodeURIComponent("mjmaaaa"));
+console.log(a)
+var b=window.atob(window.decodeURIComponent(a))
+console.log(b)
+
+
+
+
+
+
+
+</script>
+<script>  
+  
+//    for(let i = 0;i<10;i++){  
+//        console.log(i)  
+//    }  
+//    {  
+//        var a = 9;  
+//    }  
+//    console.log(a);  
+  
+//1  
+    //base64编码  bWptYWFhYQ==  
+    console.log(window.btoa("mjmaaaa"));  
+    //base64解码   mjmaaaa  
+    console.log(window.atob("bWptYWFhYQ=="));  
+    //对于有中文字符的  不能用上面上面的 编解码方法  
+//2  
+    let str = "我爱中国";  
+   // console.log(window.btoa(str));  
+    //Uncaught DOMException: Failed to execute 'btoa' on  
+    // 'Window': The string to be encoded contains characters outside of the Latin1 range.  
+  
+    //window.encodeURIComponent和window.decodeURIComponent  
+    //编码  
+    console.log(window.btoa(window.encodeURIComponent(str)));//JUU2JTg4JTkxJUU3JTg4JUIxJUU0JUI4JUFEJUU1JTlCJUJE  
+    console.log(window.btoa(window.encodeURIComponent("mjmaaaa")));//bWptYWFhYQ==   与上面结果一致  
+    //解码  
+    console.log(window.decodeURIComponent(window.atob("JUU2JTg4JTkxJUU3JTg4JUIxJUU0JUI4JUFEJUU1JTlCJUJE")));//我爱中国  
+//3  
+      
+  
+</script>  
+</body>
+</html>

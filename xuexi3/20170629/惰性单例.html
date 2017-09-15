@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <script>
+        var lazysing=(function(){
+         var _instance=null;
+         function sing(){
+             return {name:'yang'}
+         }
+         return function(){
+             console.log(!_instance)
+             if(!_instance){//负负得正
+                 _instance=sing();
+             }
+             return _instance;
+         }
+
+        })()
+     console.log(lazysing().name)   
+    </script>
+    </body>
+</html>

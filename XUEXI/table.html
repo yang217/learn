@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+body{overflow-y:scroll;}
+
+div {
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+table {
+    padding-right: 100px;
+}
+th,
+td {
+    width: 100px;
+}
+/*
+tr th:last-child,
+tr td:last-child {
+    background: #fff;
+    color: red;
+    position: absolute;
+    right: 0;
+}
+*/
+
+.gd{
+    background: #fff;
+    color: red;
+    position: absolute;
+    right: 0;
+}
+</style>
+</head>
+<body>
+<div id="box">
+    <table>
+        <thead>
+            <tr>
+                <th>111111111111</th>
+                <th>222222222222</th>
+                <th>333333333333</th>
+                <th>444444444444</th>
+                <th>555555555555</th>
+                <th>111111111111</th>
+                <th>222222222222</th>
+                <th>333333333333</th>
+                <th>444444444444</th>
+                <th>555555555555</th>
+                <th>111111111111</th>
+                <th>222222222222</th>
+                <th>333333333333</th>
+                <th>444444444444</th>
+                <th>555555555555</th>
+                <th>111111111111</th>
+                <th>222222222222</th>
+                <th>333333333333</th>
+                <th>444444444444</th>
+                <th>555555555555</th>
+                <th class="gd fixed ie">操作列</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10</td>
+                <td>20</td>
+                <td>30</td>
+                <td>40</td>
+                <td>50</td>
+                <td>10</td>
+                <td>20</td>
+                <td>30</td>
+                <td>40</td>
+                <td>50</td>
+                <td>10</td>
+                <td>20</td>
+                <td>30</td>
+                <td>40</td>
+                <td>50</td>
+                <td>10</td>
+                <td>20</td>
+                <td>30</td>
+                <td>40</td>
+                <td>50</td>
+                <td class="gd fixed ie">操作</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+$("#box").scroll(function() {
+    $("tr th:last-child,tr td:last-child").css("right", - $("#box").scrollLeft() + "px");
+});
+</script>
+</body>
+</html>

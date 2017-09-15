@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" />11
+		<div>111</div>
+		<script>
+			
+				$("div").click(function(){
+				
+				if(!$("input").is(":checked")){
+				alert(1)
+			}
+			
+			})
+		</script>
+		<style>
+			
+		
+			
+			/*方法一：
+if ($("#checkbox-id").get(0).checked) {
+    // do something
+}
+
+方法二：
+if($('#checkbox-id').is(':checked')) {
+    // do something
+}
+
+方法三：
+if ($('#checkbox-id').attr('checked')) {
+    // do something
+}
+
+ 
+
+ function checkInfo(){
+  $("input[name='org3.otherValues']").each(
+   function(){
+   if($(this).get(0).checked){
+   return true;
+    }
+   });
+  var org3_ids=$("#org3_ids").val();
+  if(org3_ids!=''){
+   return true;
+  }
+  
+  alertMsg.warn("请选择接收人！");
+  return false;
+ }*/
+
+			
+			
+		</style>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="app">Title</title>
+    <style type="text/css">
+        #wrap{
+            width:200px;
+            height:40px;
+            border:thin solid red;
+        }
+        #content{
+            transition: all 2s;
+            height:20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+     <input type="text" name="" id="inp">
+     <div>
+     <img src="">
+     </div>
+     <div>
+     <img src="">
+     </div>
+</div>
+<script type="text/javascript">
+   var inp=document.getElementById("inp");
+       inp.onkeydown=function(){
+          this.type!="password"&&this.setAttribute("type","password");
+       }
+var str = document.body.innerHTML
+console.log(str.match(/<img.*?>/ig));
+var title=document.getElementById("app")
+     console.log(title)
+setInterval(function(){
+     title.innerHTML=new Date()
+},1000)
+//*表示匹配0-无穷
+//+表示匹配1-无穷
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box1{
+				width: 300px;
+				height: 700px;
+				border: 1px red solid;
+			}
+			#box2{
+				width: 200px;
+				height: 500px;
+				margin: 300px;
+				border: 1px #000 solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="box2">			
+				<img src="gray.svg" id="img"/>
+				<input name="yang" data-id="zi"/>
+			</div>
+			
+			
+			
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script>
+		 var winCh=document.documentElement.clientWidth||document.body.clientWidth;
+		  alert(winCh)
+			var h=$("#box2").outerHeight();
+			var h1=$("#box2").outerHeight(true)//包括外边距，即margin
+			console.log(h);
+			console.log(h1)
+			var img=document.getElementById("img");
+			var src=img.getAttribute("src");
+			var id=img.getAttribute("id");
+			console.log(src);
+			console.log(id);
+		    var jqsrc=$("img").attr("src");
+		    console.log(jqsrc,"jq")
+		    var name=$("input").prop("name");
+		    console.log(name)	
+		    var dataid=$("input").attr("data-id");
+		    console.log(dataid)
+		    var p=$("input").prop("data-id");//undefind
+		    console.log(p)
+		</script>
+	</body>
+</html>

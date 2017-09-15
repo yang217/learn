@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function animal(type) {
+            this.type = type
+            this.behavior = function() {
+                console.log(this.type + " is running")
+            }
+        }
+        animal.prototype.action = function() {
+            console.log("running")
+        }
+
+        function cat(name, type) {
+            this.name = name
+            animal.call(this, type)
+        }
+
+        cat.prototype = new animal();
+        console.log(new cat('wsscat', 'cute'));
+        (new cat('wsscat')).action() //running
+		var a=function(){
+			
+		}
+		a.prototype.b=function(){
+			console.log("b")
+		}
+		var c=function(){
+			
+		}
+		c.prototype=new a();
+		new c().b()
+		</script>
+	</body>
+</html>

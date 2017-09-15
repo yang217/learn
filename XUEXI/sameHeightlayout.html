@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		     *{
+		     	margin: 0;
+		     	padding: 0;
+		     }
+			.box{
+				width: 800px;
+				margin: 0 auto;
+				overflow: hidden;
+				border: 1px goldenrod solid;
+			}
+			.left{
+				width: 300px;
+				float: left;
+			   padding-bottom: 300px;
+			   margin-bottom: -300px;
+			   box-sizing: border-box;
+			   border-right: 2px #0000FF dotted;
+			   word-wrap: break-word;
+			   /*没有接到hello后面*/
+			  word-break: break-all;
+			  /*接到了hello后面，这点是区别*/
+			   
+			}
+			.right{
+				width:500px;
+				float: left;
+				padding-bottom: 300px;
+				margin-bottom: -300px;
+				word-wrap: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="left">
+				hello worldhelloworldhelloworldhelloworldhellowoldhellohelloworldhelloworldhelloworldhellowoldhello
+			</div>
+			<div class="right">
+			helloworldhelloworldhelloworldhellowoldhello worldhello world hello worldhello worldhello world
+			
+			
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

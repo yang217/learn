@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>用户名：<input type="text" id="usename"></p>
+		<p>密码：<input type="password" id="pwd"></p>
+		<button type="button" id="btn">点击</button>
+		<div id="box">
+			<p></p>
+			<p></p>
+			<h1 id="dt"></h1>
+		</div>
+		<script>
+		 var btn=document.getElementById("btn");
+		 var box=document.getElementById("box");
+		 var plis=box.getElementsByTagName("p")
+		     btn.onclick=function(){
+		     	
+		     	localStorage.removeItem("mes")
+		     	var useval=document.getElementById("usename").value;
+		     	var pwdval=document.getElementById("pwd").value;
+		     	var data={
+		     		name:useval,
+		     		pwd: pwdval
+		     	}
+		     
+		     data=JSON.stringify(data)
+			 localStorage.setItem("mes",data)
+			 var mydata=localStorage.getItem("mes");
+			     mydataobj=JSON.parse(mydata);
+			     plis[0].innerHTML="姓名"+mydataobj.name;
+			     plis[1].innerHTML="密码"+mydataobj.pwd;
+			 
+			}
+		    
+		     var dt=document.getElementById("dt");
+		     
+		     setInterval(function(){
+		     	var date=new Date();
+		     	dt.innerHTML=date;
+		     },1000)
+		    function localstroage(o,val){
+		    	    var data={} ;
+		    	    //var data={o:val}或者data.o=val 如果这样o就是真实的值，无法代表函数的变量了
+		    	    data[o]=val;
+		    	    data=JSON.stringify(data);
+		    	    localStorage.str=data;
+		    	    
+		    }
+		    localstroage("name","杨豪");
+		    console.log(localStorage.getItem("str"))
+		   //localStorage 是永久储存  储存的是json形式的
+		   //sessionStorage 浏览器关闭就消失
+		</script>
+	</body>
+</html>

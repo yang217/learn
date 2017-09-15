@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var m = {
+				"x": 1
+			};
+
+			function foo(y) {
+				alert(this.x + y);
+			}
+			foo.apply(m, [5]);
+			foo.call(m, 5);
+			var foo1 = foo.bind(m, 5);
+			foo1();
+			//apply 和call是立即调用了，bind是自定义什么时候调用；
+		</script>
+	</body>
+
+</html>

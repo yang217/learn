@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<input type="" name="" id="div">
+<button type="button" id="btn">提交</button>
+<script type="text/javascript">
+  // var res=/^((?!\d+$)(?![a-zA-Z]+$)[a-zA-Z\d@#$%^&_+].{5,19})+$/
+var res1=/[0-9]+/;
+var res2=/[a-z]+/;
+var res3=/[A-Z]/;
+var res4=/[~!@#$%^&*()+=|{}':;]{1,}/
+
+
+  $('#btn').click(function(event) {
+  	 var aaa=$("#div").val();
+  	 var flag1=res1.test(aaa);
+  	 var flag2=res2.test(aaa);
+  	 var flag3=res3.test(aaa);
+  	 var flag4=res4.test(aaa);
+  	 console.log(flag1,flag2,flag3,flag4)
+  });
+</script>
+</body>
+</html>

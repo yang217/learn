@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			var a=1;//浅拷贝
+//			var b=a;
+//		        b=5;
+//			console.log(a);
+//			console.log(b)//基础数据类型，a不会随着b变
+//			var c={};//引用数据类型，c随着d变了
+//			var d=c;
+//			    d.name="jack";
+//			    console.log(c);
+//			    console.log(d);
+
+
+			var arr=["a","b","c"];//深拷贝
+			var arrcopy=arr.slice(0);
+			console.log(arr);
+			arrcopy[0]="n"
+			console.log(arrcopy)
+			var brr=["d","e","f"];
+			    brrcopy=brr.concat();
+			    brrcopy[0]="h";
+			    console.log(brrcopy)
+			    
+			    
+	//深拷贝的函数
+	var obj = {
+            name: 'wsscat',
+            age: 0
+        }
+        var deepCopy = function(source) {
+            var result = {};
+            for(var key in source) {
+            	console.log(typeof source[key])
+                if(typeof source[key] === 'object') {//如果里面包裹对象，继续执行这个
+                    result[key] = deepCopy(source[key])
+                } else {
+                    result[key] = source[key]
+                }
+            }
+            return result;
+        }
+        var obj3 = deepCopy(obj)
+        obj.name = 'autumns';
+        console.log(obj);//Object {name: "autumns", age: 0}
+        console.log(obj3);//Object {name: "wsscat", age: 0}
+        function copyobj(obj){
+        	var rel={};
+        	if(typeof obj[key]==="object"){
+        		rel[key]=copyobj(obj[key])
+        	}else{
+        		obj[key]=rel[key]
+        	}
+        	return rel;
+        }
+		</script>
+		
+	</body>
+</html>

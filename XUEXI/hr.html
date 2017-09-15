@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     div{
+     	width: 500px;
+     
+     }
+     img{
+     	width: 100px;
+     	height: 100px;
+     	float: left;
+     	position: relative;top: 0;
+     }
+     #box{
+     	width: 540px;
+     	height: 320px;
+     	background: url(img/work_list_05.jpg) no-repeat;
+     	border: 1px #000 solid;
+     	background-position: 20% 20%;
+     }
+	</style>
+</head>
+<body>
+	<div id="box">
+	</div>
+<div>
+<img src="img/work_list_07.jpg">
+杨豪杨豪杨豪杨豪杨豪杨豪杨豪杨豪杨豪杨豪
+</div>
+<input type="file" id="btn"/>
+<img class="item">
+<img class="item">
+<img class="item">
+<img class="item">
+<script>
+function show(source){
+	var file=source.files[0];
+	console.log(file)
+	if(window.FileReader){
+		var fr=new FileReader();
+		fr.onloadend=function(e){
+			console.log(file.name)
+			console.log(e)
+			var imgs=document.getElementsByClassName("item");
+			for(let i=0;i<imgs.length;i++){
+				
+				if(!imgs[i].src){
+					imgs[i].src=e.target.result;
+					break;
+				}else{
+					
+				}
+			}
+		}
+		fr.readAsDataURL(file)
+	}
+}
+	document.getElementById("btn").onchange=function(){
+		show(this)
+	}
+	
+	
+</script>
+
+</body>
+</html>

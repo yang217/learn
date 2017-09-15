@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style type="text/css"> 
+        .condiv{
+            position: relative;
+            display: inline-block;
+        }
+        .del{
+            position: absolute;
+            top: 0px; 
+            right: 0px;
+            border-radius: 50%;
+            color: #61686F;
+            cursor: pointer;
+            text-align: center;
+            width: 15px;
+            height: 15px;
+            line-height: 15px;
+        }
+        .del:hover{
+             color: #fff;
+             background-color: #f00;
+        }
+        .dropbox{
+            min-width:300px;
+            min-height:100px;
+            border:3px dashed silver;
+            font-size:20px;
+            text-align: center;
+            line-height: 100px;
+            color: #ccc;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+	<div name="image" id="dropbox" class="dropbox">将图片拖放到此处</div>  
+
+	<div id="preview"><img src="img/work_list_07.jpg"></div>
+
+</body>
+<script type="text/javascript">	
+var dropbox = document.getElementById("dropbox");
+document.addEventListener("dragenter", function(e){  
+    dropbox.style.borderColor = 'gray';  
+    console.log("进入document");
+}, false);  
+document.addEventListener("dragleave", function(e){  
+    dropbox.style.borderColor = 'silver';  
+    console.log("离开document");
+}, false);  
+
+
+dropbox.addEventListener("dragleave", function(e){  
+    dropbox.style.backgroundColor = 'transparent';  
+    console.log("离开");
+}, false);  
+dropbox.addEventListener("dragenter", function(e){  
+	dropbox.style.borderColor = 'gray';  
+    dropbox.style.backgroundColor = 'white';  
+    e.stopPropagation();  
+    e.preventDefault();  
+    console.log("进入");
+}, false);  
+
+//当被拖拽元素在目标元素上移动时触发
+dropbox.addEventListener("dragover", function(e){  
+    e.stopPropagation();  
+    e.preventDefault();  
+    console.log("移动");
+}, false);  
+
+//当放置被拖数据时，会发生 drop 事件。
+dropbox.addEventListener("drop", function(e){  
+    e.stopPropagation();  
+    e.preventDefault();  
+    console.log("松开");
+    handleFiles(e.dataTransfer.files);  
+}, false);  
+
+
+var ofile={};
+function handleFiles(files) {  
+	var file,key,img,div,span,reader; 
+	var preview =document.getElementById("preview");
+    for (var i = 0; i < files.length; i++) {  
+    	file = files[i];
+        if (!file.type.match(/image*/)) {  
+		    continue;  
+		}  
+	   
+        key = new Date().getTime()+i;
+        ofile[key] = file;
+
+		img = document.createElement("img");  
+		img.file = file;  
+
+        div = document.createElement("div");
+        div.className="condiv";
+        div.appendChild(img);
+
+        span =document.createElement("span");
+        span.innerHTML = "x";
+        span.className = "del";
+        span.setAttribute("key",key)
+        div.appendChild(span);
+
+		preview.appendChild(div);  
+
+		reader = new FileReader();  
+		reader.onload = (function(aImg) { 
+                            return function(e) { 
+                                aImg.src = e.target.result; 
+                            }; 
+                        })(img);  
+		reader.readAsDataURL(file);  
+	}  
+}  
+
+preview.addEventListener('click',function(e){
+    var target = e.target;
+    if(target.nodeName==="SPAN"){
+      var key = target.getAttribute("key");
+      target.parentNode.parentNode.removeChild(target.parentNode);
+      delete ofile[key];
+    }
+},false);
+</script>
+</html>

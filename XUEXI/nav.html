@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+	<style type="text/less">
+	 .box(@w:800px,@h:100px,@c:#ccc){
+	 	width:@w;
+	 	height:@h ;
+	 	background: @c;
+	 	margin: 0 auto;
+	 }
+   #box{
+   	.box()
+   } 
+   @lineheght:100px;
+   ul{
+   	 list-style: none;
+   	 li{
+   	 	float: left;
+   	 	padding: 0 10%;
+   	 	line-height: @lineheght;
+   	 }
+   } 
+   ::-webkit-input-placeholder {
+  color: red;
+}
+:-moz-placeholder {
+  color: red;
+}
+::-moz-placeholder{
+color: red;
+}
+:-ms-input-placeholder {
+  color: red;
+}
+	</style>
+</head>
+
+<body>
+	<div id="box">
+		<ul>
+		<li>新闻</li>
+		<li>体育</li>
+		<li>电影</li>
+		<li>音乐</li>
+	</ul>
+	</div>
+	<input type="text" placeholder="yang">
+	
+<script src="js/less.js"></script>
+</body>
+</html>

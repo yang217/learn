@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/jquery.lazyload.min.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			li{
+				width: 25%;
+				float: left;
+				box-sizing: border-box;
+				padding: 0 1%;
+			}
+			img{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="contain">
+			<ul>
+			<li><img src="img/work_list_03.jpg"/></li>
+			<li><img src="img/work_list_05.jpg"/></li>
+			<li><img src="img/work_list_12.jpg"/></li>
+			<li><img src="img/work_list_13.jpg"/></li>
+			
+			</ul>
+			
+			
+		</div>
+		<script type="text/javascript"> 
+          $("img").lazyload();  
+        </script> 
+	</body>
+</html>

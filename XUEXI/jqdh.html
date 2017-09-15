@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+       div{
+      
+       	height: 500px;
+       	width: 0;
+       	background: red;
+       	position: absolute;
+       	right: 0;
+       }
+/*让right等于0则动画先从右边出现*/
+	</style>
+</head>
+<body>
+<div>
+
+
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+ $("div").stop(true).animate({
+ 	"width": "500px",
+ 	
+ 	/* stuff to do after animation is complete */
+ }).delay("200s");
+
+</script>
+</body>
+</html>

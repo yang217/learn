@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onunload="CloseOpen(event)">
+<script>   
+	function CloseOpen(event) { 
+		if(event.clientX<=0 && event.clientY<0) { 
+			alert("关闭"); 
+		} 
+		else 
+		{ 
+			alert("刷新或离开"); 
+		} 
+	} 
+
+
+</script>
+</body>
+</html>

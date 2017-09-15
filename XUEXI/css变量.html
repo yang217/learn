@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style>
+   :root { --color: blue; color: var(--color)}
+  div { --color: green; }
+  #alert { --color: red; }
+/*  * { color: var(--color); }*/
+  /*用var函数把变量展示出来*/
+  @supports ( (--a: 0)) {
+  /* supported */
+ /*支持写在这个页面*/
+  
+}
+
+@supports ( not (--a: 0)) {
+  /* not supported */
+  /*不支持写在这个页面*/
+}
+</style>
+
+<p>蓝色</p>
+<div>绿色</div>
+<div id="alert">红色</div>
+</body>
+</html>

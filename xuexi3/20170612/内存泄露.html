@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function a(count){
+				for(var i=0;i<count;i++){
+					console.log(i)
+				}
+				var i;
+				console.log('dd',i)
+			}
+			a(5)
+			function people(name){
+				this.getname=function(){
+					return name
+				};
+				this.setname=function(value){
+					return name=value;
+				}
+			}
+			var person=new people('jack');
+//			 person.getname()
+			var dd=person.setname('lala');
+			console.log(dd)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#box{
+			width: 500px;
+			height: 500px;
+			border: 1px #000000 solid;
+		}
+      strong+strong{
+      	color: red
+      }
+      strong[title|="css"]{
+      	color: blue
+      }
+       strong.green{
+       	background: green
+       }
+       .null{
+       	width: 100px;
+       	height: 100px;
+       	border:1px red solid;
+       }
+       .null:before{
+       	content: "1"
+       }
+       .null:after{
+       	content: "3"
+       }
+	</style>
+</head>
+<body>
+	<p>12345</p>
+
+	<strong title="css-">222</strong>
+	<strong>222</strong>
+	<strong class="green">222</strong>
+    <div class="null">
+    2
+    </div>
+
+	<div id="box"  contenteditable="true"></div>
+	<input type="button" value="点击我" id="btn"/>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$("#btn").click(function(){
+			$("#box").data("yh","hello world");
+			var a=$("#box").data("yh");
+			$("#box").html(a)
+
+		})
+
+
+	</script>
+	<script contenteditable="true"></script>
+</body>
+</html>

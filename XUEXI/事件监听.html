@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box1{
+				width: 500px;
+				height: 500px;
+				border: 1px #000 solid;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				border: 1px red solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+			<div id="box2">
+				
+			</div>
+		</div>
+		<script>
+			box1.addEventListener("click",function(){
+				alert(1)
+			},true)
+			box2.addEventListener("click",function(){
+				alert(2)
+			})
+			//true是按照捕获。就是先执行大的，后执行小的，fasle是冒泡。先执行里面的，后执行外面的
+			function addEvent(obj, eventName, func) {
+				
+				if(obj.addEventListener) {
+					
+					obj.addEventListener(eventName, func, false);
+					
+				} else if(obj.attachEvent) {
+					
+					obj.attachEvent("on" + eventName, func);
+				
+				}
+				
+			}
+			addEvent(box2,"mouseover",function(){
+				alert("hello world")
+			})
+		</script>
+	</body>
+</html>

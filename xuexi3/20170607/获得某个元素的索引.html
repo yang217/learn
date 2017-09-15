@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<script src="../js/jquery.min.js"></script>
+		<script>
+		$('ul li').each(function(index){
+			console.log(index)
+			if(index%2==0){
+				console.log(index)
+				$('ul li').eq(index).css('color','red')
+			}
+		})
+			
+		</script>
+	</body>
+</html>

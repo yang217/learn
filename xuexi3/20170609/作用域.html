@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		  var module1 = (function() {
+        var count = 0;
+        var m1 = function() {
+            return count;
+        };
+        return {
+            m1: m1
+        };
+    })();
+    // 如果现在想给 module1 添加新的方法
+    module1 = (function(mod) {
+        mod.m2 = function() {
+            return count;
+        }
+        return mod;
+    })(module1);
+    console.log(module1.m1());//可以访问到 count
+//     console.log(module1.m2());
+		</script>
+	</body>
+</html>

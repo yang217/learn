@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <script>
+        class Fruit {
+	constructor(name){
+		this.name = name;
+	}
+	showName(){
+		return '父类的'+this.name;
+	}
+}
+class Apple extends Fruit {
+	constructor(name){
+		super(name);
+	}
+	show(){
+		return super.showName();
+	}
+	
+}
+var apple = new Apple('红富士');
+console.log(apple.show());
+    </script>
+    </body>
+</html>

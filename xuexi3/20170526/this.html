@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div>111s</div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+// function Counter() {
+//   this.num = 0;
+//   var that=this;
+//   this.timer = setInterval(function add() {
+//     that.num++;
+//     console.log(that.num);
+//   }, 1000);
+// }
+// var a=new Counter()
+function person(){
+
+	this.name="jack";
+	this.p=function(e){
+		// e.preventDefault()
+		console.log(this)
+	}
+}
+var a=new person();
+    a.p();
+ var d=a.p;
+ d()
+ var c=2;
+ c++
+console.log(c)
+if(c==5){
+	$("div").click(function(event) {
+		console.log(c)
+		c++
+	});
+}
+</script>
+</body>
+</html>

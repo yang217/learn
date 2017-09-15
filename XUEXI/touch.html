@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		  #box{
+		  	width: 800px;
+		  	height: 400px;
+		  	margin: 0 auto;
+		  	border: 1px red solid;
+		  	position: absolute;
+		  }	
+			
+		</style>
+	</head>
+	<body>
+		<a href=""></a>
+		<div id="box">
+			<!--<svg xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="100" style="fill:red;" />
+</svg>-->
+<svg xmlns="http://www.w3.org/2000/svg">
+	<rect width="300" height="100" style="fill:red;" />
+</svg>
+		</div>
+		
+		<script src="js/touch.js"></script>
+		<script>
+		    var box=document.getElementById("box");
+			touches(box,"swipeleft",function(){
+				
+				box.style.left=box.offsetWidth+"px";
+			})
+	//obj:ID对象
+	//direction:swipeleft
+			
+			
+		</script>
+	</body>
+</html>

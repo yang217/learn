@@ -1,0 +1,24 @@
+.mod_nav {
+  background: #fff; }
+  .mod_nav .item {
+    width: 100vw;
+    height: 100vw; }
+    .mod_nav .item .span1 {
+      font-size: 15px; }
+    .mod_nav .item .span2 {
+      font-size: 4vw; }
+
+html {
+  font-size: 20vw; }
+  @media screen and (max-width: 320px) {
+    html {
+      font-size: 64px; } }
+  @media screen and (min-width: 540px) {
+    html {
+      font-size: 108px; } }
+
+body {
+  max-width: 540px;
+  min-width: 320px; }
+
+/*# sourceMappingURL=vw.css.map */

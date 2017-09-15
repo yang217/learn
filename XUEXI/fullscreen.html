@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+      #videoElement{
+      	
+      }
+	</style>
+</head>
+<body>
+ <video id="videoElement" width="300px" height="300px" controls="">
+
+ </video>
+<script type="text/javascript">
+function launchFullscreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.msRequestFullscreen){
+    element.msRequestFullscreen();
+  } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullScreen();
+  }
+}
+
+launchFullscreen(document.documentElement);
+launchFullscreen(document.getElementById("videoElement"));
+</script>
+</body>
+</html>

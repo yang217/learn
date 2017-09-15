@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+var person={name:'jack'};
+    person.name='tim';
+    console.log(person.name)
+ var peo={};
+ Object.defineProperty(peo,'name',{
+ 	writable:true,//是否可修改
+ 	configurable:false,//是否可以删除一类的操作
+ 	value:'tom'
+ })
+ peo.name='jjj'
+ console.log(peo.name)
+
+ var ddd=Object.getOwnPropertyDescriptor(peo,'name');
+ console.log(ddd)
+</script>
+</body>
+</html>

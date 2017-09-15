@@ -1,0 +1,9 @@
+div:before{
+	width: 100px;
+	height: 100px;
+	background: red;
+	background: green;
+	background: pink;
+	background: orange;
+	content: "123"
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+(function(window, undefined) {
+	function jQuery(selector){
+		return new jQuery.fn.init(selector)
+	}
+	jQuery.fn = jQuery.prototype = {
+		init: function () {
+
+		}
+	}
+	jQuery.fn.init.prototype = jQuery.fn;
+	window.jQuery = window.$ = jQuery;
+})(window)
+
+
+
+</script>
+
+</body>
+</html>

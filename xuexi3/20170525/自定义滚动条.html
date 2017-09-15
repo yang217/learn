@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>scroll</title>
+        <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://www.jq22.com/demo/jQueryNicescroll20160214/js/jquery.nicescroll.js"></script>
+        <style>
+                *{margin: 0; padding: 0;}
+                body{
+                        padding-top: 50px;
+                }
+                #box{
+                        width: 500px;
+                        height: 300px;
+                        margin: 0 auto;
+                        border: 1px solid red;
+                        overflow-y: auto;
+                }
+                li{
+                        height: 50px;
+                        line-height: 50px;
+                        font-size: 24px;
+                        border-bottom: 1px solid #000;
+                        padding-left: 50px;
+                }
+                li:last-child{
+                        border-bottom:none;
+                }
+        </style>
+</head>
+<body>
+        <div id="box">
+                <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                </ul>
+        </div>
+        <script        >
+                $('#box').niceScroll({
+                        cursorcolor: "#CE6A81",// 光标颜色
+                        cursoropacitymax: 0.7, // 不透明度，范围从1到0
+                        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                        cursorwidth: "5px", //像素光标的宽度
+                        cursorborder: "0", //         游标边框css定义
+                        cursorborderradius: "5px",//以像素为光标边界半径
+                        autohidemode: true, //是否隐藏滚动条
+                        background:'#819FF2' //背景颜色
+                });
+        </script>
+</body>
+</html>

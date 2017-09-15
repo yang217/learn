@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>搜索功能</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <style type="text/css">
+    #container{width: 500px;height:150px; position:absolute;left:50%;top: 40%;}
+    #content{width: 300px;height:150px;float:left;position:relative;left:20%;top:-20px;}
+    input{border:0;width:290px;height:30px;font-size:16px;line-height:30px;outline:none;}
+    .search-btn label{margin-top:10px;}   
+    .addbg{width:300px;background:#f2f2f2;cursor:default;}   
+    .first{border:1px solid #c9c9c9;width:300px;border-radius:2px;}   
+    #append{width:300px;height:auto;border:1px solid #c9c9c9;border-top:0px;display:none;border-radius:2px;}   
+    .item{width:300px;height:30px;line-height:30px;}   
+</style>
+</head>
+<body>
+    <div id="container">
+    	<div class="search-btn" style="padding-top:10px;">搜索选择框:</div>
+       <div id="content">
+           <div class="first"><input id="kw" onKeyup="getContent(this);" placeholder="请输入银行名" /></div>
+           <div id="append"></div>
+       </div>
+   </div>
+   <script type="text/javascript">
+    var data = [
+    "中国农业银行",
+    "中国建设银行",
+    "中国民生银行",
+    "中国徽商银行",
+    "中国银行",
+    "农村商业银行",
+    "中国工商银行",
+    "交通银行",
+    "浦发银行",
+    "中国光大银行"
+    ];
+    $(document).ready(function(){
+        $(document).keydown(function(e){
+            e = e || window.event;
+            var keycode = e.which ? e.which : e.keyCode; //兼容性写法
+
+            if(keycode == 38){
+                if(jQuery.trim($("#append").html())==""){
+                    return;
+                }
+                movePrev();
+            }else if(keycode == 40){
+                if(jQuery.trim($("#append").html())==""){
+                    return;
+                }  
+            }else if(keycode == 13){
+                dojob();
+            }
+        });
+
+        var dojob = function(){
+            $("#kw").blur();
+            var value = $(".addbg").text();
+            $("#kw").val(value);
+            $("#append").hide().html("");
+        }
+    });
+    function getContent(obj){
+        var kw = jQuery.trim($(obj).val());
+        if(kw == ""){
+            $("#append").hide().html("");
+            return false;
+        }
+        var html = "";
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].indexOf(kw) >= 0) {
+                html = html + "<div class='item' onmouseenter='getFocus(this)' onClick='getCon(this);'>" + data[i] + "</div>"
+            }
+        }
+        if(html != ""){
+            $("#append").show().html(html);
+        }else{
+            $("#append").hide().html("");
+        }
+    }
+    function getFocus(obj){
+        $(".item").removeClass("addbg");
+        $(obj).addClass("addbg");
+    }
+    function getCon(obj){
+        var value = $(obj).text();
+        $("#kw").val(value);
+        $("#append").hide().html("");
+    }
+</script>
+</body>
+</html>

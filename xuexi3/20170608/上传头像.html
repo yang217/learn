@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file" onchange="upload(this)"/>
+		<img id="img" />
+		<script>
+			function upload(obj){
+				var len=obj.files.length;
+				console.log(len)
+				for(var i=0;i<len;i++){
+					var url=window.URL.createObjectURL(obj.files[i]);
+					img.src=url
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>negative margin 之1px圆角按钮</title>
+    <style>
+*{margin: 0; padding: 0;list-style:none;font-size: 14px;}
+a{text-decoration: none;}
+.goback{clear:both;height:30px;line-height:30px;text-align: center;}
+
+.btn{float:left;margin:0 10px 0 -1px;border:1px solid #ddd;border-width:0 1px;}
+.btn-inner{*position:relative;z-index:1;float:left;margin:-1px 0;padding:6px 10px;border:1px solid #ddd;border-width: 1px 0;background:#f40; }
+
+.btn-blue{border-color: #378ec9;}
+.btn-blue .btn-inner{border-color: #378ec9;color:#fff;}
+
+.btn-red{border-color: #d00907;}
+.btn-red .btn-inner{border-color: #378ec9;color:#fff;}
+    </style>
+</head>
+<body>
+    <a href="###" class="btn"><span class="btn-inner">按钮</span></a>
+    <a href="###" class="btn btn-blue"><span class="btn-inner">创建</span></a>
+    <a href="###" class="btn btn-blue"><span class="btn-inner">创建按钮</span></a>
+    <a href="###" class="btn btn-red"><span class="btn-inner">删除</span></a>
+    <a href="###" class="btn btn-red"><span class="btn-inner">没事别动删除</span></a>
+    <div class="goback">
+        返回<a href="http://www.aiubug.com/?p=602">《初探Margin负值》</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	</head>
+	<body>
+		<script>
+			$.ajax({
+				type:"get",
+				url:"https://zhuoji.sxsat.cn/home/investor/lists",
+				success:function(data){
+					console.log(data)
+				}
+			});
+			
+		</script>
+	</body>
+</html>

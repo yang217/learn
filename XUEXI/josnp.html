@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>身份证号码：<input type="text" id="sf"></p>
+		<p>省份：<input type="text" id="shf"></p>
+		<input type="button"  value="确认" id="btn"/>
+	<script type="text/javascript" src="js/jquery.min.js" ></script>	
+<script type="text/javascript">  
+
+btn.onclick=function(){
+	var sf=document.getElementById("sf");
+	var shf=document.getElementById("shf");
+	var sfv=sf.value;
+	var shfv=shf.value;
+	$.get("http://api.k780.com:88/?app=idcard.get&idcard=411528198811213753&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json",function(data){
+		console.log(data)
+	})	
+}
+    $.get("my.php").done(function(){
+    	alert("ok")
+    }).fail(function(){
+    	alert("失败")
+    })
+</script>  
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+				return such(xhr.responseText) 
+				}else{
+				alert("错误代码是"+xhr.readyState)
+			}
+				
+				
+			}
+		}
+		xhr.open("get","data.json?usename=123")
+		xhr.send();
+		function such(data){
+			console.log(data)
+		}
+			
+			
+		</script>
+	</body>
+</html>

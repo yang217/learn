@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-1.11.3.js"></script>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="transform: translate(10.2px,200px);">
+			
+		</div>
+		<script>
+	    console.log($('div').css('transform'))
+		var b=$('div').css('transform').replace(/[^0-9\-\.,]/g,'').split(',');
+		console.log(b)
+		
+			
+		</script>
+	</body>
+</html>

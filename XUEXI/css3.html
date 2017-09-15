@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	/*匹配后面紧跟的，不是内部*/
+        div+p {
+            background-color: yellow;
+        }
+         input[type=text]:enabled {
+            background-color: yellow;
+        }
+
+        input[type=text]:disabled {
+            background-color: purple;
+        }
+
+          input[type="text"]:read-only {
+            background-color: gray;
+        }
+
+        input[type="text"]:read-write {
+            background-color: greenyellow;
+        }
+
+        input[type="text"]:-moz-read-only {
+            background-color: gray;
+        }
+
+        input[type="text"]:-moz-read-write {
+            background-color: greenyellow;
+        }
+         input[type="checkbox"]:checked {
+            outline: 2px solid yellow;
+        }
+
+        input[type="checkbox"]:-moz-checked {
+            outline: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+  
+        <h1>欢迎来到我到的主页</h1>
+        <div>
+            <p>我是唐老鸭。</p>
+            <p>我住在 Duckburg。</p>
+        </div>
+        <p>我最好的朋友是米老鼠。</p>
+        <p>我的样式不会改变。</p>
+
+        <form>
+            <input type="radio" id="radio1" name="radio" onchange="radio_onchange();">可用</radio>
+            <input type="radio" id="radio2" name="radio" onchange="radio_onchange();">不可用</radio><br/>
+            <input type="text" id="text1" disabled />
+        </form>
+          <form>
+            <p>名前：<input type="text" name="name" />
+            <p>地址：<input type="text" name="address" value="江苏省常州市" readonly="readonly" /></p>
+        </form>
+          <form>
+            兴趣:<input type="checkbox">阅读</input>
+            <input type="checkbox">旅游</input>
+            <input type="checkbox">看电影</input>
+            <input type="checkbox">上网</input>
+        </form>
+        <script>
+            function radio_onchange() {
+                var radio = document.getElementById("radio1");
+                var text = document.getElementById("text1");
+                if (radio.checked)
+                    text.disabled = "";
+                else {
+                    text.value = "";
+                    text.disabled = "disabled";
+                }
+            }
+        </script>
+   
+</body>
+</html>

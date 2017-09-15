@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	 .wrap{
+	 	width: 800px;
+	 	background: #ccc;
+	 	margin: 0 auto;
+	 }
+     .clear:after{
+     	content: "";
+     	display: block;
+     	visible:hidden;
+     	clear: both;
+     	font-size:0;
+     }
+     .contain{
+     	margin-left: 300px;
+     	border-left:1px pink solid;
+     	padding: 0 20px;
+     	
+     }
+     .main{
+     	width: 100%;
+     	float: left;
+     	word-wrap: break-word; word-break: normal;
+     
+     }
+     .side{
+     	width: 300px;
+     	float: left;
+     	background: red;
+     	margin-left:-760px;
+     	/*margin-left: -760px;*/
+     
+     }
+
+	</style>
+</head>
+<body>
+<div class="wrap">
+<div class="contain clear">
+ <div class="main"><p>1111111111111111111eeeeeeeeeeeeeeeeee11111111111111111111eeeeeeeeeeeeeeeeee1</p></div>
+ <div class="side">22222222222</div>
+
+
+</div>
+
+
+</div>
+<SCRIPT LANGUAGE="JavaScript"> 
+<!-- 
+for (t = 2; t > 0; t--) { 
+for (x = 20; x > 0; x--) { 
+for (y = 10; y > 0; y--) { 
+parent.moveBy(0,-x); 
+} 
+} 
+for (x = 20; x > t; x--) { 
+for (y = 10; y > 0; y--) { 
+parent.moveBy(0,x); 
+} 
+} 
+for (x = 20; x > 0; x--) { 
+for (y = 10; y > 0; y--) { 
+parent.moveBy(x,0); 
+} 
+} 
+for (x = 20; x > 0; x--) { 
+for (y = 10; y > 0; y--) { 
+parent.moveBy(-x,0); 
+} 
+} 
+} 
+//--> 
+// End --> 
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>删除添加</title>
+<style>
+*{margin:0; padding:0; font-size:20px;}
+.l{width:30%; float:left; text-align:center;}
+.l li{width:100%; float:left;list-style-type:none; height:200px; line-height:200px; border:1px solid #000;}
+.l li.sel{background-color:#000; color:#fff;}
+.r{width:70%; float:left; text-align:center;}
+.r .m{display:none;}
+.r .m.sel{display:block;}
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+$(function(){
+	var a = 1;
+	$(".l li").click(function(){
+		//a = $(this).index();
+		$(".l li").removeClass("sel");
+		$(this).addClass("sel");
+		//var index = $(this).index();
+		a = $(this).index();
+		$(".r .m").removeClass("sel");
+		$(".r .m").eq(a).addClass("sel");
+	})
+	
+	var len = $(".l li").length;
+	console.log(len);
+	$("#butL").click(function(){
+		if(a <= 1){
+			a = len
+		}else{
+			a --
+		}
+		$(".l li").removeClass("sel");
+		$(".r .m").removeClass("sel");
+		$(".l li").eq(a).addClass("sel");
+		$(".r .m").eq(a).addClass("sel");
+	})
+	$("#butR").click(function(){
+		if(a >= len){
+			a = 1
+		}else{
+			a ++
+		}
+		$(".l li").removeClass("sel");
+		$(".r .m").removeClass("sel");
+		$(".l li").eq(a).addClass("sel");
+		$(".r .m").eq(a).addClass("sel");
+	})
+})
+</script>
+</head>
+
+<body>
+	<div class="l">
+    	<ul>
+        	<li class="sel">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div class="r">
+    	<div class="m sel">
+        11111111111111111111111111111111111
+        </div>
+    	<div class="m">
+        22222222222222222222222222222222222
+        </div>
+    	<div class="m">
+        333333333333333333333333333333333333
+        </div>
+    	<div class="m">
+        444444444444444444444444444444444444
+        </div>
+        <button id="butL"> < </button>
+        <button id="butR"> > </button>
+    </div>
+</body>
+</html>

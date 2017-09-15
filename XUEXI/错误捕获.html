@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			function main(s) {
+    console.log('BEGIN main()');
+    try {
+        foo(s);
+    } catch (e) {
+        alert('出错了：' + e);//e代表出错的类型
+    }
+    console.log('END main()');
+}
+
+function foo(s) {
+	try{
+	console.log("成功");
+	console.log('BEGIN foo()');
+    bar(s);
+    console.log('END foo()');
+	} catch (e){
+		alert(1+e)
+	}
+   
+}
+
+function bar(s) {
+    console.log('BEGIN bar()');
+    console.log('length = ' + s.length);
+    console.log('END bar()');
+}
+main("123")
+function isWeiXinClient() {
+    var ua = navigator.userAgent.toLowerCase(); 
+    return !!(ua.match(/MicroMessenger/i)=="micromessenger" ? 1 : 0); 
+}
+console.log(isWeiXinClient())
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+		<input type="text"  class="name"/>
+		<button class="btn">提交</button>
+		<script>
+			var rephone=/^1[3578][0-9]{9}$/;
+			var reusename=/^[a-zA-z][a-zA-Z0-9_]{3,9}$/;
+			$('.btn').click(function(){
+				var nameval=$('.name').val();
+				if(rephone.test(nameval)||reusename.test(nameval)){
+					alert('提交成功')
+				}else{
+					alert('格式不对')
+				}
+			})
+
+			
+			
+		</script>
+		</form>
+	</body>
+</html>

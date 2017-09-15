@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			.ioc-type{
+	 display: inline-block;
+    height: 140px;    
+    background-color: #c8c8c8;
+    transition: background-color .25s;
+    overflow: hidden;
+			}
+			.ioc-type:after {
+    position: relative;
+    content: url("img/icons-verify-type.png");
+}
+div:hover i{
+	background: #000;
+}
+i.active{
+	background: red;
+}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<i class="ioc-type ioc-type1"></i>
+			<b>商家</b>
+			
+			
+		</div>
+		<script>
+			var box=document.getElementById("box");
+			var i=document.getElementsByTagName("i")[0]
+			
+			
+			
+		</script>
+	</body>
+</html>

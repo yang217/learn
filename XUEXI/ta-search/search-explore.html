@@ -1,0 +1,954 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>search demo</title>
+<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name='apple-touch-fullscreen' content='yes'>
+<meta name="full-screen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+
+
+<link href="css/vendors.min.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/clientlibs.min.css" rel="stylesheet" type="text/css" />
+<link href="css/clientlibs2.min.css" rel="stylesheet" type="text/css" />
+<link href="css/rome.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="css/search.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<div id="main-content">
+  <div class="search-box search">
+    <div class="row l-center-1200">
+      <div class="col-xs-3 col-md-2 search-tit">Searching for...</div>
+      <div class="col-xs-9 col-md-10">
+        <div class="search-box-wrapper">
+          <form class="site-search" method="get" action="#">
+            <label class="search-input-label" for="searchinput">Search</label>
+            <input class="search-input" name="searchinput" type="text" placeholder="Search Hotel" value="Sydney Hotel" />
+            <button class="button search-button" type="button"> <span class="icon-32 icon-search icon-font-Search_Icon" aria-hidden="true"></span><span class="vis-hidden"> Search</span> </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Hidden fields to check if preload animation for Site Search is playing: START -->
+    <input type="hidden" class="site-search-preload-is-loading" name="site-search-preload" value="false">
+    <!-- Hidden fields for Site Search Loading Status: END --> 
+  </div>
+  <div class="WhatHappening insection search-main">
+    <div class="whathapping atdwSearchComplexDisplay">
+      <div class="mosaic">
+        <div class="row l-row-collapse">
+          
+          <div class="search-result-count search-result-count_search">
+            <div class="row l-center-1200">
+              <div class="col-xs-12"> <span class="search-result-count-copy" data-copy="Showing {0} of {1} results">Showing 8 of 140 article results</span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-3 mosaic-grid-4 l-row-collapse">
+              <div class="filter-wrap">
+                <div class="atdw-smart-filters-wrapper">
+                  <div class="row l-center-1200">
+                    <div class="col-sm-12">
+                      <div class="search-explore search-explore_select">Find Articles</div>
+                      <!--5-->
+                      <div class="atdw-smart-filters-show-wrapper is-active" id="show-wrap5">
+                        <button class="filter-button-container atdw-smart-filters-show" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt5"> <span class="filter-button-copy">Find Events</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt5"> <span class="filter-button-copy">Find Events</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper hidden" id="show-div5">
+                        <p>Discover what's happening in</p>
+                        <div class="atdw-smart-filters-wrapper">
+                            <div class="row l-center-1200">
+                                <div class="ui-widget">
+                                    <div class="location">Australia</div>
+                                    <input id="tags" class="location-input">
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <p>Find events by:</p>
+                            <div class="row r2 type-center">
+                                <div class="col-md-6 col-xs-6 m2 active date-tab"> Date Range </div>
+                                <div class="col-md-6 col-xs-6 m2 season-tab"> Season </div>
+                            </div>
+                            <div class="date-con">
+                                <p>When will you be there?</p>
+                                <div class="row r3">
+                                    <div class="col-md-6 col-xs-6">To</div>
+                                    <div class="col-md-6 col-xs-6">From</div>
+                                    <div class="col-md-12 col-xs-12 m3">
+                                        <div class='parent'>
+                                            <input id='left' class='date-input' />
+                                            <input id='right' class='date-input' />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="season-con">
+                                <p>What season will you be travelling?</p>
+                                <div class="r1">
+                                    <ul class="m1 f-cb">
+                                        <li>
+                                            <h3>All Seasons</h3>
+                                            <ul style="display: none;">
+                                                <li class="summer">Summer</li>
+                                                <li class="autumn">Autumn</li>
+                                                <li class="winter">Winter</li>
+                                                <li class="spring">Spring</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <div class="season-exp">
+                                        <p><b>Summer Months</b><br />
+                                       December, January, Feburary</p>
+                                       <p><b>Autumn Months</b><br />
+                                       March, April, May</p>
+                                       <p><b>Winter Months</b><br />
+                                       June, July, August</p>
+                                       <p><b>Spring Months</b><br />
+                                       September, Octorber, November</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Find experiences</p>
+                            <div class="r1">
+                                <ul class="m1 f-cb">
+                                    <li>
+                                        <h3>All Experiences</h3>
+                                        <ul style="display: none;">
+                                            <li>Experiences1</li>
+                                            <li>Experiences2</li>
+                                            <li>Experiences3</li>
+                                            <li>Experiences4</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                              <div class="atdw-smart-filters-refresh-container">
+                                <div class="input-white-background show" ng-class="{ 'show': true }">
+                                  <div class="input-white-background-style">
+                                    <input type="text" name="Accommodation_keyword" placeholder="Keyword Search" class="atdw-smart-filter-keyword filter_keyword show" value="" ng-class="{ 'show': true }" ng-disabled="false" maxlength="100">
+                                  </div>
+                                </div>
+                                <a href="javascript:;" class="btn-primary transparent">Refresh Results</a> <a href="javascript:;" class="atdw-smart-filter-clear-all" aria-label="Clear all filters" ng-click="clearAllFilters($event)">Clear all</a> </div>
+                            </div>
+                        </fieldset>
+                        
+                      </div>
+                      <!--1--> 
+                      <!--<div class="atdw-smart-filters-show-wrapper" id="show-wrap1">
+                        <button class="filter-button-container atdw-smart-filters-show-hidden hidden" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt1"> <span class="filter-button-copy">Accommodations</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide-hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt1"> <span class="filter-button-copy">Accommodations</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper" id="show-div1">-->
+                      <div class="atdw-smart-filters-show-wrapper is-active" id="show-wrap1">
+                        <button class="filter-button-container atdw-smart-filters-show" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt1"> <span class="filter-button-copy">Find Accommodation</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt1"> <span class="filter-button-copy">Find Accommodation</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper hidden" id="show-div1">
+                        <p>Location</p>
+                        <div class="ui-widget">
+                          <div class="location">Australia</div>
+                          <input class="location-input">
+                        </div>
+                        <fieldset>
+                          <legend class="hidden">Accommodation</legend>
+                          <div class="atdw-refresh-results-filter-container is-active">
+                            <p>Property Type</p>
+                            <fieldset name="Accommodation_verticalClassifications">
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Hotels</span> </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Backpackers and Hostels</span> </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Apartments</span> </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Bed and Breakfast</span> </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Caravan, Camping and Holiday Parks</span> </label>
+                              </div>
+                              <div class="seeAll hidden">
+                                <div class="form-field form-checkbox">
+                                  <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                  <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Resorts</span> </label>
+                                </div>
+                                <div class="form-field form-checkbox">
+                                  <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                  <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Farmstays</span> </label>
+                                </div>
+                                <div class="form-field form-checkbox">
+                                  <input class="form-checkbox-input" type="checkbox" name="Hotels" id="HOTEL" value="HOTEL" title="Hotels">
+                                  <label class="form-field-label form-checkbox-label" for="HOTEL"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Holiday Houses</span> </label>
+                                </div>
+                              </div>
+                              <div class="atdw-smart-filters-fieldset-options"> <a href="javascript:;" class="atdw-smart-filter-see-all see-all" aria-label="See all" ng-class="{ 'hidden': seeAll }" ng-click="seeAll = !seeAll">See all <span class="icon-arrow-down-view-more icon-font-arrow_down" aria-hidden="true"></span></a> <a href="javascript:;" class="atdw-smart-filter-see-all hide-all hidden" aria-label="Hide all" ng-class="{ 'hidden': !seeAll }" ng-click="seeAll = !seeAll">Hide all <span class="icon-arrow-down-view-more icon-font-arrow_up" aria-hidden="true"></span></a> <a href="javascript:;" class="atdw-smart-filter-clear" aria-label="Clear" ng-click="clearFieldset($event)">Clear</a> </div>
+                            </fieldset>
+                            <p>Hotel Class</p>
+                            <fieldset name="Accommodation_starRating">
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="5 Stars" id="5" value="5" title="5 Stars">
+                                <label class="form-field-label form-checkbox-label" for="5">
+                                <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">
+                                <ul class="form-star-rating-list">
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                </ul>
+                                </span>
+                                </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="4 Stars" id="4" value="4" title="4 Stars">
+                                <label class="form-field-label form-checkbox-label" for="4">
+                                <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">
+                                <ul class="form-star-rating-list">
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                </ul>
+                                </span>
+                                </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="3 Stars" id="3" value="3" title="3 Stars">
+                                <label class="form-field-label form-checkbox-label" for="3">
+                                <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">
+                                <ul class="form-star-rating-list">
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                </ul>
+                                </span>
+                                </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="2 Stars" id="2" value="2" title="2 Stars">
+                                <label class="form-field-label form-checkbox-label" for="2">
+                                <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">
+                                <ul class="form-star-rating-list">
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                </ul>
+                                </span>
+                                </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="1 Stars" id="1" value="1" title="1 Stars">
+                                <label class="form-field-label form-checkbox-label" for="1">
+                                <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">
+                                <ul class="form-star-rating-list">
+                                  <li class="form-star-rating-list-item"> <svg version="1.1" class="star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+                                    <polygon class="star-shape" fill="none" stroke="#00535e" stroke-miterlimit="10" points="81.3,99.2 50,82.3 19.8,99.3 25.5,63.3 1,37.9 34.8,32.6 50,-0.1 65.1,32.6 99,37.8 74.5,63.3 "></polygon>
+                                    </svg> </li>
+                                </ul>
+                                </span>
+                                </label>
+                              </div>
+                              <div class="form-field form-checkbox">
+                                <input class="form-checkbox-input" type="checkbox" name="Unrated" id="-1" value="-1" title="Unrated">
+                                <label class="form-field-label form-checkbox-label" for="-1"> <span class="form-checkbox-ui" aria-hidden="true"></span> <span class="form-checkbox-label-copy">Unrated</span> </label>
+                              </div>
+                            </fieldset>
+                            <p>Price Range</p>
+                            <fieldset name="Accommodation_priceRange">
+                              <div id="slider-snap"> </div>
+                              <div class="slider-label-container"> <span id="slider-snap-value-lower" class="slider-label-lower" tabindex="0">$0</span>
+                                <input class="slider-from" type="hidden" name="Accommodation_price_from" value="0">
+                                <span id="slider-snap-value-upper" class="slider-label-upper" tabindex="0">$1000+</span>
+                                <input class="slider-to" type="hidden" name="Accommodation_price_to" value="1000">
+                              </div>
+                            </fieldset>
+                            <div class="col-xs-12 col-md-3">
+                              <div class="atdw-smart-filters-refresh-container">
+                                <div class="input-white-background show" ng-class="{ 'show': true }">
+                                  <div class="input-white-background-style">
+                                    <input type="text" name="Accommodation_keyword" placeholder="Keyword Search" class="atdw-smart-filter-keyword filter_keyword show" value="" ng-class="{ 'show': true }" ng-disabled="false" maxlength="100">
+                                  </div>
+                                </div>
+                                <a href="javascript:;" class="btn-primary transparent">Refresh Results</a> <a href="javascript:;" class="atdw-smart-filter-clear-all" aria-label="Clear all filters" ng-click="clearAllFilters($event)">Clear all</a> </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <!--2-->
+                      <div class="atdw-smart-filters-show-wrapper is-active" id="show-wrap2">
+                        <button class="filter-button-container atdw-smart-filters-show" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt2"> <span class="filter-button-copy">Find Tours & Attractions</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt2"> <span class="filter-button-copy">Find Tours & Attractions</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper hidden" id="show-div2">
+                        <p>Location</p>
+                        <div class="ui-widget">
+                          <div class="location">Australia</div>
+                          <input class="location-input">
+                        </div>
+                        <fieldset>
+                          <legend class="hidden">Accommodation</legend>
+                          <div class="atdw-refresh-results-filter-container is-active">
+                            <fieldset ng-init="restaurantTypes=''" name="Restaurant_verticalClassifications" class="no-p">
+                              <!--<legend class="atdw-smart-filters-title">Type</legend>-->
+                              <!--<div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="tour-attractions" id="tours_all" value="" ng-click="restaurantTypes='';clearAllSelectFilters($event);" checked>
+                                <label class="form-field-label form-radio-label" for="tours_all"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">All</span> </label>
+                              </div>-->
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="tour-attractions" id="tours_Attractions" value="" ng-click="restaurantTypes='CAFE';clearAllSelectFilters($event);" checked>
+                                <label class="form-field-label form-radio-label" for="tours_Attractions"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">Attractions</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="tour-attractions" id="tours_Tour-type" value="" ng-click="restaurantTypes='BAR';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="tours_Tour-type"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">Tour type</span> </label>
+                              </div>
+                            </fieldset>
+                            <p>Attractions</p>
+                            <div class="r1 radio-Attractions">
+                              <div class="select-no"></div>
+                              <ul class="m1 f-cb">
+                                <li>
+                                  <h3>All Activities</h3>
+                                  <ul style="display: none;">
+                                    <li>Experiences1</li>
+                                    <li>Experiences2</li>
+                                    <li>Experiences3</li>
+                                    <li>Experiences4</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <p>Tour type</p>
+                            <div class="r1 radio-Tour_type">
+                              <div class="select-no"></div>
+                              <ul class="m1 f-cb">
+                                <li>
+                                  <h3>All Tour Types</h3>
+                                  <ul style="display: none;">
+                                    <li>Experiences1</li>
+                                    <li>Experiences2</li>
+                                    <li>Experiences3</li>
+                                    <li>Experiences4</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                              <div class="atdw-smart-filters-refresh-container">
+                                <div class="input-white-background show" ng-class="{ 'show': true }">
+                                  <div class="input-white-background-style">
+                                    <input type="text" name="Accommodation_keyword" placeholder="Keyword Search" class="atdw-smart-filter-keyword filter_keyword show" value="" ng-class="{ 'show': true }" ng-disabled="false" maxlength="100">
+                                  </div>
+                                </div>
+                                <a href="javascript:;" class="btn-primary transparent">Refresh Results</a> <a href="javascript:;" class="atdw-smart-filter-clear-all" aria-label="Clear all filters" ng-click="clearAllFilters($event)">Clear all</a> </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <!--3-->
+                      <div class="atdw-smart-filters-show-wrapper is-active" id="show-wrap3">
+                        <button class="filter-button-container atdw-smart-filters-show" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt3"> <span class="filter-button-copy">Find Restaurants</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt3"> <span class="filter-button-copy">Find Restaurants</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper hidden" id="show-div3">
+                        <p>Location</p>
+                        <div class="ui-widget">
+                          <div class="location">Australia</div>
+                          <input class="location-input">
+                        </div>
+                        <fieldset>
+                          <legend class="hidden">Accommodation</legend>
+                          <div class="atdw-refresh-results-filter-container is-active">
+                            
+                            <p>Bring your own (BYO)</p>
+                            <fieldset ng-init="restaurantTypes=''" name="Restaurant_verticalClassifications">
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="restaurant_bring" id="restaurant-2_all" value="" ng-click="restaurantTypes='';clearAllSelectFilters($event);" checked>
+                                <label class="form-field-label form-radio-label" for="restaurant-2_all"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">All</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="restaurant_bring" id="restaurant-2_no-byo" value="" ng-click="restaurantTypes='CAFE';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="restaurant-2_no-byo"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">No BYO</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="restaurant_bring" id="restaurant-2_byo-wine" value="" ng-click="restaurantTypes='BAR';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="restaurant-2_byo-wine"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">BYO wine only</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="restaurant_bring" id="restaurant-2_byo-only" value="" ng-click="restaurantTypes='BAR';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="restaurant-2_byo-only"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">BYO only</span> </label>
+                              </div>
+                            </fieldset>
+                            <p>Cuisines</p>
+                            <div class="r1">
+                              <ul class="m1 f-cb">
+                                <li>
+                                  <h3>All Cuisines</h3>
+                                  <ul style="display: none;">
+                                    <li>Experiences1</li>
+                                    <li>Experiences2</li>
+                                    <li>Experiences3</li>
+                                    <li>Experiences4</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                              <div class="atdw-smart-filters-refresh-container">
+                                <div class="input-white-background show" ng-class="{ 'show': true }">
+                                  <div class="input-white-background-style">
+                                    <input type="text" name="Accommodation_keyword" placeholder="Keyword Search" class="atdw-smart-filter-keyword filter_keyword show" value="" ng-class="{ 'show': true }" ng-disabled="false" maxlength="100">
+                                  </div>
+                                </div>
+                                <a href="javascript:;" class="btn-primary transparent">Refresh Results</a> <a href="javascript:;" class="atdw-smart-filter-clear-all" aria-label="Clear all filters" ng-click="clearAllFilters($event)">Clear all</a> </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <!--4-->
+                      <div class="atdw-smart-filters-show-wrapper is-active" id="show-wrap4">
+                        <button class="filter-button-container atdw-smart-filters-show" ng-class="{ 'hidden': showSmartFilters }" ng-click="revealSmartFilters(true);" id="show-butt4"> <span class="filter-button-copy">Find Transport</span> <span class="icon icon-font-chevron-down-outline"></span> </button>
+                        <button class="filter-button-container atdw-smart-filters-hide hidden" ng-class="{ 'hidden': !showSmartFilters }" ng-click="revealSmartFilters(false);" id="hide-butt4"> <span class="filter-button-copy">Find Transport</span> <span class="icon icon-font-chevron-up-outline"></span> </button>
+                      </div>
+                      <div class="atdw-smart-filters-results-wrapper hidden" id="show-div4">
+                        <p>Location</p>
+                        <div class="ui-widget">
+                          <div class="location">Australia</div>
+                          <input class="location-input">
+                        </div>
+                        <fieldset>
+                          <legend class="hidden">Accommodation</legend>
+                          <div class="atdw-refresh-results-filter-container is-active">
+                            <fieldset ng-init="restaurantTypes=''" name="Restaurant_verticalClassifications" class="no-p">
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="transport" id="transport_all" value="" ng-click="restaurantTypes='';clearAllSelectFilters($event);" checked>
+                                <label class="form-field-label form-radio-label" for="transport_all"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">All</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="transport" id="transport_Hire" value="" ng-click="restaurantTypes='CAFE';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="transport_Hire"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">Hire</span> </label>
+                              </div>
+                              <div class="form-field form-radio">
+                                <input class="form-radio-input" type="radio" name="transport" id="restaurant_type" value="" ng-click="restaurantTypes='BAR';clearAllSelectFilters($event);">
+                                <label class="form-field-label form-radio-label" for="restaurant_type"> <span class="form-radio-ui" aria-hidden="true"></span> <span class="form-radio-label-copy">Type of transport</span> </label>
+                              </div>
+                            </fieldset>
+                            <p>Types of hire</p>
+                            <div class="r1 radio-Hire">
+                              <div class="select-no"></div>
+                              <ul class="m1 f-cb">
+                                <li>
+                                  <h3>All Hire Types</h3>
+                                  <ul style="display: none;">
+                                    <li>Experiences1</li>
+                                    <li>Experiences2</li>
+                                    <li>Experiences3</li>
+                                    <li>Experiences4</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <p>All types of transport</p>
+                            <div class="r1 radio-Transport">
+                              <div class="select-no"></div>
+                              <ul class="m1 f-cb">
+                                <li>
+                                  <h3>All Types Of Transport</h3>
+                                  <ul style="display: none;">
+                                    <li>Experiences1</li>
+                                    <li>Experiences2</li>
+                                    <li>Experiences3</li>
+                                    <li>Experiences4</li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                              <div class="atdw-smart-filters-refresh-container">
+                                <div class="input-white-background show" ng-class="{ 'show': true }">
+                                  <div class="input-white-background-style">
+                                    <input type="text" name="Accommodation_keyword" placeholder="Keyword Search" class="atdw-smart-filter-keyword filter_keyword show" value="" ng-class="{ 'show': true }" ng-disabled="false" maxlength="100">
+                                  </div>
+                                </div>
+                                <a href="javascript:;" class="btn-primary transparent">Refresh Results</a> <a href="javascript:;" class="atdw-smart-filter-clear-all" aria-label="Clear all filters" ng-click="clearAllFilters($event)">Clear all</a> </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                      
+                      <!--////////--> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-9 mosaic-grid-4 l-row-collapse">
+              <div class="mosaic atdw-mosaic">
+                <!---->
+                <div class="row">
+                	<!--1-->
+                    <div class="search-item">
+                    	<div class="search-item_item">
+                          <div class="mosaic-column-front col-xs-12 col-md-4"> 
+                            <div class="responsive-images"><img src="images/img-1.jpg"></div>
+                            <div class="mosaic-overlay">
+                              <span class="label-destination type-destination">New South Wales</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-md-8">
+                              <div class="line-through-container-biline"><div class="type-anchor-title">New South Wales</div></div>
+                              <p class="mloverflow-text">Explore New South Wales from Sydney, where Bondi Beach is a day trip from the World Heritage-listed Blue Mountains and H<span class="mloverflow-ellipsis">...</span></p>
+                          </div>
+                        </div>
+                     </div>
+                     <!--2-->
+                    <div class="search-item">
+                    	<div class="search-item_item">
+                          <div class="mosaic-column-front col-xs-12 col-md-4"> 
+                            <div class="responsive-images"><img src="images/img-1.jpg"></div>
+                            <div class="mosaic-overlay">
+                              <span class="label-destination type-destination">New South Wales</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-md-8">
+                              <div class="line-through-container-biline"><div class="type-anchor-title">New South Wales</div></div>
+                              <p class="mloverflow-text">Explore New South Wales from Sydney, where Bondi Beach is a day trip from the World Heritage-listed Blue Mountains and H<span class="mloverflow-ellipsis">...</span></p>
+                          </div>
+                        </div>
+                     </div>
+                     <!--3-->
+                    <div class="search-item">
+                    	<div class="search-item_item">
+                          <div class="mosaic-column-front col-xs-12 col-md-4"> 
+                            <div class="responsive-images"><img src="images/img-1.jpg"></div>
+                            <div class="mosaic-overlay">
+                              <span class="label-destination type-destination">New South Wales</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-md-8">
+                              <div class="line-through-container-biline"><div class="type-anchor-title">New South Wales</div></div>
+                              <p class="mloverflow-text">Explore New South Wales from Sydney, where Bondi Beach is a day trip from the World Heritage-listed Blue Mountains and H<span class="mloverflow-ellipsis">...</span></p>
+                          </div>
+                        </div>
+                     </div>
+                     <!--4-->
+                    <div class="search-item">
+                    	<div class="search-item_item">
+                          <div class="mosaic-column-front col-xs-12 col-md-4"> 
+                            <div class="responsive-images"><img src="images/img-1.jpg"></div>
+                            <div class="mosaic-overlay">
+                              <span class="label-destination type-destination">New South Wales</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-md-8">
+                              <div class="line-through-container-biline"><div class="type-anchor-title">New South Wales</div></div>
+                              <p class="mloverflow-text">Explore New South Wales from Sydney, where Bondi Beach is a day trip from the World Heritage-listed Blue Mountains and H<span class="mloverflow-ellipsis">...</span></p>
+                          </div>
+                        </div>
+                     </div>
+                     <!--5-->
+                    <div class="search-item">
+                    	<div class="search-item_item">
+                          <div class="mosaic-column-front col-xs-12 col-md-4"> 
+                            <div class="responsive-images"><img src="images/img-1.jpg"></div>
+                            <div class="mosaic-overlay">
+                              <span class="label-destination type-destination">New South Wales</span>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-md-8">
+                              <div class="line-through-container-biline"><div class="type-anchor-title">New South Wales</div></div>
+                              <p class="mloverflow-text">Explore New South Wales from Sydney, where Bondi Beach is a day trip from the World Heritage-listed Blue Mountains and H<span class="mloverflow-ellipsis">...</span></p>
+                          </div>
+                        </div>
+                     </div>
+                </div>
+                
+                <!-- -->
+                
+                
+                <div class="search-results-view-more l-h-center atdw-search-results-view-more"> <a href="javascript:void(0)" class="btn-primary" style=""> View More </a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script language="javascript" src="js/jquery.min.js"></script> 
+<script language="javascript" src="js/nouislider.js"></script> 
+<script language="javascript" src="js/rome.js"></script> 
+<script language="javascript" src="js/example.js"></script> 
+<script language="javascript" src="js/event.js"></script> 
+<script language="javascript" src="js/jquery-ui.js"></script> 
+<script>
+ $(function(){	
+ 	var speed=200;
+	$('#show-butt1').click(function(){
+		$(this).addClass('hidden');
+		$('#hide-butt1').removeClass('hidden');
+		$('#show-div1').removeClass('hidden');
+		$('#show-wrap1').removeClass('is-active');
+		
+		$('#show-div2').addClass('hidden');
+		$('#show-wrap2').addClass('is-active');
+		$('#show-butt2').removeClass('hidden');
+		$("#hide-butt2").addClass('hidden');
+		$('#show-div3').addClass('hidden');
+		$('#show-wrap3').addClass('is-active');
+		$('#show-butt3').removeClass('hidden');
+		$("#hide-butt3").addClass('hidden');
+		$('#show-div4').addClass('hidden');
+		$('#show-wrap4').addClass('is-active');
+		$('#show-butt4').removeClass('hidden');
+		$("#hide-butt4").addClass('hidden');
+		$('#show-div5').addClass('hidden');
+		$('#show-wrap5').addClass('is-active');
+		$('#show-butt5').removeClass('hidden');
+		$("#hide-butt5").addClass('hidden');
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+		 
+        $('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+	});
+	$('#hide-butt1').click(function(){
+		$(this).addClass('hidden');
+		$('#show-butt1').removeClass('hidden');
+		$('#show-div1').addClass('hidden');
+		$('#show-wrap1').addClass('is-active');
+		
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+	});
+	$('#show-butt2').click(function(){
+		$(this).addClass('hidden');
+		$('#hide-butt2').removeClass('hidden');
+		$('#show-div2').removeClass('hidden');
+		$('#show-wrap2').removeClass('is-active');
+		
+		$('#show-div1').addClass('hidden');
+		$('#show-wrap1').addClass('is-active');
+		$('#show-butt1').removeClass('hidden');
+		$("#hide-butt1").addClass('hidden');
+		$('#show-div3').addClass('hidden');
+		$('#show-wrap3').addClass('is-active');
+		$('#show-butt3').removeClass('hidden');
+		$("#hide-butt3").addClass('hidden');
+		$('#show-div4').addClass('hidden');
+		$('#show-wrap4').addClass('is-active');
+		$('#show-butt4').removeClass('hidden');
+		$("#hide-butt4").addClass('hidden');
+		$('#show-div5').addClass('hidden');
+		$('#show-wrap5').addClass('is-active');
+		$('#show-butt5').removeClass('hidden');
+		$("#hide-butt5").addClass('hidden');
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+		
+		$('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+	});
+	$('#hide-butt2').click(function(){
+		$(this).addClass('hidden');
+		$('#show-butt2').removeClass('hidden');
+		$('#show-div2').addClass('hidden');
+		$('#show-wrap2').addClass('is-active');
+		
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+	});
+	$('#show-butt3').click(function(){
+		$(this).addClass('hidden');
+		$('#hide-butt3').removeClass('hidden');
+		$('#show-div3').removeClass('hidden');
+		$('#show-wrap3').removeClass('is-active');
+		
+		$('#show-div2').addClass('hidden');
+		$('#show-wrap2').addClass('is-active');
+		$('#show-butt2').removeClass('hidden');
+		$("#hide-butt2").addClass('hidden');
+		$('#show-div1').addClass('hidden');
+		$('#show-wrap1').addClass('is-active');
+		$('#show-butt1').removeClass('hidden');
+		$("#hide-butt1").addClass('hidden');
+		$('#show-div4').addClass('hidden');
+		$('#show-wrap4').addClass('is-active');
+		$('#show-butt4').removeClass('hidden');
+		$("#hide-butt4").addClass('hidden');
+		$('#show-div5').addClass('hidden');
+		$('#show-wrap5').addClass('is-active');
+		$('#show-butt5').removeClass('hidden');
+		$("#hide-butt5").addClass('hidden');
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+		
+		$('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+	});
+	$('#hide-butt3').click(function(){
+		$(this).addClass('hidden');
+		$('#show-butt3').removeClass('hidden');
+		$('#show-div3').addClass('hidden');
+		$('#show-wrap3').addClass('is-active');
+		
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+	});
+	$('#show-butt4').click(function(){
+		$(this).addClass('hidden');
+		$('#hide-butt4').removeClass('hidden');
+		$('#show-div4').removeClass('hidden');
+		$('#show-wrap4').removeClass('is-active');
+		
+		$('#show-div2').addClass('hidden');
+		$('#show-wrap2').addClass('is-active');
+		$('#show-butt2').removeClass('hidden');
+		$("#hide-butt2").addClass('hidden');
+		$('#show-div3').addClass('hidden');
+		$('#show-wrap3').addClass('is-active');
+		$('#show-butt3').removeClass('hidden');
+		$("#hide-butt3").addClass('hidden');
+		$('#show-div1').addClass('hidden');
+		$('#show-wrap1').addClass('is-active');
+		$('#show-butt1').removeClass('hidden');
+		$("#hide-butt1").addClass('hidden');
+		$('#show-div5').addClass('hidden');
+		$('#show-wrap5').addClass('is-active');
+		$('#show-butt5').removeClass('hidden');
+		$("#hide-butt5").addClass('hidden');
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+		
+		$('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+	});
+	$('#hide-butt4').click(function(){
+		$(this).addClass('hidden');
+		$('#show-butt4').removeClass('hidden');
+		$('#show-div4').addClass('hidden');
+		$('#show-wrap4').addClass('is-active');
+		
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+	});
+	$('#show-butt5').click(function(){
+		$(this).addClass('hidden');
+		$('#hide-butt5').removeClass('hidden');
+		$('#show-div5').removeClass('hidden');
+		$('#show-wrap5').removeClass('is-active');
+		
+		$('#show-div2').addClass('hidden');
+		$('#show-wrap2').addClass('is-active');
+		$('#show-butt2').removeClass('hidden');
+		$("#hide-butt2").addClass('hidden');
+		$('#show-div3').addClass('hidden');
+		$('#show-wrap3').addClass('is-active');
+		$('#show-butt3').removeClass('hidden');
+		$("#hide-butt3").addClass('hidden');
+		$('#show-div4').addClass('hidden');
+		$('#show-wrap4').addClass('is-active');
+		$('#show-butt4').removeClass('hidden');
+		$("#hide-butt4").addClass('hidden');
+		$('#show-div1').addClass('hidden');
+		$('#show-wrap1').addClass('is-active');
+		$('#show-butt1').removeClass('hidden');
+		$("#hide-butt1").addClass('hidden');
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+		
+		$('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+	});
+	$('#hide-butt5').click(function(){
+		$(this).addClass('hidden');
+		$('#show-butt5').removeClass('hidden');
+		$('#show-div5').addClass('hidden');
+		$('#show-wrap5').addClass('is-active');
+		
+		
+		$('.location').removeClass("location-on");
+		$('.location-input').hide();
+	});
+	$('.see-all').click(function(){
+		$(this).addClass('hidden');
+		$('.hide-all').removeClass('hidden');
+		$('.seeAll').removeClass('hidden');
+	});
+	$('.hide-all').click(function(){
+		$(this).addClass('hidden');
+		$('.see-all').removeClass('hidden');
+		$('.seeAll').addClass('hidden');
+	});
+	
+	$(".mosaic-2column-item-option").hover(function(){
+		$(this).addClass('is-fade');
+		},function(){
+		$(this).removeClass('is-fade');
+	}); 
+	
+	var snapSlider = document.getElementById('slider-snap');
+
+	noUiSlider.create(snapSlider, {
+		start: [0, 1000],
+		connect: true,
+		range: {
+			'min': 0,
+			'max': 1000
+		}
+	});
+	var snapValues = [
+		document.getElementById('slider-snap-value-lower'),
+		document.getElementById('slider-snap-value-upper')
+	];
+	
+	snapSlider.noUiSlider.on('update', function( values, handle ) {
+		snapValues[handle].innerHTML = values[handle];
+	});
+
+	$('.location').removeClass("location-on");
+	$('.location-input').hide();
+	$('.location').click(function(){
+		
+		$(this).toggleClass("location-on");
+		$(this).next('.location-input').toggle();
+		$(this).next('.location-input').focus();
+		
+	});
+	$('.season-tab').click(function(){
+		$('.season-con').show();
+		$('.date-con').hide();
+	});
+	$('.date-tab').click(function(){
+		$('.date-con').show();
+		$('.season-con').hide();
+	});
+	
+	$("#restaurant_type").click(function(){
+		var val=$('input:radio[name="transport"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Hire").children(".select-no").show();
+			$(".radio-Hire").children().children().children(".r1 h3").css("color","#c4c4c4");
+			$(".radio-Transport").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Transport").children(".select-no").hide();
+		}           
+	 });
+	 $("#transport_Hire").click(function(){
+		var val=$('input:radio[name="transport"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Transport").children(".select-no").show();
+			$(".radio-Transport").children().children().children(".r1 h3").css("color","#c4c4c4");
+			$(".radio-Hire").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Hire").children(".select-no").hide();
+		}           
+	 });
+	 $("#transport_all").click(function(){
+		var val=$('input:radio[name="transport"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Transport").children(".select-no").hide();
+			$(".radio-Transport").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Hire").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Hire").children(".select-no").hide();
+		}           
+	 });
+	 
+	 
+	 
+	 $("#tours_Attractions").click(function(){
+		var val=$('input:radio[name="tour-attractions"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Tour_type").children(".select-no").show();
+			$(".radio-Tour_type").children().children().children(".r1 h3").css("color","#c4c4c4");
+			$(".radio-Attractions").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Attractions").children(".select-no").hide();
+		}           
+	 });
+	 $("#tours_Tour-type").click(function(){
+		var val=$('input:radio[name="tour-attractions"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Attractions").children(".select-no").show();
+			$(".radio-Attractions").children().children().children(".r1 h3").css("color","#c4c4c4");
+			$(".radio-Tour_type").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Tour_type").children(".select-no").hide();
+		}           
+	 });
+	 $("#tours_all").click(function(){
+		var val=$('input:radio[name="tour-attractions"]:checked').val();
+		if(val==null){
+			return false;
+		}
+		else{
+			$(".radio-Attractions").children(".select-no").hide();
+			$(".radio-Attractions").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Tour_type").children().children().children(".r1 h3").css("color","#00535e");
+			$(".radio-Tour_type").children(".select-no").hide();
+		}           
+	 });
+ })
+</script>
+</body>
+</html>

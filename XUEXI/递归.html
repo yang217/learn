@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function fn(n){
+		if(n==1){
+	 	return 1//等于1后一直就是这个说，就不再fn(n-1)了
+	 }
+	 console.log(n)
+	 // 就是n是1的时候，其恒等于1，
+	 return n*fn(n-1);
+	}
+	console.log(fn(5))
+</script>
+</body>
+</html>

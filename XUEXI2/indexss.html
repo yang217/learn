@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+  div{
+  	display: none;
+  }
+	</style>
+</head>
+<body>
+<button class="btn">1</button>
+<button class="btn">2</button>
+<button class="btn">3</button>
+
+<div class="item">1</div>
+<div class="item">2</div>
+<div  class="item">3</div>
+<script type="text/javascript">
+console.log($(".btn"))
+$(".btn").click(function(event) {
+	var len=$(this).index();
+	$(".item").eq(len).show().siblings(".item").hide()
+});
+
+</script>
+</body>
+</html>

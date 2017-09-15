@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+  var str="asjkldklajlaskkll";
+  function fn(o){
+  var obj={};
+   for(var i=0;i<o.length;i++){
+   	 if(obj.hasOwnProperty(o[i])){
+   	 	obj[o[i]]++
+   	 }else{
+   	 	obj[o[i]]=1;
+   	 }
+   	
+   }
+
+     return obj
+
+  }
+ console.log(fn(str))  
+var a=(x,y)=>x*y;
+console.log(a(8,2))
+
+</script>
+</body>
+</html>

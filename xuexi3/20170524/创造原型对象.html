@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+	var Work={
+		name:"jack",
+		fly:function(){
+			console.log(this.name)
+		}
+	}
+	function creat(name)	{
+		var s=Object.create(Work);
+		    s.name=name;
+		    return s;
+	}
+ var jack=creat("yang").fly()
+//   jack.fly()
+console.log(document.cookie)
+		</script>
+	</body>
+</html>

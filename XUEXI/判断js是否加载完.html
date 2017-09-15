@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			
+			
+		
+		<script type="text/javascript" src="js/jquery-1.11.3.js?" ></script>
+		<script>
+//		  var s1=document.getElementsByTagName("script")[0];
+//		  var s2=s1.parentNode;
+//		      console.log(s1);
+//		      console.log(s2)
+            
+			(function loadscript(url,callback){
+				var s=document.createElement("script");
+				    s.type="text/javascript";
+				    if(s.readyState){
+				    	s.onreadystatechange=function(){
+				    		if(v.readyState=="load"||v.readyState=="complete"){
+				    			s.onreadystatechange=null;
+				    			callback();
+				    		}
+				    	}
+				    }else{
+				    	s.onload=function(){
+				    		callback()
+				    	}
+				    }
+				  s.src=url+"?"+new Date().getTime();
+				 
+				  var m=document.getElementsByTagName("script")[0];
+				      m.parentNode.insertBefore(s,m)
+				  console.log(s)
+				  console.log(m)
+				  console.log(m.parentNode)
+				
+				
+			})("js/jquery-1.11.3.js",function(){
+				alert(1)
+			});
+//			loadscript("js/jquery-1.11.3.js",function(){
+//				alert(1)
+//			});
+			
+			$("div").css({
+				"height":"100px",
+				"width":"100px",
+				"background":"red"
+			})
+		</script>
+		</div>
+	</body>
+</html>

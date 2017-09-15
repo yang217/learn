@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     .box{
+     	width: 50px;
+     	height: 10px;
+     	padding: 10px 0;
+     	border-top: 10px solid;border-bottom: 10px solid;
+     	background-color: #000;background-clip: content-box;
+     }
+     .box1{
+     	width: 100px;
+     	height: 100px;
+     	border-radius: 50%;
+     	padding: 1%;
+     	border:10px solid;
+     	background-color: red;background-clip:content-box;
+     }
+	</style>
+	
+</head>
+<body>
+<div class="box"></div>
+<div class="box1">
+
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+	var elAs=$(".box");
+	
+	elAs.on({
+    mouseenter: function() {
+    	console.log(1)
+//      var target;    
+//      if (!this.preloaded) {
+//          target = elImgs.eq($(this).data('index'));
+//          // 图片地址换成真实地址
+//          target.attr('src', target.attr('data-src')).removeAttr('data-src');
+//          // 标记已加载
+//          this.preloaded = true;
+//      }
+    },
+    click:function(){
+    	console.log(2)
+    }
+});
+</script>
+</body>
+</html>

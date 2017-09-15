@@ -1,0 +1,94 @@
+/*图片不固定的情况下居中方法*/
+
+.pic_box {
+	width: 300px;
+	height: 300px;
+	background-color: #beceeb;
+	font-size: 0;
+	*font-size: 200px;
+	text-align: center;
+}
+
+.pic_box img {
+	vertical-align: middle;
+}
+
+.pic_box:after {
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	content: "center";
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+
+/*function GetQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}；
+比如，获取查询字符串中的id
+var id = GetQueryString(id);*/
+
+$('body').on("mousewheel DOMMouseScroll", function (event) {
+	// chrome & ie || // firefox
+	var delta=(event.originalEvent.wheelDelta && (event.originalEvent.wheelDelta> 0 ? 1: -1)) || (event.originalEvent.detail && (event.originalEvent.detail> 0 ? -1: 1));
+	if (delta> 0) {
+		// 向上滚动
+		console.log('mousewheel top');
+	}
+	else if (delta < 0) {
+		// 向下滚动
+		console.log('mousewheel bottom');
+	}
+}
+
+);
+//驼峰命名
+function camelCase (attr) {
+	return attr.replace(/\-(\w)/g, function (match, originText) {
+		return originText.toUpperCase();
+	}
+	);
+}
+
+，left和top属性的权重是高于right和bottom，只有在没定义left或top的情况下，相应的right和bottom属性才会起作用，如果left或top定义了，则会忽略right或bottom的值(但是如果元素的宽度或高度没有定义，则在IE6除外的浏览器中它们也可以同时起作用，有兴趣的同学可以看我这边文章)
+
+
+jQuery对象转成DOM对象： 
+两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index); 
+(1)jQuery对象是一个数据对象，可以通过[index]的方法，来得到相应的DOM对象。 
+如：var $v =$("#v") ; //jQuery对象 
+var v=$v[0]; //DOM对象 
+alert(v.checked) //检测这个checkbox是否被选中 
+(2)jQuery本身提供，通过.get(index)方法，得到相应的DOM对象 
+如：var $v=$("#v"); //jQuery对象 
+var v=$v.get(0); //DOM对象 
+alert(v.checked) //检测这个checkbox是否被选中 
+
+DOM对象转成jQuery对象: 
+对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。$(DOM对象) 
+如：var v=document.getElementById("v"); //DOM对象 
+var $v=$(v); //jQuery对象 
+转换后，就可以任意使用jQuery的方法了。 
+通过以上方法，可以任意的相互转换jQuery对象和DOM对象。需要再强调注意的是：DOM对象才能使用DOM中的方法，jQuery对象是不可以用DOM中的方法。 
+
+下面是其它的相关使用方法：
+1、DOM对象转jQuery对象 
+普通的Dom对象一般可以通过$()转换成jQuery对象。 
+
+如：$(document.getElementById("msg")) 
+返回的就是jQuery对象，可以使用jQuery的方法。 
+
+2、jQuery对象转DOM对象 
+由于jQuery对象本身是一个集合。所以如果jQuery对象要转换为Dom对象则必须取出其中的某一项，一般可通过索引取出。 
+如： $("#msg")[0]，$("div").eq(1)[0]，$("div").get()[1]，$("td")[5] 
+
+这些都是Dom对象，可以使用Dom中的方法，但不能再使用jQuery的方法。 
+
+以下几种写法都是正确的： 
+$("#msg").html(); 
+$("#msg")[0].innerHTML; 
+$("#msg").eq(0)[0].innerHTML; 
+$("#msg").get(0).innerHTML;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div div{
+				width: 100px;
+				height: 100px;
+				border: 1px #000000 solid;
+			}
+			/*代表所有div div这种嵌套形式的*/
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			1
+			<div>
+				2
+				<div>
+				3
+			</div>
+			</div>
+			
+		</div>
+		<script>
+			var a=document.querySelectorAll("#box div div");
+			console.log(a)
+			var b=document.getElementById("box").querySelectorAll("div div");/*代表所有div div这种嵌套形式的*/
+			console.log(b)
+			var c=document.getElementById("box").querySelectorAll(":scope div div")
+			//加个作用域
+			console.log(c)
+			var o = new Boolean(false);
+alert(o);//转换成字符串，结果是false
+alert(!!o); 
+		</script>
+var o = new Boolean(false);
+alert(o);//转换成字符串，结果是false
+alert(!!o); 	</body>
+</html>

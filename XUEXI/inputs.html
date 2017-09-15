@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="register" method="post" action="">
+	<span class="tips">请输入你的用户名：</span>
+	<input type="text" name="username" class="username" />
+		<span class="result"></span><br />
+	<input type="submit" id="submit" />
+</form>
+<script src="js/jquery.min.js"></script>
+<script>
+	
+	$(document).ready(function() {
+	$('.result').hide();
+	$('#submit').click(function(){
+		var username = $('.username').val();
+		var data = 'username=' +username;
+		$.ajax({
+			type:"POST",
+			url:"input.php",
+			data:data,
+			success:function(html) {
+				$('.result').show();
+				$('.result').text(html);
+			}
+		});
+		return false;
+	});
+});
+</script>
+	</body>
+</html>

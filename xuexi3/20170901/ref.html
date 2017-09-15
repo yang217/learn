@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: 2000px">
+  <script type="text/javascript">
+     var ticking=false;
+     function doscroll(){
+       if(!ticking){
+       	 requestAnimationFrame(doto);
+       	 console.log(ticking,'1')
+       	 ticking=true;
+       	 console.log(ticking,'2')
+       }
+     }
+      function doto(){
+      	console.log('杨豪');
+      	ticking=false
+      }
+      window.addEventListener('scroll',doto,false)
+  </script>
+</body>
+</html>

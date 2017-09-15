@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/jquery.min.js" type="text/javascript"></script> 
+<script>
+ $(function(){
+	var oBtn1 = $('.btn1'); 
+	var oBtn2 = $('.btn2'); 
+	var oP = $('.text');
+	var num = 15;
+	oBtn1.click(function(){
+		num ++;
+		// oP.style.fontSize = num +'px';
+		oP.css("fontSize",num);
+	})
+ })
+
+
+</script>
+</head>
+
+<body>
+<input type="button" value="+" class="btn1" />
+<input type="button" value="-" class="btn2" />
+<p style="font-size:15px;" class="text">
+  社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义社会主义
+</p>
+</body>
+</html>

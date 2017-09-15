@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+      <script src="../js/jquery-1.11.3.js"> </script>
+      <div>
+          
+      </div>
+      <script>
+     var arr=[2,1,10];
+      arr.sort(function(a,b){
+          return a-b;
+      })
+     console.log(arr)
+     function count() {
+    var arr = [];
+    for (var i=1; i<=3; i++) {
+        arr.push((function (n) {
+            return function () {
+                return n * n;
+            }
+        })(i));
+    }
+    return arr;
+}
+
+var results = count();
+var f1 = results[0];
+var f2 = results[1];
+var f3 = results[2];
+
+f1(); // 1
+f2(); // 4
+f3(); // 9
+123..toString()
+$('div').html("1233");
+var a=$('div')
+a.click(function () {
+    alert('hello!');
+});
+
+// 解除绑定:
+a.off('click');
+'use strict';
+
+function Student(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+var xiaoming = new Student('小明', 20);
+
+      </script>
+          
+     
+    </head>
+    <body>
+    
+    </body>
+</html>

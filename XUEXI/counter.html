@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	   ul{
+	   	counter-reset: section;
+	   	/*需要重*/
+	   }
+       li{
+       	list-style: none;
+       }
+       li:before{
+         counter-increment: section;
+         content: counter(section) ":";
+         padding-right: 10px;
+       }
+	</style>
+</head>
+<body>
+<ul>
+<li>杨</li>
+<li>豪</li>
+<li>第</li>
+<li>一</li>
+
+</ul>
+
+</body>
+</html>

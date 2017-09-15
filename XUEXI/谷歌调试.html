@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><a href=""></a></p>
+<p><a href=""></a></p>
+<p><a href=""></a></p>
+<p><a href=""></a></p>
+<p><a href=""></a></p>
+ <script type="text/javascript">
+// var a;
+// console.error("错误信息");
+
+var data = {code:200,content:[{'品名': '杜', '数量': 4}, {'品名': '冈本', '数量': 3}]};
+console.table(data.content);
+var isDebug=false;
+console.assert(isDebug,'开发中的log信息。。。');//为假的时候才会打印
+function fn(){
+	console.count("fn执行的次数")
+}
+fn();
+fn();
+fn();
+console.dir(document)
+
+console.time("Array耗时");
+var array= new Array(10000000);
+for (var i = array.length - 1; i >= 0; i--) {
+    array[i] = new Object();
+};
+console.timeEnd("Array耗时");
+console.time("函数耗时");
+function d(a){
+	document.write(a)
+}
+d("杨豪");
+console.timeEnd("函数耗时")
+
+</script>
+
+</body>
+</html>

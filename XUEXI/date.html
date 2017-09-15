@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				width: 100%;
+				background: red;
+				height: 2400px;
+			}
+			.box1{
+				width: 100px;
+				height: 200px;
+				background: blue;
+				overflow: scroll;
+			}
+			.box2{
+				width: 2000px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="box2"></div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		<script>
+			
+			
+			function compareTime(a, b) {
+            var arr = a.split("-"); //log [2016,04,06]
+            var start = new Date(arr[0], (arr[1] - 1), arr[2]);
+            var starts = start.getTime(); //输出时间戳进行对比
+            var arrs = b.split("-");
+            var end = new Date(arrs[0], (arrs[1] - 1), arrs[2]);
+            var ends = end.getTime();
+            var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            //getDay() 方法可返回表示星期的某一天的数字。
+            console.log("开始时间是" + weekDay[start.getDay()] + "\r\n" + "结束时间是" + weekDay[end.getDay()]);
+            var now = new Date();
+            console.log("现在是" + weekDay[now.getDay()]);
+            if (starts >= ends)
+                console.log('开始时间大于结束时间');
+            else
+                console.log('开始时间小于结束时间');
+        }
+           compareTime('2016-05-03', '2016-05-04');
+			
+			//js月份是0-11
+			
+			var date=new Date();
+			console.log(date)
+			console.log(date.getDay())//getday得出的是月份的某一天
+			
+			$(".box1").on('scroll',function(){
+				console.log(1)
+    // div 滚动了
+    alert('滚动了');
+    });
+		</script>
+	</body>
+</html>

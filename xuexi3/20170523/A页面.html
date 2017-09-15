@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		A页面
+	  <script>
+	  	var script=document.createElement("script");
+	  	    script.src="B.js?callback=flightHandler";
+     
+	  	var head=document.getElementsByTagName("head")[0];
+	  	    head.appendChild(script);
+	  	  function flightHandler(data){
+	  	  	console.log(data)
+	  	  }
+//	  	回调函数
+	  </script>
+	</body>
+</html>
